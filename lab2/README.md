@@ -1,17 +1,17 @@
-# Introduction
+# Deep Learning Applications: Laboratory #2
 In this laboratory we will get our hands dirty working with Large Language Models (e.g. GPT and BERT) to do various useful things. I you haven't already, it is highly recommended to:
 
 + Read the [Attention is All you Need](https://arxiv.org/abs/1706.03762) paper, which is the basis for all transformer-based LLMs.
 + Watch (and potentially *code along*) with this [Andrej Karpathy video](https://www.youtube.com/watch?v=kCc8FmEb1nY) which shows you how to build an autoregressive GPT model from the ground up.
 
-# Exercise 1: Warming Up
+## Exercise 1: Warming Up
 In this first exercise you will train a *small* autoregressive GPT model for character generation (the one used by Karpathy in his video) to generate text in the style of Dante Aligheri. Use [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt), which contains the entire text of Dante's Inferno (**note**: you will have to delete some introductory text at the top of the file before training). Train the model for a few epochs, monitor the loss, and generate some text at the end of training. Qualitatively evaluate the results.
 
-# Exercise 2: Working with Real LLMs
+## Exercise 2: Working with Real LLMs
 
 Our toy GPT can only take us so far. In this exercise we will see how to use the [Hugging Face](https://huggingface.co/) model and dataset ecosystem to access a *huge* variety of pre-trained transformer models.
 
-## Exercise 2.1: Installation and text tokenization
+### Exercise 2.1: Installation and text tokenization
 
 First things first, we need to install the [Hugging Face transformer library](https://huggingface.co/docs/transformers/index):
 
@@ -41,7 +41,7 @@ Trying to see the behaviour of slightly different versions of the sequence *"Hel
 - *"HelloWorld"* encodes to tensor([[15496, 10603]])
 - *"Hello World "* encodes to tensor([[15496,  2159,   220]]) --> But space character has its own encoding integer when nothing follows it
 
-## Exercise 2.2: Generating Text
+### Exercise 2.2: Generating Text
 
 There are a lot of ways we can, given a *prompt* in input, sample text from a GPT2 model. Instantiate a pre-trained `GPT2LMHeadModel` and use the [`generate()`](https://huggingface.co/docs/transformers/v4.27.2/en/main_classes/text_generation#transformers.GenerationMixin.generate) method to generate text from a prompt.
 
@@ -53,7 +53,7 @@ In order to qualitatively evaluate the performance of the `generate()` function 
 - Setting `do_sample` to `True` unlocks the generation, by allowing sampling of more diverse original sequences of tokens, instead of giving always the same greedy text. The tuning of `temperature` lets the magic happen!
 - The higher the `temperature`, the "noisier" and unpredictable the generation will be. Very high temperatures lead to, again, non-sense generation, with wrong words and sequences of random symbols.
 
-# Exercise 3: Reusing Pre-trained LLMs (choose one)
+## Exercise 3: Reusing Pre-trained LLMs (choose one)
 
 Choose **one** of the following exercises (well, *at least* one). In each of these you are asked to adapt a pre-trained LLM (`GPT2Model` or `DistilBERT` are two good choices) to a new Natural Language Understanding task. A few comments:
 
@@ -63,7 +63,7 @@ Choose **one** of the following exercises (well, *at least* one). In each of the
 
 + The first *two* exercises below can probably be done *without* any fine-tuning - that is, just training a shallow MLP to classify or represent with the appropriate loss function.
 
-# Exercise 3.1: Training a Text Classifier (easy)
+## Exercise 3.1: Training a Text Classifier (easy)
 
 Peruse the [text classification datasets on Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads). Choose a *moderately* sized dataset and use a LLM to train a classifier to solve the problem.
 
@@ -89,11 +89,11 @@ Looking at the DistilBertTokenizer, I can see that it's a word level tokenizer, 
 
 Furthermore, results obtained by training a simple MLP and an even simpler Logistic Regression are basically the same.
 
-# Exercise 3.2: Training a Question Answering Model (harder)
+## Exercise 3.2: Training a Question Answering Model (harder)
 
 Peruse the [multiple choice question answering datasets on Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:multiple-choice&sort=downloads). Chose a *moderately* sized one and train a model to answer contextualized multiple-choice questions. You *might* be able to avoid fine-tuning by training a simple model to *rank* the multiple choices (see margin ranking loss in Pytorch).
 
-# Exercise 3.3: Training a Retrieval Model (hardest)
+## Exercise 3.3: Training a Retrieval Model (hardest)
 
 The Hugging Face dataset repository contains a large number of ["text retrieval" problems](https://huggingface.co/datasets?task_categories=task_categories:text-retrieval&p=1&sort=downloads). These tasks generally require that the model measure *similarity* between text in some metric space -- naively, just a cosine similarity between [CLS] tokens can get you pretty far. Find an interesting retrieval problem and train a model (starting from a pre-trained LLM of course) to solve it.
 
