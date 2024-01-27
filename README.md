@@ -3,6 +3,9 @@ This repo contains all the code from the Laboratory Sessions of the **Deep Learn
 
 ## Laboratory 1: Exploring Residual Connections through image classification
 
+### Exercise 1-2: Implementing MLP and CNN for Image Classification on MNIST
+#### Implementation
+
 ### Exercise 2.1: Explaining why Residual Connections are so effective
 #### Implementation
 
