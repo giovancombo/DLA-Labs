@@ -1,8 +1,7 @@
-# Laboratory #4: Adversarial Learning and OOD Detection
+# Deep Learning Applications: Laboratory #4 - XAI
 
 In this laboratory session we will develop a methodology for detecting OOD samples and measuring the quality of OOD detection. We will also experiment with incorporating adversarial examples during training to render models more robust to adversarial attacks.
 
----
 ## Exercise 1: OOD Detection and Performance Evaluation
 In this first exercise you will build a simple OOD detection pipeline and implement some performance metrics to evaluate its performance.
 
@@ -50,10 +49,12 @@ You know the drill. Pick *ONE* of the following exercises to complete.
 ### Exercise 3.1: Implement ODIN for OOD detection
 ODIN is a very simple approach, and you can already start experimenting by implementing a temperature hyperparameter in your base model and doing a grid search on $T$ and $\varepsilon$.
 
+---
 ### Exercise 3.2: Implement JARN
 In exercise 2.2 you already implemented Jacobian-regularized learning to make your model more robust to adversarial samples. Add a *discriminator* to your model to encourage the adversarial samples used for regularization to be more *salient*.
 
 See [the JARN paper](https://arxiv.org/abs/1912.10185) for more details.
 
+---
 ### Exercise 3.3: Experiment with *targeted* adversarial attacks
 Implement the targeted Fast Gradient Sign Method to generate adversarial samples that *imitate* samples from a specific class. Evaluate your adversarial samples qualitatively and quantitatively.

@@ -1,4 +1,4 @@
-# Deep Learning Applications: Laboratory #1
+# Deep Learning Applications: Laboratory #1 - CNNs
 
 In this first laboratory we will work relatively simple architectures to get a feel for working with Deep Models. This notebook is designed to work with PyTorch.
 
@@ -21,9 +21,7 @@ I will now implement a *simple Multilayer Perceptron* to classify the 10 digits 
 The exercise wants me to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets.
 It could be a good idea to try to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to try to build a single file `config.yaml`, where I put almost every variable that can help me building any model I want.
 
----
-
-I define a `load` function, that passes the dictionary `config` (obtained from my `.yaml` file) as an argument, in order to load the dataset we want (between MNIST and CIFAR10), transformed accordingly, and splitted into *Train*, *Validation* and *Test* sets.
+I then define a `load` function, that passes the dictionary `config` (obtained from my `.yaml` file) as an argument, in order to load the dataset we want (between MNIST and CIFAR10), transformed accordingly, and splitted into *Train*, *Validation* and *Test* sets.
 
 The script file `models.py` contains all the model classes used for this Laboratory:
 + **MLP**, for instantiating a *Multilayer Perceptron*
@@ -39,8 +37,6 @@ The training loop lies in the `train` function, that takes all the objects insta
 The *forward* and *backward* passes are performed batch-wise through the `train_batch` function, that implements a tweak to reshape the input images' sizes accordingly to the model used. Same thing is done in the `validation` and `test` functions.
 
 The `load`, `build_model`, `train` and `test` functions are all contained in a single function, `model_pipeline`, that allows me to wrap all my workflow into a *Weights & Biases* run more efficiently.
-
----
 
 ### Exercise 1.2: Rinse and Repeat
 
