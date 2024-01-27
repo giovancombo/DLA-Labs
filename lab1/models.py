@@ -1,5 +1,5 @@
 import torch
-from torch import nn
+import torch.nn as nn
 import numpy as np
 
 # Multi-Layer Perceptron
@@ -23,6 +23,27 @@ class MLP(nn.Module):
         out = self.fc(out)
         return out
     
+
+    # Multi-Layer Perceptron with residual connections
+class ResidualMLP(nn.Module):
+    def __init__(self, input_size, hidden_size, classes, activation, dropout):
+        super(MLP, self).__init__()
+
+        self.mlp = nn.ModuleList[nn.Linear(input_size, hidden_size[0]),
+               getattr(nn, activation)()]
+        for _ in range(len(hidden_size) - 1):
+            self.mlp.append(nn.Linear(hidden_size[0], hidden_size[0]))
+            self.mlp.append(getattr(nn, activation)())
+        
+        self.fc = nn.Sequential(
+            nn.Dropout(dropout),
+            nn.Linear(hidden_size[0], classes))
+
+    def forward(self, x):
+        for layer in self.mlp:
+            x = layer(x) + x
+        out = self.fc(x)
+        return out
 
 
 # Convolutional Neural Network: Convolutional Block

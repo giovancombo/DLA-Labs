@@ -1,4 +1,5 @@
 import yaml
+import wandb
 
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
@@ -16,6 +17,26 @@ def model_path(config, folder):
         path = "/resnet" + str(config.resnet_name) + "-depth" + str(config.depth) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size)
     return path
 
+
+# Functions for periodical log of Loss and Accuracy from Training and Evaluation phases.
+    
+# Function for periodical log of training data
+def log_train(epoch, loss, accuracy, mean_loss, mean_acc, example_ct, config):
+    print(f'Epoch {epoch + 1}/{config.epochs} | Train Loss = {mean_loss:.4f}; Train Accuracy = {mean_acc:.2f}%')
+    wandb.log({"Training/Training Loss": loss,
+                "Training/Training Accuracy": accuracy,
+                "Training/Training Epochs": epoch + 1}, step = example_ct)
+
+# Function for log of validation data at the end of an epoch
+def log_validation(epoch, mean_loss, val_loss, mean_accuracy, val_accuracy, example_ct):
+    print(f'\nEnd of epoch {epoch + 1} | Validation Loss: {val_loss:.4f}; Validation Accuracy: {val_accuracy}%\n')
+
+    wandb.log({"Train Loss": mean_loss, 
+               "Validation Loss": val_loss,
+               "Epoch": epoch + 1,
+               "Train Accuracy": mean_accuracy,
+               "Validation Accuracy": val_accuracy}, step = example_ct)
+    
 
 # Functions for simplifying the choice of dataset and architecture to train (not so needed, just for fun)
 # SWEEP FOR MLP ON MNIST DATASET
