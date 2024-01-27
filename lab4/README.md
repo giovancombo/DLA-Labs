@@ -1,4 +1,4 @@
-# Deep Learning Applications Laboratory #4 - XAI
+# Deep Learning Applications: Laboratory #4 - XAI
 
 In this laboratory session we will develop a methodology for detecting OOD samples and measuring the quality of OOD detection. We will also experiment with incorporating adversarial examples during training to render models more robust to adversarial attacks.
 
