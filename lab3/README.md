@@ -15,7 +15,6 @@ For each step of an episode, the agent receives a reward of:
 
 In the file `main.py` you will find an implementation of **Deep Q-Learning**.
 
----
 ## Exercise 1: Testing the Environment
 
 The first thing to do is verify that the environment is working in your Anaconda virtual environment. I had a weird problem with Tensorboard and had to downgrade it using:
@@ -48,10 +47,12 @@ Use my (or even better, improve on my) implementation of `REINFORCE` to solve th
 
 **Note**: There is a *design flaw* in the environment implementation that will lead to strange (by explainable) behavior in agents trained with `REINFORCE`. See if you can figure it out and fix it.
 
+---
 ### Exercise 3.2: Solving another environment
 
 The [Gymnasium](https://gymnasium.farama.org/) framework has a ton of interesting and fun environments to work with. Pick one and try to solve it using any technique you like. The [Lunar Landar](https://gymnasium.farama.org/environments/box2d/lunar_lander/) environment is a fun one. 
 
+---
 ### Exercise 3.3: Advanced techniques 
 
 The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Try using an off-the-shelf implementation of [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347) to solve one (or more) of these environments. Compare your results with those of Q-Learning and/or REINFORCE.
