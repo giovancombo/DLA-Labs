@@ -1,4 +1,5 @@
-# Deep Learning Applications: Laboratory #2
+# Deep Learning Applications: Laboratory #2 - LLMs
+
 In this laboratory we will get our hands dirty working with Large Language Models (e.g. GPT and BERT) to do various useful things. I you haven't already, it is highly recommended to:
 
 + Read the [Attention is All you Need](https://arxiv.org/abs/1706.03762) paper, which is the basis for all transformer-based LLMs.
@@ -91,10 +92,12 @@ Looking at the DistilBertTokenizer, I can see that it's a word level tokenizer, 
 
 Furthermore, results obtained by training a simple MLP and an even simpler Logistic Regression are basically the same.
 
+---
 ### Exercise 3.2: Training a Question Answering Model
 
 Peruse the [multiple choice question answering datasets on Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:multiple-choice&sort=downloads). Chose a *moderately* sized one and train a model to answer contextualized multiple-choice questions. You *might* be able to avoid fine-tuning by training a simple model to *rank* the multiple choices (see margin ranking loss in Pytorch).
 
+---
 ### Exercise 3.3: Training a Retrieval Model
 
 The Hugging Face dataset repository contains a large number of ["text retrieval" problems](https://huggingface.co/datasets?task_categories=task_categories:text-retrieval&p=1&sort=downloads). These tasks generally require that the model measure *similarity* between text in some metric space -- naively, just a cosine similarity between [CLS] tokens can get you pretty far. Find an interesting retrieval problem and train a model (starting from a pre-trained LLM of course) to solve it.
