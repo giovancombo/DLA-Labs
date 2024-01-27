@@ -1,0 +1,30 @@
+HPs: max_new_tokens = 100, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is love and joy, and in death what are we left with? And when you have found your balance (so you don't die with the knowledge of death, so you know when to move on), then the most pressing question is where to focus yourself; not in the afterlife but where you actually end up, which is nowhere near that far for me. So what do it take for you to start living life as well as you would in another world? For me, it's always been the pursuit
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 100, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to feel good. And that's something that all humans agree on in America, not that they're not having that much fun.
+
+"It was true of course, but they never forgot about it."<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 100, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to improve yourself because you know there is nobody else better that you want more of, and now is probably the time to do that."
+
+As I said, you must have lots of positive energy around you all the rest…you have all of your energy and if you don't give in easily, it's a disaster.<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 100, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be as creative as possible in your career – so to see this as fulfilling when you can do so without procrastinating, isn't that amazing?
+
+Yes, it is! It is all about taking your imagination but it's all important, and it gives you a boost without necessarily thinking about it in the slightest! You'd never know, but seeing someone take advantage of the creativity of their subconscious without feeling ashamed about doing so is something really awesome to experience. You really give it away
+
+- - - - - - - - - - - - - - - -
