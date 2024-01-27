@@ -21,10 +21,10 @@ This repo contains all the code from the Laboratory Sessions of the **Deep Learn
 ### Exercise 2: Generating text using the HuggingFace library
 #### Implementation
 
-### Exercise 3.1: Text classification
+### Exercise 3.1: Training a Text Classification model
 #### Implementation
 
-### Exercise 3.2: Question Answering
+### Exercise 3.2: Training a Question Answering model
 #### Implementation
 
 ### Exercise 3.3: Training a Retrieval model
@@ -48,4 +48,17 @@ This repo contains all the code from the Laboratory Sessions of the **Deep Learn
 ---
 ## Laboratory 4: Adversarial Learning and OOD Detection
 
+### Exercise 1: OOD Detection and Performance Evaluation
+#### Implementation
 
+### Exercise 2: Enhancing robustness to Adversarial attack
+#### Implementation
+
+### Exercise 3.1: Implementing ODIN for OOD Detection
+#### Implementation
+
+### Exercise 3.2: Implementing JARN
+#### Implementation
+
+### Exercise 3.3: Experimenting with targeted Adversarial attacks
+#### Implementation
