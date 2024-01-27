@@ -1,4 +1,4 @@
-# Deep Reinforcement Learning Laboratory
+# Deep Learning Applications: Laboratory #3 - DRL
 
 In this laboratory session we will hack one of your colleague's (Francesco Fantechi, from Ingegneria Informatica) implementation of a navigation environment for Deep Reinforcement Learning. The setup is fairly simple:
 
@@ -15,6 +15,7 @@ For each step of an episode, the agent receives a reward of:
 
 In the file `main.py` you will find an implementation of **Deep Q-Learning**.
 
+---
 ## Exercise 1: Testing the Environment
 
 The first thing to do is verify that the environment is working in your Anaconda virtual environment. I had a weird problem with Tensorboard and had to downgrade it using:
@@ -33,10 +34,10 @@ and then run the script again (after setting `TRAIN = False` !).
 
 Make sure you can at run the demo agent and train one from scratch. If you don't have a GPU you can set the number of training episodes to a smaller number.
 
+---
 ## Exercise 2: Stabilizing Q-Learning
 
-
-
+---
 ## Exercise 3: Going Deeper
 
 As usual, pick **AT LEAST ONE** of the following exercises to complete.
@@ -55,11 +56,8 @@ The [Gymnasium](https://gymnasium.farama.org/) framework has a ton of interestin
 
 The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Try using an off-the-shelf implementation of [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347) to solve one (or more) of these environments. Compare your results with those of Q-Learning and/or REINFORCE.
 
-
-
-
-
-# Getting up to speed with DRL
+---
+## BONUS: Getting up to speed with DRL
 
 In this notebook I provide a simple example of implementing a policy gradient Deep Reinforcement Learning algorithm to solve a control problem with continuous state space and discrete action space -- the venerable [CartPole environment](https://gymnasium.farama.org/environments/classic_control/cart_pole/). You should study the implementation in this notebook in preparation for the laboratory next Wednesday.
 
@@ -73,19 +71,19 @@ Some background reading to get you started:
 
 2. [This excellent blog post](http://karpathy.github.io/2016/05/31/rl/) is a great introduction to policy gradients, where they come from and how they work. Give it a read and I am sure it will help understand better what is going on in this notebook.
 
-## Preliminaries
+### Preliminaries
 
 We start with our standard imports... And also some utility functions useful for what comes next.
 
-## The Policy network
+### The Policy network
 
 Here I provide a simple policy network which should work with any environment with continuous observations and discrete action spaces. Note how it uses the *specification* of the environment to configure its input and output spaces. 
 
-## The `REINFORCE` Algorithm
+### The `REINFORCE` Algorithm
 
 This is a very simple implementation of the most basic policy gradient DRL algorithm: `REINFORCE`. It is a very direct implementation of the policy gradient update (although I use Adam instead of SGD).
 
-## For your consideration
+### For your consideration
 
 There are many things that can be improved in this example. Some things you can think about:
 
