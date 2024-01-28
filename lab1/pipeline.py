@@ -13,29 +13,30 @@ import utils
 import cam_utils
 
 # Loads the dataset
-def load(config):
+def load(dataset, batch_size, num_workers = 8):
 
-    assert config.dataset in ["MNIST", "CIFAR10"], "Dataset not supported!"
+    assert dataset in ["MNIST", "CIFAR10"], "Dataset not supported!"
 
     # Transformations applied to the dataset
-    if config.dataset == "MNIST":
+    if dataset == "MNIST":
         transform = transforms.Compose([transforms.ToTensor(),
                                         transforms.Normalize((0.1307,), (0.3081,))])
-    elif config.dataset == "CIFAR10":
+    elif dataset == "CIFAR10":
         transform = transforms.Compose([transforms.ToTensor(),
                                         transforms.Normalize((0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261))])
 
-    train_data = getattr(torchvision.datasets, config.dataset)("./data", train = True, download = True, transform = transform)
-    test_set = getattr(torchvision.datasets, config.dataset)("./data", train = False, download = True, transform = transform)
+    train_data = getattr(torchvision.datasets, dataset)("./data", train = True, download = True, transform = transform)
+    test_set = getattr(torchvision.datasets, dataset)("./data", train = False, download = True, transform = transform)
     
     # Splitting the Training Set into Training and Validation Sets
-    train_set, val_set = random_split(train_data, [len(train_data) - config.val_size, config.val_size])
+    val_size = 10_000
+    train_set, val_set = random_split(train_data, [len(train_data) - val_size, val_size])
 
-    train_loader = DataLoader(train_set, config.batch_size, shuffle = True, num_workers = config.num_workers)
-    val_loader = DataLoader(val_set, config.batch_size, num_workers = config.num_workers)
-    test_loader = DataLoader(test_set, config.batch_size, num_workers = config.num_workers)
+    train_loader = DataLoader(train_set, batch_size, shuffle = True, num_workers = num_workers)
+    val_loader = DataLoader(val_set, batch_size, num_workers = num_workers)
+    test_loader = DataLoader(test_set, batch_size, num_workers = num_workers)
 
-    print(f"Dataset {config.dataset} loaded with {len(train_set)} Train samples, {len(val_set)} Validation samples, {len(test_set)} Test samples.\n")
+    print(f"Dataset {dataset} loaded with {len(train_set)} Train samples, {len(val_set)} Validation samples, {len(test_set)} Test samples.\n")
 
     return train_loader, val_loader, test_loader
     
@@ -48,7 +49,7 @@ def build_model(device, config: dict):
     # Instantiating the model
     if config.convnet:
         if config.fullycnn:
-            pass
+            m = models.FullyCNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.kernel_size, config.stride, config.padding, config.activation, config.dropout, config.pool, config.pool_size, config.use_bn)
         elif config.residual:
             if config.resnet:
                 m = models.ResNet(config.resnet_name, input_shape, config.resnet_hidden_size, classes, config.activation, config.use_bn, config.dropout)
@@ -91,6 +92,7 @@ def build_model(device, config: dict):
 
 # Training Loop
 def train(model, train_loader, val_loader, criterion, optimizer, device, config):
+    _, input_size, _ = utils.set_shapes(config.dataset)
     example_ct = 0
 
     print("\nStarting training...")
@@ -98,7 +100,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
         model.train()
         losses, accuracies = [], []
         for batch, (images, labels) in enumerate(train_loader):
-            loss, accuracy = train_batch(model, images, labels, criterion, optimizer, device, config)
+            loss, accuracy = train_batch(model, images, labels, criterion, optimizer, device, input_size, config)
 
             example_ct += len(images)
             losses.append(loss.item())
@@ -121,14 +123,18 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
 
 
 # Training of a single batch
-def train_batch(model, images, labels, criterion, optimizer, device, config):
+def train_batch(model, images, labels, criterion, optimizer, device, input_size, config):
     if not config.convnet:
-        images = images.reshape(-1, config.input_size).to(device)
+        images = images.reshape(-1, input_size).to(device)
     else:
         images = images.to(device)
     labels = labels.to(device)
+    
     # Forward pass
-    outputs = model(images)
+    if config.cam or config.residual:
+        outputs, b_gap, a_gap = model(images)
+    else:
+        outputs = model(images)
     loss = criterion(outputs, labels)
 
     # Backward pass
@@ -151,16 +157,21 @@ def train_batch(model, images, labels, criterion, optimizer, device, config):
 # Evaluation Loop (for Validation and Test)
 @torch.no_grad()
 def test(model, test_loader, device, config):
+    _, input_size, _ = utils.set_shapes(config.dataset)
     test_loss = 0
     correct, total = 0, 0
     model.eval()
     for images, labels in test_loader:
         if not config.convnet:
-            images = images.reshape(-1, config.input_size).to(device)
+            images = images.reshape(-1, input_size).to(device)
         else:
             images = images.to(device)
         labels = labels.to(device)
-        outputs = model(images)
+
+        if config.cam or config.residual:
+            outputs, b_gap, a_gap = model(images)
+        else:
+            outputs = model(images)
 
         test_loss += F.cross_entropy(outputs, labels, reduction = 'sum')
         _, pred = torch.max(outputs.data, 1)

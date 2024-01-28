@@ -54,10 +54,5 @@ def cam_test(model, test_loader, epoch):
                 image_labels.append(classes[labels[k]]+"-"+classes[predicated[k]])
                 image_paths.append(f"Lab1/img/CAM{i}.jpg")
 
-
             utils.plot_images(image_paths, image_labels, epoch)
-
             break
-
-    model.train()
-    return

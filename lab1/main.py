@@ -2,7 +2,7 @@ import torch
 import yaml
 import wandb
 
-import pipeline as pipe
+from pipeline import *
 import utils
 
 def main():
@@ -21,16 +21,16 @@ def main():
         config = wandb.config
 
         # 1. Loading the data
-        train_loader, val_loader, test_loader = pipe.load(config)
+        train_loader, val_loader, test_loader = load(config.dataset, config.batch_size)
 
         # 2. Building the model
-        model, criterion, optimizer = pipe.build_model(device, config)
+        model, criterion, optimizer = build_model(device, config)
 
         # 3. Training the model
-        pipe.train(model, train_loader, val_loader, criterion, optimizer, device, config)
+        train(model, train_loader, val_loader, criterion, optimizer, device, config)
 
         # 4. Evaluate the model on the test set
-        test_loss, test_accuracy = pipe.test(model, test_loader, device, config)
+        test_loss, test_accuracy = test(model, test_loader, device, config)
 
         print(f"Testing completed! | Test Loss: {test_loss:.4f}; Test Accuracy = {test_accuracy:.2f}%")
         wandb.log({"Test Loss": test_loss,

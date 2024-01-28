@@ -83,8 +83,8 @@ class CNN(nn.Module):
             nn.Linear(hidden_size[-1] * final_dim, classes))
 
     def forward(self, x):
-        out = self.convlayers(x)
-        out = torch.flatten(out, 1)
+        cnn_out = self.convlayers(x)
+        out = torch.flatten(cnn_out, 1)
         out = self.fc(out)
         return out
     
@@ -127,10 +127,11 @@ class ResidualCNN(nn.Module):
         self.fc = nn.Linear(hidden_size[0], classes)
 
     def forward(self, x):
-        x = self.avgpool(self.rescnn(x))
-        x = x.view(x.size(0), -1)
-        x = self.fc(x)
-        return x
+        out = self.rescnn(x)
+        x = self.avgpool(out)
+        gapout = x.view(x.size(0), -1)
+        x = self.fc(gapout)
+        return x, out, gapout
     
 
     
@@ -191,35 +192,36 @@ class ResNet(nn.Module):
     
 
 
-# class FullyCNN(nn.Module):
-#     def __init__(self, input_shape, hidden_size, classes, depth, kernel_size, stride, padding, activation, dropout, pool, pool_size, use_bn):
-#         super(FullyCNN, self).__init__()
+# Fully Convolutional Neural Network
+class FullyCNN(nn.Module):
+    def __init__(self, input_shape, hidden_size, classes, depth, kernel_size, stride, padding, activation, dropout, pool, pool_size, use_bn):
+        super(FullyCNN, self).__init__()
 
-#         self.act = getattr(nn, activation)()
-#         convlayers = [ConvBlock(input_shape[0], hidden_size[0], kernel_size, stride, padding, use_bn),
-#                       self.act]
+        self.act = getattr(nn, activation)()
+        convlayers = [ConvBlock(input_shape[0], hidden_size[0], kernel_size, stride, padding, use_bn),
+                      self.act]
         
-#         for i in range(len(hidden_size)):
-#             for _ in range(depth - 1):
-#                 convlayers.append(ConvBlock(hidden_size[i], hidden_size[i], kernel_size, stride, padding, use_bn))
-#                 convlayers.append(self.act)
-#             convlayers.append(nn.MaxPool2d(pool_size) if pool else nn.Identity())
-#             if len(hidden_size) > i + 1:
-#                 convlayers.append(ConvBlock(hidden_size[i], hidden_size[i+1], kernel_size, stride, padding, use_bn))
-#                 convlayers.append(self.act)
-#         self.convlayers = nn.Sequential(*convlayers)
+        for i in range(len(hidden_size)):
+            for _ in range(depth - 1):
+                convlayers.append(ConvBlock(hidden_size[i], hidden_size[i], kernel_size, stride, padding, use_bn))
+                convlayers.append(self.act)
+            convlayers.append(nn.MaxPool2d(pool_size) if pool else nn.Identity())
+            if len(hidden_size) > i + 1:
+                convlayers.append(ConvBlock(hidden_size[i], hidden_size[i+1], kernel_size, stride, padding, use_bn))
+                convlayers.append(self.act)
+        self.convlayers = nn.Sequential(*convlayers)
 
-#         # final_dim = np.square(input_shape[1]) if not pool else np.square(np.floor(input_shape[1] / np.power(pool_size, len(hidden_size)))).astype(int)
-#         # self.fc = nn.Sequential(
-#         #     nn.Dropout(dropout),
-#         #     nn.Linear(hidden_size[-1] * final_dim, classes))
+        # final_dim = np.square(input_shape[1]) if not pool else np.square(np.floor(input_shape[1] / np.power(pool_size, len(hidden_size)))).astype(int)
+        # self.fc = nn.Sequential(
+        #     nn.Dropout(dropout),
+        #     nn.Linear(hidden_size[-1] * final_dim, classes))
 
-#         # Kernel, Stride and Padding values of ConvTranspose were found through calculations in order to have 28 as output size
-#         self.head = nn.Sequential(ConvBlock(hidden_size[-1], classes, 1, 1, 0, use_bn),
-#                                     self.act,
-#                                     nn.ConvTranspose2d(classes, classes, 5, 4, 1))
+        # Kernel, Stride and Padding values of ConvTranspose were found through calculations in order to have 28 as output size
+        self.head = nn.Sequential(ConvBlock(hidden_size[-1], classes, 1, 1, 0, use_bn),
+                                    self.act,
+                                    nn.ConvTranspose2d(classes, classes, 5, 4, 1))
 
-#     def forward(self, x):
-#         out = self.convlayers(x)
-#         out = self.head(out)
-#         return out
+    def forward(self, x):
+        out = self.convlayers(x)
+        out = self.head(out)
+        return out

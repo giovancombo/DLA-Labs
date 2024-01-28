@@ -5,15 +5,16 @@ project_name: DLA_Lab1_CNN
 save_model: True
 save_artifact: False
 
+# Dataset settings
+dataset: MNIST
+
+# Model settings
 convnet: True
 residual: False
 resnet: False
 
 fullycnn: False
 cam: False
-
-# Dataset settings
-dataset: MNIST
 
 # MLP settings
 MLP_hidden_size: [128, 256, 64]
@@ -43,10 +44,6 @@ learning_rate: !!float 5e-4
 momentum: 0.9
 weight_decay: !!float 1e-4
 dropout: 0.3
-
-# DataLoader settings
-val_size: 10_000
-num_workers: 8
 
 # Log settings
 log_interval: 10                                    # Interval between logs, expressed in number of batches
