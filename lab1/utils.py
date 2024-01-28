@@ -1,7 +1,8 @@
 import os
-import time
 import torch
-import wandb
+import time
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 # Automatically sets correct shapes for model inputs basing on the dataset chosen
 def set_shapes(dataset):
@@ -22,7 +23,7 @@ def save_model(model, config):
     folder = str(f"models/{config['dataset']}/" + model.__class__.__name__)
     if not os.path.exists(folder):
         os.makedirs(folder)
-    torch.save(model, folder + model_path(config, model.__class__.__name__) + ".pt")
+    torch.save(model, folder + model_path(config, model.__class__.__name__) + "/" + str(time.time()) + "model.pt")
     print("Model saved!")
 
 
@@ -39,3 +40,23 @@ def model_path(config, folder):
     elif folder == "ResNet":
         path = "/resnet" + str(config.resnet_name) + "-depth" + str(config.depth) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
     return path
+
+
+# Plots some images from the dataset
+def plot_images(model, images, labels, epoch, config):
+    fig, axs = plt.subplots(1, 5, figsize=(15, 4))
+
+    for i, image_path in enumerate(images):
+        img = mpimg.imread(image_path)
+        axs[i].imshow(img)
+        axs[i].axis('off')
+        axs[i].set_title(labels[i], fontsize=20)
+
+    plt.tight_layout()
+    plt.figtext(0.5, 0.05, "Epoch: " + str(epoch), ha = 'center', fontsize = 20)
+
+    folder = f"images/{config['dataset']}"
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    plt.savefig(folder + f"/{model.__class__.__name__}-epoch{epoch}.png")
+    plt.close()
