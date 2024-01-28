@@ -8,7 +8,9 @@ save_artifact: False
 convnet: True
 residual: False
 resnet: False
+
 fullycnn: False
+cam: False
 
 # Dataset settings
 dataset: MNIST

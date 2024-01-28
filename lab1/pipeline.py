@@ -10,7 +10,7 @@ import wandb
 
 import models
 import utils
-import main23
+import cam_utils
 
 # Loads the dataset
 def load(config):
@@ -114,8 +114,8 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
         # Logging losses and accuracies at the end of the epoch
         log_validation(epoch, mean_loss, val_loss, mean_accuracy, val_accuracy, example_ct)
 
-        if config.fullycnn:
-            main23.cam_test(model, val_loader, epoch)
+        if config.cam:
+            cam_utils.cam_test(model, val_loader, epoch)
     
     print("Training completed!")
 
