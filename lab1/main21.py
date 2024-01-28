@@ -5,20 +5,19 @@ import wandb
 import pipeline as pipe
 import utils
 
-if __name__ == "__main__":
+def main():
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     wandb.login()
     print("Initializing Weights & Biases run...")
-
-    project_name = "DLA_Lab1_CNN"
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Loading the configuration file
     with open("config.yaml") as f:
         config = yaml.safe_load(f)
 
     # Initializing a wandb run for logging losses, accuracies and gradients
-    with wandb.init(project = project_name, config = config):
+    with wandb.init(project = config['project_name'], config = config):
         config = wandb.config
 
         # 1. Loading the data
@@ -40,3 +39,8 @@ if __name__ == "__main__":
         # 5. Saving the model, assigning it a name based on the hyperparameters used
         if config['save_model']:
             utils.save_model(config, model)
+
+
+if __name__ == "__main__":
+    
+    main()

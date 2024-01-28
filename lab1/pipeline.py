@@ -10,6 +10,7 @@ import wandb
 
 import models
 import utils
+import main23
 
 # Loads the dataset
 def load(config):
@@ -46,7 +47,9 @@ def build_model(device, config: dict):
 
     # Instantiating the model
     if config.convnet:
-        if config.residual:
+        if config.fullycnn:
+            pass
+        elif config.residual:
             if config.resnet:
                 m = models.ResNet(config.resnet_name, input_shape, config.resnet_hidden_size, classes, config.activation, config.use_bn, config.dropout)
             else:
@@ -86,7 +89,6 @@ def build_model(device, config: dict):
     return model, criterion, optimizer
 
 
-
 # Training Loop
 def train(model, train_loader, val_loader, criterion, optimizer, device, config):
     example_ct = 0
@@ -111,6 +113,9 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
 
         # Logging losses and accuracies at the end of the epoch
         log_validation(epoch, mean_loss, val_loss, mean_accuracy, val_accuracy, example_ct)
+
+        if config.fullycnn:
+            main23.cam_test(model, val_loader, epoch)
     
     print("Training completed!")
 

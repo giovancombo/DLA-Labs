@@ -1,4 +1,5 @@
 # Setting Run Configuration
+project_name: DLA_Lab1_CNN
 
 # Saving settings
 save_model: True
@@ -7,6 +8,7 @@ save_artifact: False
 convnet: True
 residual: False
 resnet: False
+fullycnn: False
 
 # Dataset settings
 dataset: MNIST
