@@ -1,5 +1,5 @@
 # Deep Learning Applications Laboratory Sessions
-This repo contains all the code from the Laboratory Sessions of the **Deep Learning Applications** course, held by Professor Andrew Bagdanov at the **University of Florence**, Italy.
+This repo contains all the code from the Laboratory Sessions of the **Deep Learning Applications** course, held by Professor Andrew Bagdanov (bagdanov on GitHub) at the **University of Florence**, Italy.
 
 ## Laboratory 1: Exploring Residual Connections through image classification
 
