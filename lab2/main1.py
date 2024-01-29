@@ -1,11 +1,8 @@
 # Imports and dependencies
 import os
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import wandb
 
-from transformer import TransformerDecoder
 from pipeline import *
 
 project_name = "DLA_Lab2_LLM"
