@@ -13,7 +13,7 @@ import utils
 import cam_utils
 
 # Loads the dataset
-def load(dataset, batch_size, num_workers = 16):
+def load(dataset, batch_size, num_workers = 2):
 
     assert dataset in ["MNIST", "CIFAR10"], "Dataset not supported!"
 
@@ -32,9 +32,9 @@ def load(dataset, batch_size, num_workers = 16):
     val_size = 10_000
     train_set, val_set = random_split(train_data, [len(train_data) - val_size, val_size])
 
-    train_loader = DataLoader(train_set, batch_size, shuffle = True, num_workers = num_workers)
-    val_loader = DataLoader(val_set, batch_size, num_workers = num_workers)
-    test_loader = DataLoader(test_set, batch_size, num_workers = num_workers)
+    train_loader = DataLoader(train_set, batch_size = batch_size, shuffle = True, num_workers = num_workers)
+    val_loader = DataLoader(val_set, batch_size = batch_size, num_workers = num_workers)
+    test_loader = DataLoader(test_set, batch_size = batch_size, num_workers = num_workers)
 
     print(f"Dataset {dataset} loaded with {len(train_set)} Train samples, {len(val_set)} Validation samples, {len(test_set)} Test samples.\n")
 
@@ -100,15 +100,38 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
         model.train()
         losses, accuracies = [], []
         for batch, (images, labels) in enumerate(train_loader):
-            loss, accuracy = train_batch(model, images, labels, criterion, optimizer, device, input_size, config)
+                if not config.convnet:
+                    images = images.reshape(-1, input_size).to(device)
+                else:
+                    images = images.to(device)
+                labels = labels.to(device)
+                
+                # Forward pass
+                if config.cam or config.residual:
+                    outputs, b_gap, a_gap = model(images)
+                else:
+                    outputs = model(images)
+                loss = criterion(outputs, labels)
 
-            example_ct += len(images)
-            losses.append(loss.item())
-            accuracies.append(accuracy)
-            mean_loss, mean_accuracy = np.mean(losses[-config.log_interval:]), np.mean(accuracies[-config.log_interval:])
+                # Backward pass
+                optimizer.zero_grad()
+                loss.backward() 
+                optimizer.step()
 
-            if ((batch + 1) % config.log_interval) == 0:
-                log_train(epoch, loss, accuracy, mean_loss, mean_accuracy, example_ct, config)
+                # Calculating training accuracy
+                correct, total = 0, 0
+                _, pred = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (pred == labels).sum().item()
+                accuracy = 100 * correct / total
+
+                example_ct += len(images)
+                losses.append(loss.item())
+                accuracies.append(accuracy)
+                mean_loss, mean_accuracy = np.mean(losses[-config.log_interval:]), np.mean(accuracies[-config.log_interval:])
+
+                if ((batch + 1) % config.log_interval) == 0:
+                    log_train(epoch, loss, accuracy, mean_loss, mean_accuracy, example_ct, config)
 
         # Validation at the end of the epoch
         val_loss, val_accuracy = test(model, val_loader, device, config)
@@ -122,41 +145,11 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
     print("Training completed!")
 
 
-# Training of a single batch
-def train_batch(model, images, labels, criterion, optimizer, device, input_size, config):
-    if not config.convnet:
-        images = images.reshape(-1, input_size).to(device)
-    else:
-        images = images.to(device)
-    labels = labels.to(device)
-    
-    # Forward pass
-    if config.cam or config.residual:
-        outputs, b_gap, a_gap = model(images)
-    else:
-        outputs = model(images)
-    loss = criterion(outputs, labels)
-
-    # Backward pass
-    optimizer.zero_grad()
-    loss.backward() 
-    optimizer.step()
-
-    # Calculating training accuracy
-    correct, total = 0, 0
-    _, pred = torch.max(outputs.data, 1)
-    total += labels.size(0)
-    correct += (pred == labels).sum().item()
-        
-    accuracy = 100 * correct / total
-
-    return loss, accuracy
-
-
 
 # Evaluation Loop (for Validation and Test)
 @torch.no_grad()
 def test(model, test_loader, device, config):
+
     _, input_size, _ = utils.set_shapes(config.dataset)
     test_loss = 0
     correct, total = 0, 0
