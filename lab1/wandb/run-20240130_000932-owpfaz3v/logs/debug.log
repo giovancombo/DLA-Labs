@@ -35,3 +35,6 @@ config: {'project_name': 'DLA_Lab1_CNN', 'save_model': False, 'save_artifact': F
 2024-01-30 00:24:16,184 INFO    MainThread:27896 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
 2024-01-30 00:24:16,184 INFO    MainThread:27896 [wandb_run.py:_restore():2185] restore
 2024-01-30 00:24:16,184 INFO    MainThread:27896 [wandb_run.py:_restore():2191] restore done
+2024-01-30 00:24:28,558 INFO    MainThread:27896 [wandb_run.py:_footer_history_summary_info():3837] rendering history
+2024-01-30 00:24:28,559 INFO    MainThread:27896 [wandb_run.py:_footer_history_summary_info():3869] rendering summary
+2024-01-30 00:24:28,565 INFO    MainThread:27896 [wandb_run.py:_footer_sync_info():3796] logging synced files

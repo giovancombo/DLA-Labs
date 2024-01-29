@@ -34762,3 +34762,47 @@
 2024-01-30 00:24:24,239 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: poll_exit
 2024-01-30 00:24:25,253 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: poll_exit
 2024-01-30 00:24:25,254 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: poll_exit
+2024-01-30 00:24:25,854 INFO    wandb-upload_2:18020 [upload_job.py:push():131] Uploaded file c:\Users\giova\__UNI\Deep Learning Applications\DLA-Labs\lab1\wandb\run-20240130_000932-owpfaz3v\files\output.log
+2024-01-30 00:24:26,066 INFO    Thread-72 (_thread_body):18020 [sender.py:transition_state():617] send defer: 11
+2024-01-30 00:24:26,066 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: defer
+2024-01-30 00:24:26,066 INFO    HandlerThread:18020 [handler.py:handle_request_defer():172] handle defer: 11
+2024-01-30 00:24:26,067 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: defer
+2024-01-30 00:24:26,067 INFO    SenderThread:18020 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-01-30 00:24:26,067 INFO    SenderThread:18020 [file_pusher.py:join():181] waiting for file pusher
+2024-01-30 00:24:26,067 INFO    SenderThread:18020 [sender.py:transition_state():617] send defer: 12
+2024-01-30 00:24:26,068 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: defer
+2024-01-30 00:24:26,068 INFO    HandlerThread:18020 [handler.py:handle_request_defer():172] handle defer: 12
+2024-01-30 00:24:26,068 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: defer
+2024-01-30 00:24:26,069 INFO    SenderThread:18020 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-01-30 00:24:26,069 INFO    SenderThread:18020 [file_stream.py:finish():595] file stream finish called
+2024-01-30 00:24:26,256 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-30 00:24:27,253 INFO    SenderThread:18020 [file_stream.py:finish():599] file stream finish is done
+2024-01-30 00:24:27,253 INFO    SenderThread:18020 [sender.py:transition_state():617] send defer: 13
+2024-01-30 00:24:27,253 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: poll_exit
+2024-01-30 00:24:27,253 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: defer
+2024-01-30 00:24:27,253 INFO    HandlerThread:18020 [handler.py:handle_request_defer():172] handle defer: 13
+2024-01-30 00:24:27,253 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: status_report
+2024-01-30 00:24:27,254 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: defer
+2024-01-30 00:24:27,254 INFO    SenderThread:18020 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-01-30 00:24:27,254 INFO    SenderThread:18020 [sender.py:transition_state():617] send defer: 14
+2024-01-30 00:24:27,254 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: defer
+2024-01-30 00:24:27,254 INFO    HandlerThread:18020 [handler.py:handle_request_defer():172] handle defer: 14
+2024-01-30 00:24:27,255 DEBUG   SenderThread:18020 [sender.py:send():382] send: final
+2024-01-30 00:24:27,255 DEBUG   SenderThread:18020 [sender.py:send():382] send: footer
+2024-01-30 00:24:27,255 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: defer
+2024-01-30 00:24:27,255 INFO    SenderThread:18020 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-01-30 00:24:27,256 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-30 00:24:27,256 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: poll_exit
+2024-01-30 00:24:27,257 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-30 00:24:27,257 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: server_info
+2024-01-30 00:24:27,257 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: get_summary
+2024-01-30 00:24:27,259 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: sampled_history
+2024-01-30 00:24:27,259 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: server_info
+2024-01-30 00:24:27,261 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: job_info
+2024-01-30 00:24:27,546 DEBUG   SenderThread:18020 [sender.py:send_request():409] send_request: job_info
+2024-01-30 00:24:27,547 DEBUG   HandlerThread:18020 [handler.py:handle_request():146] handle_request: shutdown
+2024-01-30 00:24:27,547 INFO    HandlerThread:18020 [handler.py:finish():866] shutting down handler
+2024-01-30 00:24:28,265 INFO    WriterThread:18020 [datastore.py:close():294] close: c:\Users\giova\__UNI\Deep Learning Applications\DLA-Labs\lab1\wandb\run-20240130_000932-owpfaz3v\run-owpfaz3v.wandb
+2024-01-30 00:24:28,558 INFO    SenderThread:18020 [sender.py:finish():1548] shutting down sender
+2024-01-30 00:24:28,558 INFO    SenderThread:18020 [file_pusher.py:finish():175] shutting down file pusher
+2024-01-30 00:24:28,558 INFO    SenderThread:18020 [file_pusher.py:join():181] waiting for file pusher
