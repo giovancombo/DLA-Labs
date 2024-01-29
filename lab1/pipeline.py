@@ -13,7 +13,7 @@ import utils
 import cam_utils
 
 # Loads the dataset
-def load(dataset, batch_size, num_workers = 8):
+def load(dataset, batch_size, num_workers = 16):
 
     assert dataset in ["MNIST", "CIFAR10"], "Dataset not supported!"
 

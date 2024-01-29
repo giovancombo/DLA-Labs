@@ -6,7 +6,6 @@ from pipeline import *
 import utils
 
 def main():
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     wandb.login()
@@ -27,6 +26,7 @@ def main():
         model, criterion, optimizer = build_model(device, config)
 
         # 3. Training the model
+        wandb.watch(model, criterion, log="all", log_freq=config.log_interval)
         train(model, train_loader, val_loader, criterion, optimizer, device, config)
 
         # 4. Evaluate the model on the test set
@@ -35,12 +35,12 @@ def main():
         print(f"Testing completed! | Test Loss: {test_loss:.4f}; Test Accuracy = {test_accuracy:.2f}%")
         wandb.log({"Test Loss": test_loss,
                 "Test Accuracy": test_accuracy})
-        
+        wandb.unwatch(model)
+
         # 5. Saving the model, assigning it a name based on the hyperparameters used
         if config['save_model']:
             utils.save_model(config, model)
 
 
 if __name__ == "__main__":
-    
     main()

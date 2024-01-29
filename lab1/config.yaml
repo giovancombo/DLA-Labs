@@ -9,7 +9,7 @@ save_artifact: False
 dataset: MNIST
 
 # Model settings
-convnet: True
+convnet: False
 residual: False
 resnet: False
 
@@ -17,7 +17,7 @@ fullycnn: False
 cam: False
 
 # MLP settings
-MLP_hidden_size: [128, 256, 64]
+MLP_hidden_size: [128, 64]
 
 # ConvNet settings
 CNN_hidden_size: [64]                               # Size of the convolutional layers: for ResidualCNN, only the first value is used
@@ -35,7 +35,7 @@ resnet_hidden_size: [64, 128, 256, 512]             # Number of filters for each
 
 # Training loop settings
 batch_size: 2048
-epochs: 1
+epochs: 10
 
 # Loss & Optimizer settings
 activation: ReLU                                    # Activation function
