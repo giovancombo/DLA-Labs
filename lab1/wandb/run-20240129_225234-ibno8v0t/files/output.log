@@ -1,0 +1,157 @@
+Dataset MNIST loaded with 50000 Train samples, 10000 Validation samples, 10000 Test samples.
+Model instantiated: MLP
+Number of parameters: 251658
+MLP(
+  (mlp): Sequential(
+    (0): Linear(in_features=784, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=128, out_features=128, bias=True)
+    (5): ReLU()
+  )
+  (fc): Sequential(
+    (0): Dropout(p=0.1, inplace=False)
+    (1): Linear(in_features=128, out_features=10, bias=True)
+  )
+)
+Optimizer: Adam
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0001
+    maximize: False
+    weight_decay: 0.0001
+)
+Loss: CrossEntropyLoss()
+Device: cuda
+Starting training...
+Training Epochs:   0%|                                                       | 0/20 [00:00<?, ?it/s]
+Epoch 1/20 | Train Loss = 2.2808; Train Accuracy = 15.02%
+Epoch 1/20 | Train Loss = 2.2123; Train Accuracy = 38.65%
+Epoch 1/20 | Train Loss = 2.1094; Train Accuracy = 52.90%
+Epoch 1/20 | Train Loss = 1.9504; Train Accuracy = 55.65%
+
+Training Epochs:   5%|██▎                                            | 1/20 [00:41<13:11, 41.68s/it]
+Epoch 2/20 | Train Loss = 1.5229; Train Accuracy = 66.39%
+Epoch 2/20 | Train Loss = 1.2792; Train Accuracy = 73.24%
+Epoch 2/20 | Train Loss = 1.0662; Train Accuracy = 75.87%
+
+Training Epochs:  10%|████▋                                          | 2/20 [01:24<12:37, 42.06s/it]
+End of epoch 2 | Validation Loss: 0.6664; Validation Accuracy: 84.62%
+Epoch 3/20 | Train Loss = 0.6592; Train Accuracy = 82.76%
+Epoch 3/20 | Train Loss = 0.6052; Train Accuracy = 83.68%
+Epoch 3/20 | Train Loss = 0.5522; Train Accuracy = 85.37%
+
+Training Epochs:  15%|███████                                        | 3/20 [02:10<12:32, 44.29s/it]
+End of epoch 3 | Validation Loss: 0.4369; Validation Accuracy: 88.45%
+Epoch 4/20 | Train Loss = 0.4571; Train Accuracy = 87.02%
+Epoch 4/20 | Train Loss = 0.4292; Train Accuracy = 87.92%
+Epoch 4/20 | Train Loss = 0.4156; Train Accuracy = 88.10%
+
+Training Epochs:  20%|█████████▍                                     | 4/20 [02:55<11:53, 44.58s/it]
+End of epoch 4 | Validation Loss: 0.3614; Validation Accuracy: 89.88%
+Epoch 5/20 | Train Loss = 0.3853; Train Accuracy = 88.74%
+Epoch 5/20 | Train Loss = 0.3683; Train Accuracy = 89.55%
+Epoch 5/20 | Train Loss = 0.3627; Train Accuracy = 89.53%
+Epoch 5/20 | Train Loss = 0.3573; Train Accuracy = 89.43%
+
+Training Epochs:  25%|███████████▊                                   | 5/20 [03:38<11:00, 44.01s/it]
+Epoch 6/20 | Train Loss = 0.3287; Train Accuracy = 90.37%
+Epoch 6/20 | Train Loss = 0.3339; Train Accuracy = 90.21%
+Epoch 6/20 | Train Loss = 0.3383; Train Accuracy = 90.26%
+
+Training Epochs:  30%|██████████████                                 | 6/20 [04:20<10:05, 43.28s/it]
+End of epoch 6 | Validation Loss: 0.2990; Validation Accuracy: 91.5%
+Epoch 7/20 | Train Loss = 0.3092; Train Accuracy = 90.96%
+Epoch 7/20 | Train Loss = 0.3101; Train Accuracy = 91.03%
+Epoch 7/20 | Train Loss = 0.2986; Train Accuracy = 91.12%
+
+Training Epochs:  35%|████████████████▍                              | 7/20 [05:02<09:15, 42.70s/it]
+End of epoch 7 | Validation Loss: 0.2826; Validation Accuracy: 91.82%
+Epoch 8/20 | Train Loss = 0.2922; Train Accuracy = 91.44%
+Epoch 8/20 | Train Loss = 0.2904; Train Accuracy = 91.46%
+Epoch 8/20 | Train Loss = 0.2941; Train Accuracy = 91.45%
+Epoch 8/20 | Train Loss = 0.2723; Train Accuracy = 91.97%
+
+Training Epochs:  40%|██████████████████▊                            | 8/20 [05:44<08:30, 42.51s/it]
+Epoch 9/20 | Train Loss = 0.2776; Train Accuracy = 91.80%
+Epoch 9/20 | Train Loss = 0.2650; Train Accuracy = 92.29%
+Epoch 9/20 | Train Loss = 0.2563; Train Accuracy = 92.35%
+Epoch 9/20 | Train Loss = 0.2709; Train Accuracy = 91.94%
+
+Training Epochs:  45%|█████████████████████▏                         | 9/20 [06:29<07:55, 43.24s/it]
+Epoch 10/20 | Train Loss = 0.2574; Train Accuracy = 92.21%
+Epoch 10/20 | Train Loss = 0.2608; Train Accuracy = 92.48%
+Epoch 10/20 | Train Loss = 0.2503; Train Accuracy = 92.69%
+Epoch 10/20 | Train Loss = 0.2476; Train Accuracy = 92.68%
+
+Training Epochs:  50%|███████████████████████                       | 10/20 [07:12<07:12, 43.27s/it]
+Epoch 11/20 | Train Loss = 0.2520; Train Accuracy = 92.62%
+Epoch 11/20 | Train Loss = 0.2337; Train Accuracy = 93.04%
+Epoch 11/20 | Train Loss = 0.2476; Train Accuracy = 92.65%
+
+Training Epochs:  55%|█████████████████████████▎                    | 11/20 [07:54<06:26, 42.98s/it]
+End of epoch 11 | Validation Loss: 0.2332; Validation Accuracy: 93.21%
+Epoch 12/20 | Train Loss = 0.2334; Train Accuracy = 93.28%
+Epoch 12/20 | Train Loss = 0.2403; Train Accuracy = 92.64%
+Epoch 12/20 | Train Loss = 0.2285; Train Accuracy = 92.99%
+
+Training Epochs:  60%|███████████████████████████▌                  | 12/20 [08:36<05:39, 42.41s/it]
+End of epoch 12 | Validation Loss: 0.2209; Validation Accuracy: 93.43%
+Epoch 13/20 | Train Loss = 0.2100; Train Accuracy = 93.63%
+Epoch 13/20 | Train Loss = 0.2160; Train Accuracy = 93.52%
+Epoch 13/20 | Train Loss = 0.2202; Train Accuracy = 93.15%
+
+Training Epochs:  65%|█████████████████████████████▉                | 13/20 [09:17<04:54, 42.06s/it]
+End of epoch 13 | Validation Loss: 0.2122; Validation Accuracy: 93.69%
+Epoch 14/20 | Train Loss = 0.2020; Train Accuracy = 94.02%
+Epoch 14/20 | Train Loss = 0.2053; Train Accuracy = 94.12%
+Epoch 14/20 | Train Loss = 0.2020; Train Accuracy = 94.31%
+
+Training Epochs:  70%|████████████████████████████████▏             | 14/20 [09:59<04:12, 42.03s/it]
+End of epoch 14 | Validation Loss: 0.2043; Validation Accuracy: 93.81%
+Epoch 15/20 | Train Loss = 0.2107; Train Accuracy = 93.61%
+Epoch 15/20 | Train Loss = 0.2021; Train Accuracy = 94.04%
+Epoch 15/20 | Train Loss = 0.1914; Train Accuracy = 94.44%
+
+Training Epochs:  75%|██████████████████████████████████▌           | 15/20 [10:44<03:34, 42.97s/it]
+End of epoch 15 | Validation Loss: 0.1958; Validation Accuracy: 94.01%
+Epoch 16/20 | Train Loss = 0.1852; Train Accuracy = 94.57%
+Epoch 16/20 | Train Loss = 0.1874; Train Accuracy = 94.37%
+Epoch 16/20 | Train Loss = 0.1893; Train Accuracy = 94.40%
+
+Training Epochs:  80%|████████████████████████████████████▊         | 16/20 [11:27<02:51, 42.91s/it]
+End of epoch 16 | Validation Loss: 0.1872; Validation Accuracy: 94.38%
+Epoch 17/20 | Train Loss = 0.1850; Train Accuracy = 94.53%
+Epoch 17/20 | Train Loss = 0.1785; Train Accuracy = 94.93%
+Epoch 17/20 | Train Loss = 0.1841; Train Accuracy = 94.55%
+
+Training Epochs:  85%|███████████████████████████████████████       | 17/20 [12:12<02:10, 43.62s/it]
+End of epoch 17 | Validation Loss: 0.1815; Validation Accuracy: 94.46%
+Epoch 18/20 | Train Loss = 0.1804; Train Accuracy = 94.62%
+Epoch 18/20 | Train Loss = 0.1684; Train Accuracy = 95.05%
+Epoch 18/20 | Train Loss = 0.1753; Train Accuracy = 94.87%
+
+Training Epochs:  90%|█████████████████████████████████████████▍    | 18/20 [12:54<01:26, 43.14s/it]
+End of epoch 18 | Validation Loss: 0.1738; Validation Accuracy: 94.59%
+Epoch 19/20 | Train Loss = 0.1588; Train Accuracy = 95.34%
+Epoch 19/20 | Train Loss = 0.1715; Train Accuracy = 94.79%
+Epoch 19/20 | Train Loss = 0.1666; Train Accuracy = 95.12%
+Epoch 19/20 | Train Loss = 0.1564; Train Accuracy = 95.65%
+
+Training Epochs:  95%|███████████████████████████████████████████▋  | 19/20 [13:35<00:42, 42.63s/it]
+Epoch 20/20 | Train Loss = 0.1589; Train Accuracy = 95.23%
+Epoch 20/20 | Train Loss = 0.1493; Train Accuracy = 95.41%
+Epoch 20/20 | Train Loss = 0.1552; Train Accuracy = 95.36%
+
+Training Epochs: 100%|██████████████████████████████████████████████| 20/20 [14:19<00:00, 42.96s/it]
+End of epoch 20 | Validation Loss: 0.1610; Validation Accuracy: 94.93%
+Training completed!
+Testing completed! | Test Loss: 0.1503; Test Accuracy = 95.40%

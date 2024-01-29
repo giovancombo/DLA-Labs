@@ -34,16 +34,16 @@ resnet_name: 18                                     # ResNet architecture: [9, 1
 resnet_hidden_size: [64, 128, 256, 512]             # Number of filters for each convolutional block (4 blocks)
 
 # Training loop settings
-batch_size: 256               # PROVA [64, 128, 256, 512, 1024, 2048]
+batch_size: 64               # PROVA [64, 128, 256, 512, 1024, 2048]
 epochs: 20
 
 # Loss & Optimizer settings
 activation: ReLU                                    # Activation function
 optimizer: Adam                                     # Optimizer: [Adam, SGD, RMSprop]
-learning_rate: !!float 1e-4  # PROVA [5e-3, 1e-3, 5e-4, 1e-4, 1e-5]
+learning_rate: !!float 1e-4
 momentum: 0.9
 weight_decay: !!float 1e-4
-dropout: 0.1                 # PROVA [0.1, 0.3, 0.5]
+dropout: 0.5                 # PROVA [0.1, 0.5]
 
 # Log settings
 log_interval: 10                                    # Interval between logs, expressed in number of batches

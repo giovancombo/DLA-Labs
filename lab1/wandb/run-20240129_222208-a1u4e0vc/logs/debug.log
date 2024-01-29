@@ -1,0 +1,40 @@
+2024-01-29 22:22:08,545 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Current SDK version is 0.16.1
+2024-01-29 22:22:08,545 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Configure stats pid to 27896
+2024-01-29 22:22:08,545 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Loading settings from C:\Users\giova\.config\wandb\settings
+2024-01-29 22:22:08,545 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Loading settings from c:\Users\giova\__UNI\Deep Learning Applications\DLA-Labs\lab1\wandb\settings
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_init.py:_log_setup():524] Logging user logs to c:\Users\giova\__UNI\Deep Learning Applications\DLA-Labs\lab1\wandb\run-20240129_222208-a1u4e0vc\logs\debug.log
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_init.py:_log_setup():525] Logging internal logs to c:\Users\giova\__UNI\Deep Learning Applications\DLA-Labs\lab1\wandb\run-20240129_222208-a1u4e0vc\logs\debug-internal.log
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_init.py:_jupyter_setup():470] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x000001A3133F2FE0>
+2024-01-29 22:22:08,546 INFO    MainThread:27896 [wandb_init.py:init():564] calling init triggers
+2024-01-29 22:22:08,547 INFO    MainThread:27896 [wandb_init.py:init():571] wandb.init called with sweep_config: {}
+config: {'project_name': 'DLA_Lab1_CNN', 'save_model': False, 'save_artifact': False, 'dataset': 'MNIST', 'convnet': False, 'residual': False, 'resnet': False, 'fullycnn': False, 'cam': False, 'MLP_hidden_size': [256, 128, 128], 'CNN_hidden_size': [64], 'depth': 1, 'kernel_size': 3, 'stride': 1, 'padding': 1, 'pool_size': 2, 'pool': False, 'use_bn': True, 'resnet_name': 18, 'resnet_hidden_size': [64, 128, 256, 512], 'batch_size': 256, 'epochs': 20, 'activation': 'ReLU', 'optimizer': 'Adam', 'learning_rate': 0.0001, 'momentum': 0.9, 'weight_decay': 0.0001, 'dropout': 0.1, 'log_interval': 10}
+2024-01-29 22:22:08,547 INFO    MainThread:27896 [wandb_init.py:init():614] starting backend
+2024-01-29 22:22:08,547 INFO    MainThread:27896 [wandb_init.py:init():618] setting up manager
+2024-01-29 22:22:08,548 INFO    MainThread:27896 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-01-29 22:22:08,554 INFO    MainThread:27896 [wandb_init.py:init():624] backend started and connected
+2024-01-29 22:22:08,558 INFO    MainThread:27896 [wandb_run.py:_label_probe_notebook():1294] probe notebook
+2024-01-29 22:22:08,558 INFO    MainThread:27896 [wandb_run.py:_label_probe_notebook():1304] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2024-01-29 22:22:08,559 INFO    MainThread:27896 [wandb_init.py:init():716] updated telemetry
+2024-01-29 22:22:08,642 INFO    MainThread:27896 [wandb_init.py:init():749] communicating run to backend with 90.0 second timeout
+2024-01-29 22:22:09,279 INFO    MainThread:27896 [wandb_run.py:_on_init():2254] communicating current version
+2024-01-29 22:22:09,594 INFO    MainThread:27896 [wandb_run.py:_on_init():2263] got version response upgrade_message: "wandb version 0.16.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-01-29 22:22:09,594 INFO    MainThread:27896 [wandb_init.py:init():800] starting run threads in backend
+2024-01-29 22:22:22,947 INFO    MainThread:27896 [wandb_run.py:_console_start():2233] atexit reg
+2024-01-29 22:22:22,947 INFO    MainThread:27896 [wandb_run.py:_redirect():2088] redirect: wrap_raw
+2024-01-29 22:22:22,947 INFO    MainThread:27896 [wandb_run.py:_redirect():2153] Wrapping output streams.
+2024-01-29 22:22:22,947 INFO    MainThread:27896 [wandb_run.py:_redirect():2178] Redirects installed.
+2024-01-29 22:22:22,947 INFO    MainThread:27896 [wandb_init.py:init():841] run started, returning control to user process
+2024-01-29 22:22:23,334 INFO    MainThread:27896 [wandb_watch.py:watch():51] Watching
+2024-01-29 22:34:25,737 INFO    MainThread:27896 [wandb_run.py:_finish():1962] finishing run giovancombo/DLA_Lab1_CNN/a1u4e0vc
+2024-01-29 22:34:25,737 INFO    MainThread:27896 [jupyter.py:save_history():445] not saving jupyter history
+2024-01-29 22:34:25,737 INFO    MainThread:27896 [jupyter.py:save_ipynb():373] not saving jupyter notebook
+2024-01-29 22:34:25,737 INFO    MainThread:27896 [wandb_init.py:_jupyter_teardown():452] cleaning up jupyter logic
+2024-01-29 22:34:25,737 INFO    MainThread:27896 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
+2024-01-29 22:34:25,738 INFO    MainThread:27896 [wandb_run.py:_restore():2185] restore
+2024-01-29 22:34:25,738 INFO    MainThread:27896 [wandb_run.py:_restore():2191] restore done
+2024-01-29 22:34:34,451 INFO    MainThread:27896 [wandb_run.py:_footer_history_summary_info():3837] rendering history
+2024-01-29 22:34:34,464 INFO    MainThread:27896 [wandb_run.py:_footer_history_summary_info():3869] rendering summary
+2024-01-29 22:34:34,485 INFO    MainThread:27896 [wandb_run.py:_footer_sync_info():3796] logging synced files
