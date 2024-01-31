@@ -50,7 +50,7 @@ def run_episode(env, policy, maxlen=500, device='cpu'):
 
 # A direct, inefficient, and probably buggy implementation of the REINFORCE policy gradient algorithm.
 def reinforce(policy, env, env_render=None, gamma=0.999, lr=1e-2, num_episodes=10, device='cpu'):
-    # The only non-vanilla part: we use Adam instead of SGD.
+    # The only non-vanilla part: we use Adam instead of SGD
     opt = torch.optim.Adam(policy.parameters(), lr=lr)
 
     # Track episode rewards in a list.

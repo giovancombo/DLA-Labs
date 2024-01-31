@@ -17,7 +17,7 @@ fullycnn: False
 cam: False
 
 # MLP settings
-MLP_hidden_size: [256, 128, 128]  # PROVA diverse depth
+MLP_hidden_size: [128]                    # PROVA diverse depth
 
 # ConvNet settings
 CNN_hidden_size: [64]                               # Size of the convolutional layers: for ResidualCNN, only the first value is used
@@ -34,7 +34,7 @@ resnet_name: 18                                     # ResNet architecture: [9, 1
 resnet_hidden_size: [64, 128, 256, 512]             # Number of filters for each convolutional block (4 blocks)
 
 # Training loop settings
-batch_size: 64               # PROVA [64, 128, 256, 512, 1024, 2048]
+batch_size: 2048               # PROVA [64, 128, 256, 512, 1024, 2048]
 epochs: 20
 
 # Loss & Optimizer settings
