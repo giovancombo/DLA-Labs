@@ -8,12 +8,12 @@ from tqdm import tqdm
 import numpy as np
 import wandb
 
-import models
+from models import *
 import utils
 import cam_utils
 
 # Loads the dataset
-def load(dataset, batch_size, num_workers = 2):
+def load(dataset, batch_size, num_workers = 1):
 
     assert dataset in ["MNIST", "CIFAR10"], "Dataset not supported!"
 
@@ -49,18 +49,18 @@ def build_model(device, config: dict):
     # Instantiating the model
     if config.convnet:
         if config.fullycnn:
-            m = models.FullyCNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.kernel_size, config.stride, config.padding, config.activation, config.dropout, config.pool, config.pool_size, config.use_bn)
+            m = FullyCNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.kernel_size, config.stride, config.padding, config.activation, config.dropout, config.pool, config.pool_size, config.use_bn)
         elif config.residual:
             if config.resnet:
-                m = models.ResNet(config.resnet_name, input_shape, config.resnet_hidden_size, classes, config.activation, config.use_bn, config.dropout)
+                m = ResNet(config.resnet_name, input_shape, config.resnet_hidden_size, classes, config.activation, config.use_bn, config.dropout)
             else:
-                m = models.ResidualCNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.activation, config.use_bn)
+                m = ResidualCNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.activation, config.use_bn)
         else:
-            m = models.CNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.kernel_size, config.stride, config.padding, config.activation, config.dropout, config.pool, config.pool_size, config.use_bn)
+            m = CNN(input_shape, config.CNN_hidden_size, classes, config.depth, config.kernel_size, config.stride, config.padding, config.activation, config.dropout, config.pool, config.pool_size, config.use_bn)
     elif config.residual:
-        m = models.ResidualMLP(input_size, config.MLP_hidden_size, classes, config.activation, config.dropout)
+        m = ResidualMLP(config.depth, input_size, config.MLP_hidden_size, classes, config.dropout)
     else:
-        m = models.MLP(input_size, config.MLP_hidden_size, classes, config.activation, config.dropout)
+        m = MLP(input_size, config.MLP_hidden_size, classes, config.activation, config.dropout)
     
     model = m.to(device)
 
@@ -107,7 +107,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, config)
                 labels = labels.to(device)
                 
                 # Forward pass
-                if config.cam or config.residual:
+                if config.cam:
                     outputs, b_gap, a_gap = model(images)
                 else:
                     outputs = model(images)
@@ -161,7 +161,7 @@ def test(model, test_loader, device, config):
             images = images.to(device)
         labels = labels.to(device)
 
-        if config.cam or config.residual:
+        if config.cam:
             outputs, b_gap, a_gap = model(images)
         else:
             outputs = model(images)

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import numpy as np
 
 # Multi-Layer Perceptron
@@ -26,22 +27,19 @@ class MLP(nn.Module):
 
 # Multi-Layer Perceptron with residual connections
 class ResidualMLP(nn.Module):
-    def __init__(self, input_size, hidden_size, classes, activation, dropout):
-        super(MLP, self).__init__()
+    def __init__(self, depth, input_size, hidden_size, classes, dropout):
+        super(ResidualMLP, self).__init__()
 
-        self.mlp = nn.ModuleList[nn.Linear(input_size, hidden_size[0]),
-               getattr(nn, activation)()]
-        for _ in range(len(hidden_size) - 1):
-            self.mlp.append(nn.Linear(hidden_size[0], hidden_size[0]))
-            self.mlp.append(getattr(nn, activation)())
-        
+        self.l1 = nn.Linear(input_size, hidden_size[0])
+        self.mlp = nn.ModuleList([nn.Linear(hidden_size[0], hidden_size[0]) for _ in range(depth)])
         self.fc = nn.Sequential(
             nn.Dropout(dropout),
             nn.Linear(hidden_size[0], classes))
 
     def forward(self, x):
+        x = F.relu(self.l1(x))
         for layer in self.mlp:
-            x = layer(x) + x
+            x = F.relu(layer(x) + x)
         out = self.fc(x)
         return out
 
@@ -131,7 +129,7 @@ class ResidualCNN(nn.Module):
         x = self.avgpool(out)
         gapout = x.view(x.size(0), -1)
         x = self.fc(gapout)
-        return x, out, gapout
+        return x    #, out, gapout
     
 
     
