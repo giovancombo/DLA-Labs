@@ -24,8 +24,8 @@ class NavigationGoal(NavigationTrack):
     DISTANCE_STANDARD_DEVIATION = 0.000001
     ANGLE_STANDARD_DEVIATION = 0.000001
 
-    GOAL_REWARD = 500.0  # if you change this change also in navigation.py step() method
-    BACKWARD_REWARD = -1.0
+    GOAL_REWARD = 100.0  # if you change this change also in navigation.py step() method
+    BACKWARD_REWARD = -2.5                  # CAMBIATO - originale: -1.0; modificato: -2.5
 
     NUMBER_OF_OBSERVATIONS = NavigationTrack.NUMBER_OF_RAYS + 2
     N_OBSTACLES = 3  # 0 1 2 3 4

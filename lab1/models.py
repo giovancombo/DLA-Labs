@@ -94,7 +94,7 @@ class ResidualBlock(nn.Module):
     def __init__(self, in_channels, out_channels, activation, use_bn, kernel_size = 3, stride = 1, projection = None):
         super(ResidualBlock, self).__init__()
 
-        res_channels = in_channels
+        res_channels = in_channels // 4
         self.conv1 = ConvBlock(in_channels, res_channels, kernel_size, stride, 1, True)
         self.conv2 = ConvBlock(res_channels, out_channels, kernel_size, stride, 1, True)
         self.bn = nn.BatchNorm2d(out_channels) if use_bn else nn.Identity()
@@ -112,12 +112,12 @@ class ResidualBlock(nn.Module):
     
 
 class ResidualCNN(nn.Module):
-    def __init__(self, input_shape, hidden_size, classes, no_blocks, activation, use_bn):
+    def __init__(self, input_shape, hidden_size, classes, depth, activation, use_bn):
         super(ResidualCNN, self).__init__()
 
         rescnn = nn.ModuleList([ConvBlock(input_shape[0], hidden_size[0], 3, 1, 1, True),
                                 getattr(nn, activation)()])
-        for _ in range(no_blocks - 1):
+        for _ in range(depth):
             rescnn.append(ResidualBlock(hidden_size[0], hidden_size[0], activation, use_bn))
         self.rescnn = nn.Sequential(*rescnn)
 

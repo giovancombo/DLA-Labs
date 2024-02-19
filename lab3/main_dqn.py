@@ -9,11 +9,14 @@ import numpy as np
 import math
 import random
 
-TRAIN = False
+import wandb
+
+TRAIN = True
+wandb_log = True
 EPS = 1.0  # the starting value of epsilon
 EPS_DECAY = 0.9999  # controls the rate of exponential decay of epsilon, higher means a slower decay
 MIN_EPS = 0.0001
-GAMMA = 0.999  # Discount Factor
+GAMMA = 0.99  # Discount Factor
 BATCH_SIZE = 512  # is the number of transitions random sampled from the replay buffer
 LEARNING_RATE = 1e-3  # is the learning rate of the Adam optimizer, should decrease (1e-5)
 steps_done = 0
@@ -52,7 +55,11 @@ def normalize(state: np.ndarray) -> np.ndarray:
 
 # Training loop
 if TRAIN:
-    env = gym.make('gym_navigation:NavigationGoal-v0', render_mode='human', track_id=1)
+
+    if wandb_log:
+        wandb.init(project="DLA_Lab3_DRL", monitor_gym=True, save_code=True)
+    
+    env = gym.make('LunarLander-v2', render_mode='human')
     env.action_space.seed(42)  # 42
 
     state_observation, info = env.reset(seed=42)
@@ -125,6 +132,8 @@ if TRAIN:
         # torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
         optimizer.step()
 
+        return loss
+
 
     def run_validation(env, policy_net, num=10):
         running_rewards = [0.0] * num
@@ -143,12 +152,15 @@ if TRAIN:
 
 
     if torch.cuda.is_available():
-        num_episodes = 1000
+        num_episodes = 1500
     else:
-        num_episodes = 1000
+        num_episodes = 1500
 
     # Writer will output to ./runs/ directory by default
     writer = SummaryWriter("runs")
+
+    if wandb_log:
+        wandb.watch(q_function, log="all", log_freq=1)
 
     print("START Deep Q-Learning Navigation Goal")
 
@@ -159,11 +171,13 @@ if TRAIN:
         state_observation = normalize(state_observation)
         state_observation = torch.tensor(state_observation, dtype=torch.float32, device=device).unsqueeze(0)
         steps = 0
+        score = 0
 
         # Run one episode.
         while True:
             action = select_action_epsilon(state_observation)
             observation, reward, terminated, truncated, _ = env.step(action.item())
+            score += reward
 
             observation = normalize(observation)  # Normalize in [0,1]
 
@@ -183,7 +197,7 @@ if TRAIN:
                 break
 
         # Perform one step of the optimization (on the policy network)
-        optimize_model()
+        loss = optimize_model()
 
         # Epsilon decay
         EPS = max(MIN_EPS, EPS * EPS_DECAY)
@@ -199,8 +213,17 @@ if TRAIN:
             writer.add_scalars('Reward', {'policy_net': np.mean(rewards)}, i_episode)
             writer.add_scalars('Epsilon', {'policy_net': EPS}, i_episode)
 
-    PATH = './checkpoints/last.pth'
+        if wandb_log:
+            wandb.log({"score": score,
+                       "policy_loss": loss.item(),
+                       "running_reward": rewards[-1]}, step=i_episode)
+
+    PATH = './checkpoints/lunarlander.pt'
     torch.save(q_function.state_dict(), PATH)
+
+    if wandb_log:
+        wandb.finish()
+    
     writer.close()
     env.close()
     print('COMPLETE')
@@ -209,7 +232,7 @@ else:
     # For accuracy check
     # env = gym.make('gym_navigation:NavigationGoal-v0', render_mode=None, track_id=1)
     # For visible check
-    env = gym.make('gym_navigation:NavigationGoal-v0', render_mode='human', track_id=1)
+    env = gym.make('LunarLander-v2', render_mode='human')
 
     env.action_space.seed(42)
     state_observation, info = env.reset(seed=42)
@@ -218,7 +241,7 @@ else:
     n_observations = len(state_observation)
 
     q_function = DQLN(n_observations, n_actions).to(device)
-    PATH = './checkpoints/last.pth'
+    PATH = './checkpoints/lunarlander.pt'
     q_function.load_state_dict(torch.load(PATH))
     not_terminated = 0
     success = 0

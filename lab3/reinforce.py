@@ -5,6 +5,7 @@ import numpy as np
 import torch
 # Plus one non standard one -- we need this to sample from policies.
 from torch.distributions import Categorical
+import wandb
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -29,6 +30,7 @@ def run_episode(env, policy, maxlen=500, device='cpu'):
     actions = []
     log_probs = []
     rewards = []
+    score = 0
     
     # Reset the environment and start the episode.
     (obs, info) = env.reset()
@@ -43,24 +45,28 @@ def run_episode(env, policy, maxlen=500, device='cpu'):
         # Advance the episode by executing the selected action.
         (obs, reward, term, trunc, info) = env.step(action)
         rewards.append(reward)
+        score += reward
         if term or trunc:
             break
-    return (observations, actions, torch.cat(log_probs), rewards)
+    return (observations, actions, torch.cat(log_probs), rewards, score)
     
 
 # A direct, inefficient, and probably buggy implementation of the REINFORCE policy gradient algorithm.
-def reinforce(policy, env, env_render=None, gamma=0.999, lr=1e-2, num_episodes=10, device='cpu'):
+def reinforce(policy, env, env_render=None, gamma=0.999, lr=1e-2, num_episodes=10, device='cpu', wandb_log=False):
     # The only non-vanilla part: we use Adam instead of SGD
     opt = torch.optim.Adam(policy.parameters(), lr=lr)
 
     # Track episode rewards in a list.
     running_rewards = [0.0]
+
+    if wandb_log:
+        wandb.watch(policy, log="all", log_freq=1)
     
     # The main training loop.
     policy.train()
     for episode in range(num_episodes):
         # Run an episode of the environment, collect everything needed for policy update.
-        (observations, actions, log_probs, rewards) = run_episode(env, policy, device=device)
+        (observations, actions, log_probs, rewards, score) = run_episode(env, policy, device=device)
         
         # Compute the discounted reward for every step of the episode. 
         returns = torch.tensor(compute_returns(rewards, gamma), dtype=torch.float32)
@@ -78,13 +84,21 @@ def reinforce(policy, env, env_render=None, gamma=0.999, lr=1e-2, num_episodes=1
         loss = (-log_probs * returns).sum()
         loss.backward()
         opt.step()
+
+        if wandb_log:
+            wandb.log({"score": score,
+            "policy_loss": loss,
+            "running_reward": running_rewards[-1]}, step=episode)
         
         # Render an episode after every 50 policy updates.
         if episode % 50:
             policy.eval()
-            (obs, _, _, _) = run_episode(env_render, policy, device=device)
+            (obs, _, _, _, _) = run_episode(env_render, policy, device=device)
             policy.train()
-            print(f'Running reward: {running_rewards[-1]}')
+            print(f'Episode {episode+1}, {len(rewards)}\tScore: {score:.2f}; Running reward: {running_rewards[-1]:.2f}')
+    
+    if wandb_log:
+        wandb.unwatch(policy)
     
     # Return the running rewards.
     policy.eval()

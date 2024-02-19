@@ -6,7 +6,7 @@ save_model: False
 save_artifact: False
 
 # Dataset settings
-dataset: MNIST
+dataset: CIFAR10
 
 # Model settings
 convnet: True
@@ -34,7 +34,7 @@ resnet_name: 18                                     # ResNet architecture: [9, 1
 resnet_hidden_size: [64, 128, 256, 512]             # Number of filters for each convolutional block (4 blocks)
 
 # Training loop settings
-batch_size: 64                      # PROVA [64, 128, 256, 512, 1024, 2048]
+batch_size: 1024                      # PROVA [64, 128, 256, 512, 1024, 2048]
 epochs: 20
 
 # Loss & Optimizer settings
