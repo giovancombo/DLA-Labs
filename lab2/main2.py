@@ -8,7 +8,7 @@ from transformers import pipeline
 generation_pipeline = False
 
 # Saving configuration
-save_generation = False
+save_generation = True
 folder = '2_textgeneration'
 
 # Input prompt text for generation

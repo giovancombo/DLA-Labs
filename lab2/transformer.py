@@ -5,14 +5,14 @@ import torch.nn.functional as F
 
 # Let's implement the Transformer Decoder: many Decoder blocks in sequence, with a final Linear layer
 class TransformerDecoder(nn.Module):
-    def __init__(self, vocab_size, block_size, n_embd, n_heads, n_layers):
+    def __init__(self, vocab_size, block_size, n_embd, n_heads, n_layers, dropout):
         super(TransformerDecoder, self).__init__()
         # Creating Lookup Tables for storing Token and Positional Encodings
         self.tok_embedding = nn.Embedding(vocab_size, n_embd)
         self.pos_embedding = nn.Embedding(block_size, n_embd)
 
         # In the original paper, authors used 6 layers of 8 heads each
-        self.decoder_blocks = nn.Sequential(*[DecoderBlock(n_embd, n_heads = n_heads) for _ in range(n_layers)])
+        self.decoder_blocks = nn.Sequential(*[DecoderBlock(n_embd, n_heads, block_size, dropout) for _ in range(n_layers)])
 
         self.ln = nn.LayerNorm(n_embd)
         self.fc = nn.Linear(n_embd, vocab_size)     # Final Linear layer for predicting the next character
@@ -53,7 +53,7 @@ class TransformerDecoder(nn.Module):
     
 # Let's implement a single Self-Attention Head = creating communication between tokens
 class SelfAttention(nn.Module):
-    def __init__(self, head_size):
+    def __init__(self, head_size, block_size, n_embd, dropout):
         super(SelfAttention, self).__init__()
 
         self.query = nn.Linear(n_embd, head_size, bias=False)       # Q,K,V = matrices (n_embd, head_size)
@@ -84,10 +84,10 @@ class SelfAttention(nn.Module):
 
 # Let's implement a Multi-Head Attention block = Multiple Self-Attention Heads in parallel and concatenated
 class MultiHeadAttention(nn.Module):
-    def __init__(self, n_heads, head_size):
+    def __init__(self, n_heads, head_size, block_size, n_embd, dropout):
         super(MultiHeadAttention, self).__init__()
 
-        self.heads = nn.ModuleList([SelfAttention(head_size) for _ in range(n_heads)])
+        self.heads = nn.ModuleList([SelfAttention(head_size, block_size, n_embd, dropout) for _ in range(n_heads)])
         self.projection = nn.Linear(n_embd, n_embd)             # For handling Residual Connections
         self.dropout = nn.Dropout(dropout)
 
@@ -100,7 +100,7 @@ class MultiHeadAttention(nn.Module):
 
 # Let's implement the Feed Forward block = a simple MLP, allowing tokens to do some computation after communication
 class FeedForward(nn.Module):
-    def __init__(self, n_embd):
+    def __init__(self, n_embd, dropout):
         super(FeedForward, self).__init__()
 
         self.ffwd = nn.Sequential(
@@ -117,13 +117,13 @@ class FeedForward(nn.Module):
 
 # Let's implement a Decoder block = Multi-Head Attention + Feed Forward, comprehensive of Residual Connections & Layer Normalization
 class DecoderBlock(nn.Module):
-    def __init__(self, n_embd, n_heads):
+    def __init__(self, n_embd, n_heads, block_size, dropout):
         super(DecoderBlock, self).__init__()
 
         head_size = n_embd // n_heads       # As the original paper does
 
-        self.attention = MultiHeadAttention(n_heads, head_size)
-        self.ffwd = FeedForward(n_embd)
+        self.attention = MultiHeadAttention(n_heads, head_size, block_size, n_embd, dropout)
+        self.ffwd = FeedForward(n_embd, dropout)
         self.ln1 = nn.LayerNorm(n_embd)
         self.ln2 = nn.LayerNorm(n_embd)
 
