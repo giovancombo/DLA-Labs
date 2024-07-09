@@ -1,42 +1,42 @@
 # Deep Learning Applications: Laboratory #1 - CNNs
 
-In this first laboratory we will work relatively simple architectures to get a feel for working with Deep Models. This notebook is designed to work with PyTorch.
+In this first Laboratory I will work with relatively simple architectures to get a feel for working with Deep Models. Convolutional Networks are fundamental tools for image processing, thanks to their ability to analyse input data through different levels of abstraction.
+
+This Lab is essentially a brief analysis of how ConvNets work, which are their drawbacks, how can they be improved, and employed for the most common visual tasks.
 
 ## Exercise 1: Warming Up
-In this series of exercises I will duplicate (on a small scale) the results of the ResNet paper:
+In this series of exercises I will duplicate (on a small scale) the results of the notorious ResNet paper, by Kaiming He et al.:
 
 > [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, CVPR 2016.
 
-I will do this in steps, firstly using a Multilayer Perceptron on MNIST.
+What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in training loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease. The fact that deeper networks lead to lower **Training** Accuracy (not only Validation Accuracy!) proves that this particular phenomenon is not simply related to *overfitting*, but it's related to the actual excessive model complexity.
+Implementing Residual Connections dramatically improves ConvNets' performances, allowing to go a lot deeper without suffering lower Training Accuracies.
 
-What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee** more reduction in training loss (or in validation accuracy).
-Below, I will incrementally build a sequence of experiments to verify this for different architectures, starting with an *MLP*.
+I will incrementally build a sequence of experiments to verify this for different architectures, firstly using a *Multilayer Perceptron* on MNIST, and finally *Convolutional Neural Networks* with Residual Connections on CIFAR-10.
 
-The Laboratory requires me to compare multiple training runs, so I took this as a great opportunity to learn to use [Weights and Biases](https://wandb.ai/site) for performance monitoring.
+Since this Lab requires me to compare multiple training runs, I took this as a great opportunity to learn [Weights & Biases](https://wandb.ai/site) for performance monitoring. A report of this Lab will soon be available on my Weights & Biases profile.
 
 ### Exercise 1.1: A baseline MLP
 
-I will now implement a *simple Multilayer Perceptron* to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation losses and accuraces with W&B.
+I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuraces with Weights & Biases.
 
-The exercise wants me to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets.
-It could be a good idea to try to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to try to build a single file `config.yaml`, where I put almost every variable that can help me building any model I want.
+A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I will put every hyperparameter I will need to set in the Lab, from the architecture chosen, to the dataset used, the loss function, the optimizer, the activation function, and so on. I just found it easier for me.
 
-I then define a `load` function, that passes the dictionary `config` (obtained from my `.yaml` file) as an argument, in order to load the dataset we want (between MNIST and CIFAR10), transformed accordingly, and splitted into *Train*, *Validation* and *Test* sets.
+I then define a `load` function, that takes `config` (obtained from my `config.yaml` file) as an argument, and loads the dataset I need (between MNIST and CIFAR10), transforms it accordingly, and splits it into *Train*, *Validation* and *Test* sets.
 
-The script file `models.py` contains all the model classes used for this Laboratory:
+The `models.py` script contains all the model classes used for this Laboratory:
 + **MLP**, for instantiating a *Multilayer Perceptron*
 + **ResidualMLP**, for instantiating an MLP that implements *Residual Connections*
-+ **CNN**, for instantiating *Convolutional Network*, with the possibility of tuning almost every possible parameter
++ **CNN**, for instantiating *Convolutional Network*
 + **ResidualCNN**, for instantiating a ConvNet that implements *Residual Connections*
-+ **ResNet**, for instantiating an actual *ResNet* as defined in the [Paper](https://arxiv.org/abs/1512.03385), in its *[9, 18, 34, 50, 101, 152]* versions.
++ **ResNet**, for instantiating an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
-The `build_model` function instantiates Model, Loss Function and Optimizer chosen with the `config` file, and sends it to `device`, that can be `cuda` (in my case, a *Nvidia GeForce RTX 3060 Laptop*) or `cpu`.
+The `build_model` function instantiates Model, Loss Function and Optimizer chosen accordingly to the `config` file. The `device` used can be `cuda` (in my case, an *Nvidia GeForce RTX 3060 Laptop*) or `cpu`.
 
 The training loop lies in the `train` function, that takes all the objects instantiated in the previous steps and uses them to train the model.
+The *forward* and *backward* passes are performed batch-wise through the `train_batch` function, that implements a tweak to reshape the input images' sizes accordingly to the model used. The same thing is done in the `validation` and `test` functions.
 
-The *forward* and *backward* passes are performed batch-wise through the `train_batch` function, that implements a tweak to reshape the input images' sizes accordingly to the model used. Same thing is done in the `validation` and `test` functions.
-
-The `load`, `build_model`, `train` and `test` functions are all contained in a single function, `model_pipeline`, that allows me to wrap all my workflow into a *Weights & Biases* run more efficiently.
+Finally, the `load`, `build_model`, `train` and `test` functions are all contained in a single function, `model_pipeline`, that allows me to wrap all my workflow into a *Weights & Biases* run more efficiently.
 
 ### Exercise 1.2: Rinse and Repeat
 
