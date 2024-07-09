@@ -9,7 +9,7 @@ In this series of exercises I will duplicate (on a small scale) the results of t
 
 > [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, CVPR 2016.
 
-What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in training loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease. The fact that deeper networks lead to lower **Training** Accuracy (not only Validation Accuracy!) proves that this particular phenomenon is not simply related to *overfitting*, but it's related to the actual excessive model complexity.
+What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease. The fact that deeper networks lead to lower **Training** Accuracy (not only Validation Accuracy!) proves that this particular phenomenon is not simply related to *overfitting*, but it's related to the actual excessive model complexity.
 Implementing Residual Connections dramatically improves ConvNets' performances, allowing to go a lot deeper without suffering lower Training Accuracies.
 
 I will incrementally build a sequence of experiments to verify this for different architectures, firstly using a *Multilayer Perceptron* on MNIST, and finally *Convolutional Neural Networks* with Residual Connections on CIFAR-10.
@@ -40,28 +40,27 @@ Finally, the `load`, `build_model`, `train` and `test` functions are all contain
 
 ### Exercise 1.2: Rinse and Repeat
 
-I will now repeat the verification I did above, but with **Convolutional** Neural Networks.
-This specific part of the exercise focuses on revealing that **deeper** CNNs *without* residual connections do not always work better, and **even deeper** ones *with* residual connections.
+I will now repeat the verification I did above, but with **Convolutional Neural Networks**.
+This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections.
 
-**Note**: MNIST is *very* easy to work on (at least up to about 99% accuracy), so I will work on **CIFAR10** from now on.
+**Note**: MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), so I will soon start to work on the **CIFAR-10** dataset.
 
-Launching the `model_pipeline` function with its proper configuration allows me to observe the performance of multiple kinds of Convolutional architectures.
+Launching the `model_pipeline` function with its proper configuration allows me to observe the performance of multiple architectures. The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that a **deeper** ConvNet provides better performances, **up to a certain depth**. So, I decided to compare *1, 5, 10, 15, 20, 30 and 50* layer-deep ConvNets, every single layer having the same architecture.
 
-The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that a **deeper** ConvNet provides better performances, **up to a certain depth (!)**.
+All logs and trackings of my runs are interactingly available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
 
-All logs and trackings of my runs are available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
+Well... As previously said, reaching a very high Validation Accuracy on **MNIST** is *very* easy for almost every type of model, so this setting doesn't allow me to appreciate at the fullest how different models perform their learning: even MLPs perform the same as CNNs.
 
-...Well, as previously said, reaching a very high Validation Accuracy on **MNIST** is *very* easy, and doesn't allow us to appreciate at the fullest the differences between different models.
-Let's try then to train some models on the **CIFAR10** dataset.
+Let's try then to train some models on the **CIFAR-10** dataset.
 
 ---
 ## Exercise 2: A Deeper Understanding on Visual Tasks
 
-Let's now deepen our understanding of Deep Networks for visual recognition.
+Classification is just one of the many tasks Convolutional Networks can address. So, I will now deepen my understanding of Deep Networks for visual recognition.
 
-+ Firstly, I will find a quantitative answer about *how* and *why* Redidual Networks learn more efficiently than their Convolutional counterparts.
-+ Secondly, I will become a *network surgeon*, trying to fully-convolutionalize a network by acting on its final layers.
-+ Thirdly, I will try to implement *Class Activation Maps*, in order to see which parts of an image were the most decisive for its classification.
++ Firstly, I will quantitative discover and explain *how* and *why* Redidual Networks learn more efficiently than their Convolutional counterparts.
++ Secondly, I will become a *network surgeon*, fully-convolutionalizing a network by acting on its final layers, in order to perform Segmentation.
++ Thirdly, I will implement *Class Activation Maps*, that allow me to see which parts of an image were the most informative for its classification.
 
 ### Exercise 2.1: Explain why Residual Connections are so effective
 
