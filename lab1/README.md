@@ -9,10 +9,9 @@ In this series of exercises I will duplicate (on a small scale) the results of t
 
 > [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, CVPR 2016.
 
-What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease. The fact that deeper networks lead to lower **Training** Accuracy (not only Validation Accuracy!) proves that this particular phenomenon is not simply related to *overfitting*, but it's related to the actual excessive model complexity.
-Implementing Residual Connections dramatically improves ConvNets' performances, allowing to go a lot deeper without suffering lower Training Accuracies.
+What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease.
 
-I will incrementally build a sequence of experiments to verify this for different architectures, firstly using a *Multilayer Perceptron* on MNIST, and finally *Convolutional Neural Networks* with Residual Connections on CIFAR-10.
+I will incrementally build a sequence of experiments to verify and explain this behaviour for different architectures, firstly using a *Multilayer Perceptron* on MNIST, and finally *Convolutional Neural Networks* with Residual Connections on CIFAR-10.
 
 Since this Lab requires me to compare multiple training runs, I took this as a great opportunity to learn [Weights & Biases](https://wandb.ai/site) for performance monitoring. A report of this Lab will soon be available on my Weights & Biases profile.
 
@@ -64,41 +63,44 @@ Classification is just one of the many tasks Convolutional Networks can address.
 
 ### Exercise 2.1: Explain why Residual Connections are so effective
 
-The question *"Why Residual Networks learn more efficiently than Convolutional Networks?"* can find an answer by looking at the gradient magnitudes passing through the networks, during backpropagation.
+*"Why Residual Networks learn more efficiently than Convolutional Networks?"*
 
-`wandb.watch(log = "all")` tells *Weights & Biases* to log *gradients* and *parameters*' evolution in all the layers of the network. This functionality is useful to graphically visualize the concept of **Vanishing Gradients**.
+This question can find an answer by looking at the **Gradient Magnitudes** passing through the layers of the networks, during Backpropagation.
+
+`wandb.watch(log = "all")` tells *Weights & Biases* to log *gradients* and *parameters*' evolution in all the layers of a network. This functionality is useful to graphically visualize the concept of **Vanishing Gradients**.
 
 For this exercise, I firstly tried to run a basic *MLP*, and then an *MLP with Residual Connections*. Honestly, at the time, I didn't think that this could be a very clever idea, since I've always seen Residuals been added only on Convolutional Networks, but... I decided to give it a try anyway.
 
 As mentioned before, I compared these two architectures by challenging them on their performance over their **depth** (i.t. their number of layers).
 
-A basic **10-layer MLP** is seen suffering from Vanishing Gradients, with its accuracy dropping all the way down to 10%, that means picking a class **by chance**.
+A basic **10-layer MLP** already suffers from Vanishing Gradients, with its Accuracy dropping all the way down to 10%, that means picking a class literally **by chance**: the learning process is not working.
 
-As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a higher number of layers leads to not only higher validation loss, but also a *higher training loss*: this means that we are not facing overfitting, but in the "weird" behavior that a deeper model shows itself.
+As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a higher number of layers leads to not only higher Validation Loss, but also a *higher Training Loss*. The fact that deeper networks lead to higher **Training** Loss (not only Validation Loss!) proves that this particular phenomenon is not simple *overfitting*, but it's related to the actual excessive model complexity.
 
-On the contrary, the **10-layer Residual MLP** performed well, confirming the explanation of ResNet authors: Residual Connections allow a network to go **a lot** deeper (with the only limitation of reaching overfitting).
+On the contrary, the **10-layer Residual MLP** performed well, confirming the explanation of ResNet authors: Residual Connections allow a network to go **dramatically** deeper (with the only limitation of reaching *overfitting*).
 
-The results can be quantitatively checked by observing the *W&B* logs about gradient magnitudes. The basic **MLP** shows gradients that are very close to zero, meaning that the model is not making any real progress.
+Results can be quantitatively checked by observing the *Weights & Biases* logs for Gradient Magnitudes. The basic **MLP** shows gradients that are very close to *zero* for most of the training time, meaning that the model is not making any real learning progress.
 
 Conversely, the **Residual MLP** showed gradients that did not vanish nor explode, and progressively diminishing their magnitude during training, meaning that the model is proceeding towards convergence on a (local, hopefully global) optimum.
 
 ---
-### Exercise 2.2: Fully-convolutionalize a network.
-Take one of your trained classifiers and **fully-convolutionalize** it. That is, turn it into a network that can predict classification outputs at *all* pixels in an input image. Can you turn this into a **detector** of handwritten digits? Give it a try.
+### Exercise 2.2: Fully-convolutionalize a network
 
-**Hint 1**: Sometimes the process of fully-convolutionalization is called "network surgery".
+**Fully-convolutionalizing** a model means turning it into a network that can predict classification outputs at *all* pixels in an input image. This reframing unlocks many new visual tasks that can be addressed, such as *Semantic Segmentation*, *Object Detection* and *Object Recognition*.
 
-**Hint 2**: To test your fully-convolutionalized networks you might want to write some functions to take random MNIST samples and embed them into a larger image (i.e. in a regular grid or at random positions).
-
-The ConvNets built in the previous exercise have a global Average Pooling layer and a Fully Connected Layer at the end, in order to merge all infro from the convolutions in a single prediction for all the image, on the 10 MNIST/CIFAR10 classes.
+The ConvNets built in the previous exercise have a global Average Pooling layer and a Fully Connected Layer (e.g. the *Classification Head*) at the end, in order to merge all info from the convolutions in a single output prediction for all the image, on the 10 MNIST/CIFAR-10 classes.
 
 In a Fully Convolutional Network, we need instead to produce a prediction for every single one of the 28x28 (32x32) pixels of an image. I then proceed to do a "network surgery", removing the two layers mentioned above and rearranging the net to have the dimension of the input image as output.
+
+In this section, I will turn one of the ConvNets I trained into a **detector** of handwritten MNIST digits. In order to test my new network, I need to write some functions to take random MNIST samples and embed them into a larger image (i.e. in a regular grid or at random positions).
 
 ---
 ### Exercise 2.3: *Explain* the predictions of a CNN
 
-Use the CNN model you trained in Exercise 1.2 and implement [*Class Activation Maps*](http://cnnlocalization.csail.mit.edu/#:~:text=A%20class%20activation%20map%20for,decision%20made%20by%20the%20CNN.):
-
 > B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba. Learning Deep Features for Discriminative Localization. CVPR'16 (arXiv:1512.04150, 2015).
+> 
+[*Class Activation Maps*](http://cnnlocalization.csail.mit.edu/#:~:text=A%20class%20activation%20map%20for,decision%20made%20by%20the%20CNN.) are very powerful tools for understanding how Neural Networks learn in order to classify objects in an image.
 
-Use your implementation to demonstrate how your trained CNN *attends* to specific image features to recognize *specific* classes.
+The main focus, here, is to see how one of the previously trained CNNs *attends* to specific image features to recognize *specific* classes.
+
+Class Activation Maps were here implemented following [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
