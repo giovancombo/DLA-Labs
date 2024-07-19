@@ -1,6 +1,8 @@
 # Deep Learning Applications: Laboratory #3 - DRL
 
-In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations. For this Lab, I will create a new *conda* environment named **DRL**, in order to work with the great number of libraries that are specifically dedicated to DRL tasks.
+In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations.
+
+For this Lab, I will create a new *conda* environment named **DRL**, in order to work with the great number of libraries that are specifically dedicated to DRL tasks.
 
 ## Exercise 1: Testing the Environment
 Part of the experience will include "hacking" a provided implementation (provided by Francesco Fantechi, from Ingegneria Informatica) of a navigation environment. The setup is fairly simple:
@@ -16,8 +18,12 @@ For each step of an episode, the agent receives a reward of:
 + A small *positive* reward if the distance to the goal is *reduced*.
 + A small *negative* reward if the distance to the goal is *increased*.
 
-The **Deep Q-Learning** implementation for solving this exercise can be found in the `main.py` script. Running the script will start running episodes using a pre-trained agent. Fantechi's clever implementation allows me to change mode from Training to Testing only by modifying the `TRAIN` flag at the top.
+The **Deep Q-Learning** implementation for solving this exercise can be found in the `main.py` script.
+
+Running the script will start running episodes using a pre-trained agent. Fantechi's clever implementation allows me to change mode from Training to Testing only by modifying the `TRAIN` flag at the top.
+
 Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I initially decide to train the agent for 2000 epochs, but soon I discover that the training is very slow, so I reduce the epochs to 1500 and 1000.
+
 Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint loaded to see how the agent performs.
 
 ---
