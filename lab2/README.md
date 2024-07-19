@@ -59,35 +59,25 @@ In order to qualitatively evaluate the performance of the `generate()` function 
 
 ---
 
-## Exercise 3: Reusing Pre-trained LLMs (choose one)
-Choose **one** of the following exercises (well, *at least* one). In each of these you are asked to adapt a pre-trained LLM (`GPT2Model` or `DistilBERT` are two good choices) to a new Natural Language Understanding task. A few comments:
+## Exercise 3: Reusing Pre-trained LLMs
+In each of the following exercises I'm asked to adapt a pre-trained LLM to a new Natural Language Understanding task.
+I chose to use `DistilBERT` in order to better understand the functioning of BERT models.
+BERT models (including DistilBERT) have a special [CLS] token prepended to each latent representation in output from a self-attention block. I will directly use this as a representation for addressing my following tasks.
 
-+ Since GPT2 is a *autoregressive* model, there is no latent space aggregation at the last transformer layer (you get the same number of tokens out that you give in input). To use a pre-trained model for a classification or retrieval task, you should aggregate these tokens somehow (or opportunistically select *one* to use).
-
-+ BERT models (including DistilBERT) have a special [CLS] token prepended to each latent representation in output from a self-attention block. You can directly use this as a representation for classification (or retrieval).
-
-+ The first *two* exercises below can probably be done *without* any fine-tuning - that is, just training a shallow MLP to classify or represent with the appropriate loss function.
+Note: Exercises 3.1 and 3.2 can be done *without* any fine-tuning - that is, just training a shallow MLP to classify or represent with the appropriate loss function. So, that's what I tried to do.
 
 ### Exercise 3.1: Training a Text Classifier
+An important choice is the dataset that will be used for the task. Looking at the [text classification datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads), one of the best datasets to use is the *ag_news*: a moderately sized multi-class dataset about news from all over the world, with 4 perfectly balanced classes.
+But, as always, I can't feel satisfied with easy things: my attention got captured by the *dair-ai/emotion* dataset too, a set about sentiment of snippets of text that, in comparison to the previous one, looks like a real mess! 6 classes, skewed, with not so much data available.
+I'll compare the two datasets, check and report any difference encountered in order to have a more complete view of how my Language Model works with different kinds of data.
 
-Peruse the [text classification datasets on Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads). Choose a *moderately* sized dataset and use a LLM to train a classifier to solve the problem.
 
-**Note**: A good first baseline for this problem is certainly to use an LLM *exclusively* as a feature extractor and then train a shallow model.
 
 So far, I just tried to fine-tune a pretrained DistilBERT model for the Sequence Classification task.
 
-But for this specific exercise, fine-tuning can be avoided! One hint is to use DistilBERT *only* as a mere feature extractor, and to use a very shallow model (an MLP, or even a Logistic Regression!) on the final representation for the multi-class classification.
+But for this specific exercise, fine-tuning can be avoided! One hint is to use DistilBERT *only* as a feature extractor, and to use a very shallow model (an MLP, or even a Logistic Regression!) on the final representation for the multi-class classification.
 
-Let's try to do so!
-
-The choice of the dataset is crucial for what we're trying to achieve: text classification without having to fine-tune DistilBERT.
-
-Looking at the Hugging Face Datasets, one of the best datasets to use is the *ag_news*: a moderately sized multi-class dataset, with perfectly balanced classes.
-But, as always, I cannot feel satisfied with easy things: my attention got captured by the *dair-ai/emotion* dataset too, that, in comparison to the previous one, looks like a real mess! 6 classes, skewed, with not that much data available.
-
-I'll try to face the same challenge using the two datasets, in order to check and report any difference encountered.
-
-Looking at the DistilBertTokenizer, I can see that it's a word level tokenizer, at least for the english language.
+Looking at the DistilBertTokenizer, I can see that it's a **word level** tokenizer, at least for the english language.
 
 - Using the *dair-ai/emotion* dataset, the multi-class classifier, with or without any tweaks on the loss weights to address the class imbalance problem, struggles to reach 67% Test Accuracy (while a fine-tuned DistilBERT is capable to go up to 94% accuracy).
 - Using the *ag_news* dataset, instead, the classifier makes no effort to provide results with 92% Test Accuracy.
@@ -95,13 +85,18 @@ Looking at the DistilBertTokenizer, I can see that it's a word level tokenizer, 
 Furthermore, results obtained by training a simple MLP and an even simpler Logistic Regression are basically the same.
 
 ---
-### Exercise 3.2: Training a Question Answering Model
 
-Peruse the [multiple choice question answering datasets on Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:multiple-choice&sort=downloads). Chose a *moderately* sized one and train a model to answer contextualized multiple-choice questions. You *might* be able to avoid fine-tuning by training a simple model to *rank* the multiple choices (see margin ranking loss in Pytorch).
+### Exercise 3.2: Training a Question Answering Model
+The Question-Answering task consists in predicting and giving the correct answer at particular contextualized multiple-choice questions.
+To address it, I will pick one dataset from the [multiple choice question answering datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:multiple-choice&sort=downloads). Even here, for computation purposes, it is good to choose a *moderately* sized one.
+Here, I *might* be able to avoid fine-tuning by training a simple model to *rank* the multiple choices using *margin loss* in PyTorch.
 
 ---
-### Exercise 3.3: Training a Retrieval Model
 
-The Hugging Face dataset repository contains a large number of ["text retrieval" problems](https://huggingface.co/datasets?task_categories=task_categories:text-retrieval&p=1&sort=downloads). These tasks generally require that the model measure *similarity* between text in some metric space -- naively, just a cosine similarity between [CLS] tokens can get you pretty far. Find an interesting retrieval problem and train a model (starting from a pre-trained LLM of course) to solve it.
+### Exercise 3.3: Training a Retrieval Model
+The HuggingFace dataset repository contains a large number of ["text retrieval" problems](https://huggingface.co/datasets?task_categories=task_categories:text-retrieval&p=1&sort=downloads). These tasks generally require that the model measure *similarity* between text in some metric space.
+Naively, just a *cosine similarity* between [CLS] tokens could get me pretty far.
+
+I chose the text retrieval problem.
 
 **Tip**: Sometimes identifying the *retrieval* problems in these datasets can be half the challenge. [This dataset](https://huggingface.co/datasets/BeIR/scifact) might be a good starting point.
