@@ -1,17 +1,30 @@
 # Deep Learning Applications: Laboratory #2 - LLMs
 
-In this laboratory we will get our hands dirty working with Large Language Models (e.g. GPT and BERT) to do various useful things. I you haven't already, it is highly recommended to:
+In this Laboratory I will get to work with Large Language Models (e.g. GPT and BERT).
+Substantial part of this Lab relies on the notorious paper [Attention is All you Need](https://arxiv.org/abs/1706.03762), which introduced the attention-based Transformer architecture and is the basis for all Transformer-based LLMs.
 
-+ Read the [Attention is All you Need](https://arxiv.org/abs/1706.03762) paper, which is the basis for all transformer-based LLMs.
-+ Watch (and potentially *code along*) with this [Andrej Karpathy video](https://www.youtube.com/watch?v=kCc8FmEb1nY) which shows you how to build an autoregressive GPT model from the ground up.
+In order to be able to understand more deeply the logic behind Language Modeling and language models, I coded along with [this video](https://www.youtube.com/watch?v=kCc8FmEb1nY) made by Andrej Karpathy, a tutorial for building an autoregressive GPT language model from scratch. The code I produced will be very useful for the entire Lab.
 
 ## Exercise 1: Warming Up
-In this first exercise you will train a *small* autoregressive GPT model for character generation (the one used by Karpathy in his video) to generate text in the style of Dante Aligheri. Use [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt), which contains the entire text of Dante's Inferno (**note**: you will have to delete some introductory text at the top of the file before training). Train the model for a few epochs, monitor the loss, and generate some text at the end of training. Qualitatively evaluate the results.
+In this first exercise I will train a *small* autoregressive GPT model for character generation, the exact same of the Karpathy video, to generate text in a particular style.
+I was firstly asked to generate text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt), which contains the entire text of Dante's Divine Comedy. After deleting some introductory text at the top of the file and problematic characters, I was able to start training.
+I trained the model for 10 epochs, and generated some text at the end of training.
+As perfectly explained in the Karpathy video, monitoring the loss can give vital information about how the learning process is going.
+
+**qualitative evaluation**
+
+Loss established, in the end, at 2.00 (esempio a caso), which means that there's still a lot of room for improvement.
+However, it must be said that the model generated quite good quality text despite a relatively small dataset, even if there are quite many gramatical errors and it completely lacks of semantics and meaning. Text clearly was generated without taking into account context, so basically, there's still a lot of work to do.
+
+Before going on to the next exercise, I decided to try my language model on another dataset, in order to check how well it can handle different languages: for this reason, I trained the same model on a dataset containing the lyrics of all Taylor Swift's discography, and was curious about the results.
+
+(potrei provare al volo verso la fine a fare training su dataset con dntro entrambe le cose, quindi due lingue allo stesso momento per vedere se sminchia)
 
 ---
 ## Exercise 2: Working with Real LLMs
 
-Our toy GPT can only take us so far. In this exercise we will see how to use the [Hugging Face](https://huggingface.co/) model and dataset ecosystem to access a *huge* variety of pre-trained transformer models.
+As previously seen, my toy GPT can only take me this far. Language Modeling is a field in which models need a real *ton* of text data of any kind and topic in order to generate meaningful text. So, small companies and researchers or students must start using **pre-trained** Language Models.
+Luckily, the [HuggingFace](https://huggingface.co/) ecosystem allows to access a *huge* variety of pre-trained Transformer models and datasets for any kind of application. In this exercise, I will learn to use stuff from HuggingFace for my future Language Modeling projects.
 
 ### Exercise 2.1: Installation and text tokenization
 
