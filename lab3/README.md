@@ -30,13 +30,14 @@ Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint l
 
 ## Exercise 2: Stabilizing Q-Learning
 
+work in progress
+
 ---
 
 ## Exercise 3: Going Deeper
 
 ### Exercise 3.1: Solving the environment with `REINFORCE`
-
-Use my (or even better, improve on my) implementation of `REINFORCE` to solve the environment.
+REINFORCE is one of the first Policy Gradient DRL algorithms for training an agent. Since it is also one of the most simple ones, I decided not only to use professor Bagdanov's implementation of REINFORCE, but to implement my own version following a tutorial.
 
 **Note**: There is a *design flaw* in the environment implementation that will lead to strange (by explainable) behavior in agents trained with `REINFORCE`. See if you can figure it out and fix it.
 
