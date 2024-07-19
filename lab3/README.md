@@ -1,45 +1,32 @@
 # Deep Learning Applications: Laboratory #3 - DRL
 
-In this laboratory session we will hack one of your colleague's (Francesco Fantechi, from Ingegneria Informatica) implementation of a navigation environment for Deep Reinforcement Learning. The setup is fairly simple:
+In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations. For this Lab, I will create a new *conda* environment named **DRL**, in order to work with the great number of libraries that are specifically dedicated to DRL tasks.
 
-+ A simple 2D environment with a (limited) number of *obstacles* and a single *goal* is presented to the agent, which must learn how to navigate to the goal without hitting any obstacles.
+## Exercise 1: Testing the Environment
+Part of the experience will include "hacking" a provided implementation (provided by Francesco Fantechi, from Ingegneria Informatica) of a navigation environment. The setup is fairly simple:
+
++ A simple 2D environment with a (limited) number of *obstacles* (yellow squares) and a single *goal* (blue circle) is presented to the agent (green dot), which must learn how to navigate to the goal without hitting any obstacles.
 + The agent *observes* the environment via a set of 16 rays cast uniformly which return the distance to the first obstacle encountered, as well as the distance and direction to the goal.
 + The agent has three possible actions: `ROTATE LEFT`, `ROTATE RIGHT`, or `MOVE FORWARD`.
 
 For each step of an episode, the agent receives a reward of:
-+ -100 if hitting an obstacle (episode ends).
-+ -100 if one hundred steps are reached without hitting the goal.
-+ +100 if hitting the goal (episode ends)
++ -100 if hitting an obstacle (the episode ends).
++ -100 if one hundred steps are reached without hitting the goal (time's up, the episode ends).
++ +100 if hitting the goal (the episode ends)
 + A small *positive* reward if the distance to the goal is *reduced*.
 + A small *negative* reward if the distance to the goal is *increased*.
 
-In the file `main.py` you will find an implementation of **Deep Q-Learning**.
-
-## Exercise 1: Testing the Environment
-
-The first thing to do is verify that the environment is working in your Anaconda virtual environment. I had a weird problem with Tensorboard and had to downgrade it using:
-
-    conda install -c conda-forge tensorboard=2.11.2
-    
-In any case, you should be able to run:
-
-    python main.py
-    
-from the repository root and it will run episodes using a pretrained agent. To train an agent from scratch, you must modify `main.py` setting `TRAIN = True` at the top. Then running `main.py` again will train an agent for 2000 episodes of training. To run the trained agent you will again have to modify `main.py` on line 225 to load the last saved checkpoint:
-
-    PATH = './checkpoints/last.pth'
-    
-and then run the script again (after setting `TRAIN = False` !).
-
-Make sure you can at run the demo agent and train one from scratch. If you don't have a GPU you can set the number of training episodes to a smaller number.
+The **Deep Q-Learning** implementation for solving this exercise can be found in the `main.py` script. Running the script will start running episodes using a pre-trained agent. Fantechi's clever implementation allows me to change mode from Training to Testing only by modifying the `TRAIN` flag at the top.
+Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I initially decide to train the agent for 2000 epochs, but soon I discover that the training is very slow, so I reduce the epochs to 1500 and 1000.
+Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint loaded to see how the agent performs.
 
 ---
+
 ## Exercise 2: Stabilizing Q-Learning
 
 ---
-## Exercise 3: Going Deeper
 
-As usual, pick **AT LEAST ONE** of the following exercises to complete.
+## Exercise 3: Going Deeper
 
 ### Exercise 3.1: Solving the environment with `REINFORCE`
 
