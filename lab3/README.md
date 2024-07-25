@@ -1,6 +1,6 @@
 # Deep Learning Applications: Laboratory #3 - DRL
 
-In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations.
+In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations. Some of the most important theoretical concepts about this Lab were learned from [this excellent Andrej Karpathy blog post](http://karpathy.github.io/2016/05/31/rl/).
 
 For this Lab, I will create a new *conda* environment named **DRL**, in order to work with the great number of libraries that are specifically dedicated to DRL tasks.
 
@@ -27,13 +27,6 @@ Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I 
 Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint loaded to see how the agent performs.
 
 ---
-
-## Exercise 2: Stabilizing Q-Learning
-
-work in progress
-
----
-
 ## Exercise 3: Going Deeper
 
 ### Exercise 3.1: Solving the environment with `REINFORCE`
@@ -41,46 +34,11 @@ REINFORCE is one of the first Policy Gradient DRL algorithms for training an age
 
 **Note**: There is a *design flaw* in the environment implementation that will lead to strange (by explainable) behavior in agents trained with `REINFORCE`. See if you can figure it out and fix it.
 
----
-### Exercise 3.2: Solving another environment
+After multiple runs using REINFORCE in the Navigation environment, I could see a strange behavior in agents. After some first tries in which agents struggled to reach the goal, but at least maintained a logic in their movements across the map, agents just started to employ a new particular strategy that involved moving in circle in order to balance their total episode reward with no more losses: moving in circle, in fact, allowed agents to get slightly negative rewards while moving away from the goal, compensated by slightly positive rewards for moving towards the goal. This kind of strategy is sub-optimal for the agent, but it's actually a mode collapse that leads to no improvement in learning the correct policy for succeeding every episode.
 
-The [Gymnasium](https://gymnasium.farama.org/) framework has a ton of interesting and fun environments to work with. Pick one and try to solve it using any technique you like. The [Lunar Landar](https://gymnasium.farama.org/environments/box2d/lunar_lander/) environment is a fun one. 
+After checking Fantechi's code, I found that a possible explanation for this weird behavior lies in the fact that the agent is rewarded the same amount of "points" (100) for reaching the goal as it is penalised (-100) for hitting obstacles or the walls. So, I just proceeded to change the reward for the goal to 500.
 
----
-### Exercise 3.3: Advanced techniques 
-
-The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Try using an off-the-shelf implementation of [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347) to solve one (or more) of these environments. Compare your results with those of Q-Learning and/or REINFORCE.
-
----
-## BONUS: Getting up to speed with DRL
-
-In this notebook I provide a simple example of implementing a policy gradient Deep Reinforcement Learning algorithm to solve a control problem with continuous state space and discrete action space -- the venerable [CartPole environment](https://gymnasium.farama.org/environments/classic_control/cart_pole/). You should study the implementation in this notebook in preparation for the laboratory next Wednesday.
-
-This notebook should run in an environment with at least the following packages installed (the gpu version of PyTorch is not mandatory):
-
-     conda create -n DRL -c conda-forge gymnasium pytorch-gpu matplotlib pygame jupyterlab
-     
-Some background reading to get you started:
-
-1. We will be using the [Gymnasium](https://gymnasium.farama.org/) framework for all of our experiments. This framework provides a consistent interface to a broad range of reinforcement learning environments (including CartPole). You should familiarize yourself with how it works, how environments are specified, how to instantiate them, and how to interact with them.
-
-2. [This excellent blog post](http://karpathy.github.io/2016/05/31/rl/) is a great introduction to policy gradients, where they come from and how they work. Give it a read and I am sure it will help understand better what is going on in this notebook.
-
-### Preliminaries
-
-We start with our standard imports... And also some utility functions useful for what comes next.
-
-### The Policy network
-
-Here I provide a simple policy network which should work with any environment with continuous observations and discrete action spaces. Note how it uses the *specification* of the environment to configure its input and output spaces. 
-
-### The `REINFORCE` Algorithm
-
-This is a very simple implementation of the most basic policy gradient DRL algorithm: `REINFORCE`. It is a very direct implementation of the policy gradient update (although I use Adam instead of SGD).
-
-### For your consideration
-
-There are many things that can be improved in this example. Some things you can think about:
+There are many other things that can be improved in this example:
 
 1. **Replay**. In the current implementation we execute an episode, and then immediately run an optimization step on all of the steps of the episode. Not only are we using *correlated* samples from a single episode, we are decidedly *not* taking advantage of parallelism via batch gradient descent. Note that `REINFORCE` does **not** require entire trajectories, all we need are the discounted rewards and log probabilities for *individual transitions*.
 
@@ -88,4 +46,16 @@ There are many things that can be improved in this example. Some things you can 
 
 3. **Discount Factor**: The discount factor (default $\gamma = 0.99$) is an important hyperparameter that has an effect on the stability of training. Try different values for $\gamma$ and see how it affects training. Can you think of other ways to stabilize training?
 
+---
+### Exercise 3.2: Solving another environment
 
+After working in a custom environment, I really wanted to try some of the environments available in the [Gymnasium](https://gymnasium.farama.org/) framework, which provides a consistent interface to a broad range of Reinforcement Learning environments. I thought this could be a good time to compare some DRL architectures on different environments.
+
+So, in this section, I will compare the performances of REINFORCE and Deep Q-Learning algorithms in solving two of the most common OpenAI Gymnasium environments: [CartPole](https://gymnasium.farama.org/environments/classic_control/cart_pole/), and [Lunar Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/).
+
+---
+### Exercise 3.3: Advanced techniques 
+
+The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Nowadays, one of the most powerful approaches for solving DRL environments is [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347).
+
+Curious about its implementation, I decided to use [this off-the-shelf implementation of PPO]() to solve the Lunar Lander environment and compare my results with those of Q-Learning and REINFORCE.
