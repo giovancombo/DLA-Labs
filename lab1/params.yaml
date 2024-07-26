@@ -1,0 +1,31 @@
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab1
+
+# Dataset settings
+dataset: CIFAR10
+
+# Model hyperparameters
+convnet: True
+residual: False
+resnet: False
+
+depth: 10
+MLP_hidden_size: [128]                              # PROVA diverse depth
+CNN_hidden_size: [64]                               # Size of the convolutional layers: for ResidualCNN, only the first value is used
+resnet_name: 18                                     # ResNet architecture: [9, 18, 34, 50, 101, 152]
+resnet_hidden_size: [64, 128, 256, 512]             # Number of filters for each convolutional block (4 blocks)
+
+# Training loop hyperparameters
+batch_size: 256                      # PROVA [64, 128, 256, 512, 1024, 2048]
+epochs: 20
+num_workers: 4
+learning_rate: !!float 1e-4
+weight_decay: !!float 1e-4
+dropout: 0.2                 # PROVA [0.1, 0.5]
+
+# Log settings
+log_freq: 10                                    # Interval between logs, expressed in number of batches
+
+# Saving settings
+save_model: False
