@@ -16,13 +16,13 @@ class MLP(nn.Module):
             mlp.append(nn.ReLU())
         self.mlp = nn.Sequential(*mlp)
         
-        self.fc = nn.Sequential(
+        self.head = nn.Sequential(
             nn.Dropout(dropout),
             nn.Linear(hidden_size[-1], classes))
 
     def forward(self, x):
         out = self.mlp(x)
-        out = self.fc(out)
+        out = self.head(out)
         return out
     
 
@@ -33,7 +33,7 @@ class ResidualMLP(nn.Module):
 
         self.l1 = nn.Linear(input_size, hidden_size[0])
         self.mlp = nn.ModuleList([nn.Linear(hidden_size[0], hidden_size[0]) for _ in range(depth)])
-        self.fc = nn.Sequential(
+        self.head = nn.Sequential(
             nn.Dropout(dropout),
             nn.Linear(hidden_size[0], classes))
 
@@ -41,7 +41,7 @@ class ResidualMLP(nn.Module):
         x = F.relu(self.l1(x))
         for layer in self.mlp:
             x = F.relu(layer(x) + x)
-        out = self.fc(x)
+        out = self.head(x)
         return out
 
 
@@ -72,18 +72,18 @@ class CNN(nn.Module):
             if len(hidden_size) > i + 1:
                 convlayers.append(ConvBlock(hidden_size[i], hidden_size[i+1], kernel_size, stride, padding))
                 convlayers.append(nn.ReLU())
-        self.convlayers = nn.Sequential(*convlayers)
+        self.features = nn.Sequential(*convlayers)
 
         final_dim = np.square(np.floor(input_shape[1] / np.power(pool_size, len(hidden_size)))).astype(int)
 
-        self.fc = nn.Sequential(
+        self.head = nn.Sequential(
             nn.Dropout(dropout),
             nn.Linear(hidden_size[-1] * final_dim, classes))
 
     def forward(self, x):
-        cnn_out = self.convlayers(x)
+        cnn_out = self.features(x)
         out = torch.flatten(cnn_out, 1)
-        out = self.fc(out)
+        out = self.head(out)
         return out
     
 
@@ -109,21 +109,22 @@ class ResidualBlock(nn.Module):
         return h
     
 
+# Residual Convolutional Neural Network
 class ResidualCNN(nn.Module):
     def __init__(self, input_shape, hidden_size, classes, depth):
         super(ResidualCNN, self).__init__()
 
         rescnn = nn.ModuleList([ConvBlock(input_shape[0], hidden_size[0]),
-                                nn.ReLU()()])
+                                nn.ReLU()])
         for _ in range(depth):
             rescnn.append(ResidualBlock(hidden_size[0], hidden_size[0]))
-        self.rescnn = nn.Sequential(*rescnn)
+        self.features = nn.Sequential(*rescnn)
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(hidden_size[0], classes)
 
     def forward(self, x):
-        out = self.rescnn(x)
+        out = self.features(x)
         x = self.avgpool(out)
         gapout = x.view(x.size(0), -1)
         x = self.fc(gapout)
@@ -148,23 +149,21 @@ class ResNet(nn.Module):
         self.in_channels = hidden_size[0]
         
         self.conv1 = ConvBlock(input_shape[0], hidden_size[0])
-        self.act = nn.ReLU()()
+        self.act = nn.ReLU()
 
         self.layer1 = self._make_layer(ResidualBlock, no_blocks[0], hidden_size[0], 1)
         self.layer2 = self._make_layer(ResidualBlock, no_blocks[1], hidden_size[1], 2)
         self.layer3 = self._make_layer(ResidualBlock, no_blocks[2], hidden_size[2], 2) 
         self.layer4 = self._make_layer(ResidualBlock, no_blocks[3], hidden_size[3], 2)  
+
+        self.features = nn.Sequential(self.conv1, self.act, self.layer1, self.layer2, self.layer3, self.layer4)
         
-        self.avgpool = nn.AdaptiveAvgPool2d((1,1))          # Average Pool 1x1
+        self.avgpool = nn.AdaptiveAvgPool2d((1,1))                  # Average Pool 1x1
         self.dropout = nn.Dropout(dropout)
         self.fc = nn.Linear(hidden_size[-1], classes)
 
     def forward(self, x):
-        x = self.act(self.conv1(x))
-        x = self.layer1(x)
-        x = self.layer2(x)
-        x = self.layer3(x)
-        x = self.layer4(x)
+        x = self.features(x)
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
         x = self.dropout(x)
@@ -184,41 +183,3 @@ class ResNet(nn.Module):
         for _ in range(no_blocks - 1):
             layers.append(ResidualBlock(self.in_channels, out_channels))
         return nn.Sequential(*layers)
-    
-
-
-# Fully Convolutional Neural Network
-class FullyCNN(nn.Module):
-    def __init__(self, input_shape, hidden_size, classes, depth, kernel_size = 3, stride = 1, padding = 1, pool_size = 2):
-        super(FullyCNN, self).__init__()
-
-        self.act = nn.ReLU()
-        convlayers = [ConvBlock(input_shape[0], hidden_size[0], kernel_size, stride, padding),
-                      self.act]
-        
-        for i in range(len(hidden_size)):
-            for _ in range(depth - 1):
-                convlayers.append(ConvBlock(hidden_size[i], hidden_size[i], kernel_size, stride, padding))
-                convlayers.append(self.act)
-            convlayers.append(nn.MaxPool2d(pool_size))
-            if len(hidden_size) > i + 1:
-                convlayers.append(ConvBlock(hidden_size[i], hidden_size[i+1], kernel_size, stride, padding))
-                convlayers.append(self.act)
-        self.convlayers = nn.Sequential(*convlayers)
-
-        # Sostituisci il layer FC con un layer convoluzionale 1x1
-        self.final_conv = nn.Conv2d(hidden_size[-1], classes, kernel_size = 1)
-
-        # Aggiungi un layer di upsampling se necessario
-        self.upsample = None
-        scale_factor = pool_size ** len(hidden_size)
-        self.upsample = nn.Upsample(scale_factor = scale_factor, mode = 'bilinear', align_corners = False)
-
-    def forward(self, x):
-        cnn_out = self.convlayers(x)
-        out = self.final_conv(cnn_out)
-        
-        if self.upsample:
-            out = self.upsample(out)
-        
-        return out
