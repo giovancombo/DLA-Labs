@@ -4,11 +4,14 @@
 
 # Code for EXERCISES 1.1, 1.2 and 2.1
 
+import os
 import torch
 import torch.nn as nn
+from torch.optim import Adam
 from torch.utils.data import DataLoader, random_split
 import torchvision
 import torchvision.transforms as transforms
+import time
 import yaml
 import wandb
 
@@ -65,23 +68,30 @@ if __name__ == '__main__':
 
     # Defining the loss function and the optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr =  params['learning_rate'], weight_decay = params['weight_decay'])
+    optimizer = Adam(model.parameters(), lr = params['learning_rate'], weight_decay = params['weight_decay'])
+    #scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma = params['gamma'])
 
     print(f"Model instantiated: {model.__class__.__name__}")
     print(f"Number of parameters: {sum(p.numel() for p in model.parameters() if p.requires_grad)}\n")
     print(f"Optimizer: {optimizer.__class__.__name__}; Loss: {criterion}; Device: {device}")
 
 
-    # Training loop
+    # Training
     wandb.login()
-    with wandb.init(project = 'DLA_Lab1_CNN', config = params):
+    with wandb.init(project = 'DLA_Lab1_CNN', config = params, name = f"{model.__class__.__name__}-{params['dataset']}_depth{params['depth']}_bs{params['batch_size']}_lr{params['learning_rate']}_wd{params['weight_decay']}_dr{params['dropout']}"):
         config = wandb.config
 
         wandb.watch(model, criterion, log = "all", log_freq = params['log_freq'])
         trainer = Trainer(params['dataset'], model, device, params['log_freq'], params['convnet'])
 
+        # Directory for saving checkpoints
+        checkpoint_dir = f"checkpoints/{config['dataset']}/{model.__class__.__name__}_depth{config['depth']}_ep{config['epochs']}_bs{config['batch_size']}_lr{config['learning_rate']}_wd{config['weight_decay']}_dr{config['dropout']}_" + str(time.time())[:8]
+        os.makedirs(checkpoint_dir, exist_ok = True)
+
+        # Epochs loop
+        best_val_acc = 0
         for epoch in range(params['epochs']):
-            train_loss, train_acc, ct = trainer.train(train_loader, optimizer, criterion, epoch)
+            train_loss, train_acc = trainer.train(train_loader, criterion, optimizer, epoch)
             val_loss, val_acc = trainer.evaluate(val_loader, epoch)
      
             print(f'\nEnd of epoch {epoch + 1} | Validation Loss: {val_loss:.4f}; Validation Accuracy: {val_acc}%\n')
@@ -89,4 +99,13 @@ if __name__ == '__main__':
                     "Validation Loss": val_loss,
                     "Epoch": epoch + 1,
                     "Train Accuracy": train_acc,
-                    "Validation Accuracy": val_acc}, step = ct)
+                    "Validation Accuracy": val_acc}, step = trainer.global_step)
+
+            # Saving checkpoints
+            if val_acc > best_val_acc:
+                best_val_acc = val_acc
+                my_utils.save_checkpoint(epoch, model, optimizer, best_val_acc, checkpoint_dir, is_best = True)
+                print("New best model saved!")
+            
+            my_utils.save_checkpoint(epoch, model, optimizer, best_val_acc, checkpoint_dir)
+            print(f"Checkpoint saved for epoch {epoch+1}")
