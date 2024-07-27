@@ -17,17 +17,17 @@ class Trainer:
         self.device = device
         self.log_freq = log_freq
         self.convnet = convnet
+        self.global_step = 0
 
-    def train(self, train_loader, criterion, optimizer, epoch):
+    def train(self, train_loader, criterion, optimizer, epoch, scheduler = None):
         self.model.train()
         _, input_size, _ = my_utils.set_shapes(self.dataset)
         train_loss = 0
         batches_ct = 0
-        examples_ct = 0
         correct, total = 0, 0
         losses, accuracies = [], []
 
-        for batch, (images, labels) in tqdm(enumerate(train_loader), desc = f'Training epoch {epoch}'):
+        for batch, (images, labels) in tqdm(enumerate(train_loader), desc = f'Training epoch {epoch + 1}'):
             optimizer.zero_grad()
             images, labels = images.to(self.device), labels.to(self.device)
             if not self.convnet:
@@ -38,7 +38,7 @@ class Trainer:
             loss = criterion(outputs, labels)
             train_loss += loss.item()
             batches_ct += 1
-            examples_ct += len(images)
+            self.global_step += len(images)            
 
             # Backward pass
             loss.backward()
@@ -58,9 +58,12 @@ class Trainer:
                 print(f'Epoch {epoch + 1} | Train Loss = {mean_loss:.4f}; Train Accuracy = {mean_accuracy:.2f}%')
                 wandb.log({"Training/Training Loss": loss.item(),
                             "Training/Training Accuracy": batch_accuracy,
-                            "Training/Training Epochs": epoch + 1}, step = examples_ct)
+                            "Training/Training Epochs": epoch + 1}, step = self.global_step)
+            
+        if scheduler:
+            scheduler.step()
 
-        return mean_loss, mean_accuracy, examples_ct
+        return mean_loss, mean_accuracy
 
 
     @torch.no_grad()
@@ -71,7 +74,7 @@ class Trainer:
         correct = 0
         
         with torch.no_grad():
-            for images, labels in tqdm(test_loader, desc = f'Testing epoch {epoch}'):
+            for images, labels in tqdm(test_loader, desc = f'Testing epoch {epoch + 1}'):
                 images, labels = images.to(self.device), labels.to(self.device)
                 if not self.convnet:
                     outputs = self.model(images.reshape(-1, input_size))
