@@ -4,7 +4,6 @@
 
 import os
 import torch
-import time
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
@@ -23,45 +22,13 @@ def set_shapes(dataset):
     return input_shape, input_size, classes
 
 
-# Saves the model
-def save_model(model, dataset, config, model_name):
-    folder = f"models/{dataset}"
-    if not os.path.exists(folder):
-        os.makedirs(folder)
-    torch.save(model, folder + model_path(config, model_name) + "-" + str(time.time()) + "model.pt")
-    print("Model saved!")
-
-
-# Assigns a unique name to models for saving
-def model_path(config, model_name):
-    if model_name == "MLP":
-        path = "/mlp-" + "depth" + str(len(config.hidden_size)) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
-    if model_name == "ResidualMLP":
-        path = "/residualmlp-" + "depth" + str(len(config.hidden_size)) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
-    elif model_name == "CNN":
-        path = "/cnn-depth" + str(config.depth) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
-    elif model_name == "ResidualCNN":
-        path = "/residualcnn-depth" + str(config.depth) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
-    elif model_name == "ResNet":
-        path = "/resnet" + str(config.resnet_name) + "-depth" + str(config.depth) + "-ep" + str(config.epochs) + "-lr" + str(config.learning_rate) + "-bs" + str(config.batch_size) + "-dr" + str(config.dropout)
-    return path
-
-
-# Plots some images from the dataset
-def plot_images(model, images, labels, epoch, config):
-    fig, axs = plt.subplots(1, 5, figsize=(15, 4))
-
-    for i, image_path in enumerate(images):
-        img = mpimg.imread(image_path)
-        axs[i].imshow(img)
-        axs[i].axis('off')
-        axs[i].set_title(labels[i], fontsize=20)
-
-    plt.tight_layout()
-    plt.figtext(0.5, 0.05, "Epoch: " + str(epoch), ha = 'center', fontsize = 20)
-
-    folder = f"images/{config['dataset']}"
-    if not os.path.exists(folder):
-        os.makedirs(folder)
-    plt.savefig(folder + f"/{model.__class__.__name__}-epoch{epoch}.png")
-    plt.close()
+# Saves the model checkpoint
+def save_checkpoint(epoch, model, optimizer, best_accuracy, directory, is_best = False):
+    checkpoint = {'epoch': epoch,
+                  'model_state_dict': model.state_dict(),
+                  'optimizer_state_dict': optimizer.state_dict(),
+                  'best_accuracy': best_accuracy
+                  }
+    if is_best:
+        torch.save(checkpoint, os.path.join(directory, f'bestmodel.pth'))
+    torch.save(checkpoint, os.path.join(directory, f'checkpoint_ep{epoch+1}.pth'))
