@@ -15,6 +15,7 @@ from PIL import Image, ImageFile
 import matplotlib.pyplot as plt
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
+
 def returnCAM(feature_conv, weight_softmax, class_idx, width, height):
     # Generate the Class Activation Maps upsample to (width x height)
     size_upsample = (width, height)
