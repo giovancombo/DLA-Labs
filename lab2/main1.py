@@ -1,93 +1,43 @@
-# Imports and dependencies
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab2
+
+# Code for EXERCISE 1
+
 import os
 import torch
-import torch.nn as nn
-import torch.optim
+import torch.optim as optim
+import yaml
 import wandb
+import time
 
 from transformer import TransformerDecoder
 
-project_name = "DLA_Lab2_LLM"
 
-# Hyperparameters
-text = 'divina_commedia'
-train_size = 0.7
-
-batch_size = 64             # Batch size = number of independent sequences of text, analyzed in parallel
-block_size = 512            # Dimension of an input seuqence of characters, for next character prediction
-n_embd = 100                # Embedding dimension for each token
-n_heads = 4                 # Number of Self-Attention heads in a Multi-Head Attention block
-n_layers = 4                # Number of Blocks of the Transformer
-learning_rate = 5e-4
-dropout = 0.4
-
-eval_iters = 200
-total_steps = 5000
-log_interval = 100
-
-# Generation configuration
-generation = False
-new_tokens = 500           # Number of tokens generated
-
-# Saving configuration
-save_model = False
-folder = f"1_transformers/{text}"
-model_name = "model_" + text + "_bs" + str(batch_size) + "_bl" + str(block_size) + "_ne" + str(n_embd) + "_nh" + str(n_heads) + "_nl" + str(n_layers) + "_lr" + str(learning_rate)
-
-# Creating a configuration dictionary for logging in wandb
-config = dict(
-    text = text,
-    batch_size = batch_size,
-    block_size = block_size,
-    n_embd = n_embd,
-    n_heads = n_heads,
-    n_layers = n_layers,
-    learning_rate = learning_rate,
-    dropout = dropout,
-    eval_iters = eval_iters,
-    total_steps = total_steps,
-    log_interval = log_interval,
-    train_size = train_size,)
-
-
-def build_model(vocab_size, block_size, n_embd, n_heads, n_layers, learning_rate, dropout, device):
-    model = TransformerDecoder(vocab_size, block_size, n_embd, n_heads, n_layers, dropout).to(device)
-    criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr = learning_rate)
-
-    n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-
-    print(f"Model {model.__class__.__name__} instantiated!\n" + f"Number of parameters: {n_params}")
-    print(f"Optimizer: {optimizer.__class__.__name__}")
-    print(optimizer)
-
-    return model, criterion, optimizer
-
-# Let's define a function for getting a new batch of random sequences of characters in the text
-def get_batch(split):
+# Function for getting a new batch of random sequences of characters in the text
+def get_batch(split, block_size, batch_size, device):
     data = train_data if split == 'train' else val_data
+    # Drawing a set of batch_size indexes in the text
+    idx = torch.randint(len(data) - block_size, (batch_size,))
+    # Stacking block_size characters from each index
+    x = torch.stack([data[i : i + block_size] for i in idx])
+    # Creating targets (= inputs shifted by 1)
+    y = torch.stack([data[i + 1 : i + block_size + 1] for i in idx])
 
-    idx = torch.randint(len(data) - block_size, (batch_size,))      # Drawing a set of batch_size indexes in the text
-    x = torch.stack([data[i : i+block_size] for i in idx])          # Stacking block_size characters from each index
-    y = torch.stack([data[i+1 : i+block_size+1] for i in idx])      # Creating the targets (= inputs shifted by 1)
-    x, y = x.to(device), y.to(device)
+    return x.to(device), y.to(device)
 
-    return x, y
-
-# Let's create a function for saving and visualizing train and validation losses
-@torch.no_grad()                            # Context Manager for disabling gradient calculation: better memory usage
-def estimate_loss(model, eval_iters = 10):
-    outloss = {}
-    outacc = {}
+# Function for saving and visualizing train and validation losses
+@torch.no_grad()
+def estimate_loss(model, block_size, batch_size, device, eval_iters = 10):
+    outloss, outacc = {}, {}
     model.eval()
     for split in ['train', 'val']:
         losses = torch.zeros(eval_iters)
         accuracies = torch.zeros(eval_iters)
         for k in range(eval_iters):         # Evaluating the losses eval_iters times on different batches
-            X, Y = get_batch(split)
+            X, Y = get_batch(split, block_size, batch_size, device)
             logits, targets, loss = model(X, Y)
 
-            # Computing accuracy
             total, correct = 0, 0
             _, pred = torch.max(logits.data, 1)
             total += targets.size(0)
@@ -110,15 +60,12 @@ def log_validation(epoch, mean_loss, val_loss, mean_accuracy, val_accuracy, step
                "Validation Accuracy": val_accuracy,}, step = step)
 
 # Training Loop      
-def train(model, criterion, optimizer, log_interval, total_steps, batch_size, eval_iters):
-    # Telling W&B to watch gradients and the model parameters
-    wandb.watch(model, criterion, log = "all", log_freq = log_interval)
+def train(model, optimizer, log_interval, total_steps, block_size, batch_size, eval_iters, device):
     example_ct = 0
-
     print("Starting Training...")
     for step in range(total_steps):
         model.train()
-        xb, yb = get_batch('train')                 # Sampling a batch of data
+        xb, yb = get_batch('train', block_size, batch_size, device)
         _, _, loss = model(xb, yb)
         
         optimizer.zero_grad(set_to_none = True)
@@ -126,17 +73,14 @@ def train(model, criterion, optimizer, log_interval, total_steps, batch_size, ev
         optimizer.step()
 
         example_ct += batch_size
-
         if step % log_interval == 0 or step == total_steps - 1:
-            losses, accuracies = estimate_loss(model, eval_iters = eval_iters)
+            losses, accuracies = estimate_loss(model, block_size, batch_size, device, eval_iters = eval_iters)
             log_validation(step, losses['train'], losses['val'], accuracies['train'], accuracies['val'], step)
             print(f"Step {step+1}/{total_steps}:\tTrain Loss = {losses['train']:.4f}; Val Loss = {losses['val']:.4f}\tTrain Accuracy = {accuracies['train']:.2f}%; Val Accuracy = {accuracies['val']:.2f}%")
 
-    print("\nTraining completed!")
-
 # Function for generating new text!
 def text_generator(model, new_tokens, block_size, device):
-    # context = First character of the generated sequence = (1,1) Tensor of value 0 --> Token embedding for New Line
+    # context = First character of the generated sequence = (1,1) Tensor of value 0: Token embedding for New Line
     context = torch.zeros((1,1), dtype = torch.long, device = device)
 
     print("\nTEXT GENERATION ACTIVATED! Generating new text...")
@@ -147,58 +91,64 @@ def text_generator(model, new_tokens, block_size, device):
 
 
 if __name__ == '__main__':
+    # Loading configuration from YAML file
+    with open("params.yaml", 'r') as f:
+        params = yaml.safe_load(f)
 
-    # Device configuration
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    print(f"Device: {device}")
 
-    wandb.login()
-    print("Initializing Weights & Biases run...")
-
-    # Downloading the Dante's Divina Commedia txt file from the internet
-    #!wget https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt
+    # Downloading Dante's Divine Comedy .txt file
+    # !wget https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt
 
     # Opening and reading the content of the input text file
-    with open("data/" + text + '.txt', 'r', encoding = 'utf-8') as f:
+    with open("data/" + params['text'] + '.txt', 'r', encoding = 'utf-8') as f:
         text = f.read()
     print("Length of dataset in characters:", len(text))
 
-    # Creating a sorted set of all the unique characters present in the text
+    # Creating a sorted set of all unique characters present in the text
     chars = sorted(list(set(text)))
-    vocab_size = len(chars)             # Number of unique characters in the text = size of the vocabulary
+    vocab_size = len(chars)
 
     # Creating a dictionary for mapping characters to integers and viceversa
     stoi = {ch:i for i,ch in enumerate(chars)}
     itos = {i:ch for i,ch in enumerate(chars)}
-
     encode = lambda s: [stoi[i] for i in s]
     decode = lambda l: ''.join([itos[i] for i in l])
 
-    # text = list of characters
-    # data = list of integers of all the text --> it's our dataset
+    # text = list of characters; data = list of corresponding integers: our dataset
     data = torch.tensor(encode(text), dtype = torch.long, device = device)
 
-    # Splitting our dataset in train and validation sets
-    n = int(train_size*len(data))
-    train_data, val_data = data[:n], data[n:]
+    # Splitting dataset in train and validation sets
+    isplit = int(params['train_size'] * len(data))
+    train_data, val_data = data[:isplit].to(device), data[isplit:].to(device)
 
-    with wandb.init(project = project_name, config = config):
+
+    # Model, Loss and Optimizer instantiation
+    model = TransformerDecoder(vocab_size, params['block_size'], params['n_embd'], params['n_heads'], params['n_layers'], params['dropout']).to(device)
+    optimizer = optim.AdamW(model.parameters(), lr = params['learning_rate'])
+
+    print(f"Model {model.__class__.__name__} instantiated!")
+    print(f"Optimizer: {optimizer.__class__.__name__}; Number of parameters: {sum(p.numel() for p in model.parameters() if p.requires_grad)}")
+    print(f"Device: {device}")
+
+    # Training the model
+    wandb.login()
+    with wandb.init(project = "DLA_Lab2_LLM", config = params, name = f"{params['text'][:6]}_bs{params['batch_size']}_bl{params['block_size']}_lr{params['learning_rate']}_dr{params['dropout']}"):
         config = wandb.config
-        
-        # Building model and optimizer
-        model, criterion, optimizer = build_model(vocab_size, block_size, n_embd, n_heads, n_layers, learning_rate, dropout, device)
 
         # Training the model
-        train(model, criterion, optimizer, log_interval, total_steps, batch_size, eval_iters)
-        wandb.unwatch(model)
+        wandb.watch(model, log = "all", log_freq = params['log_freq'])
+        train(model, optimizer, params['log_freq'], params['total_steps'], params['block_size'], params['batch_size'], params['eval_iters'], device)
 
-        # Generating new text from the model trained (optional)
-        if generation:
-            text_generator(model, new_tokens)
+        # Generating new text from the trained model (optional)
+        if params['generate_text']:
+            text_generator(model, params['new_tokens'])
 
         # Saving the model (optional)
+        save_model = params['save_model']
+        model_name = f"bs{params['batch_size']}_bl{params['block_size']}_ne{params['n_embd']}_nh{params['n_heads']}_nl{params['n_layers']}_lr{params['learning_rate']}_dr{params['dropout']}_" + str(time.time())[-7:]
         if save_model:
-            if not os.path.exists(folder):
-                os.makedirs(folder)
-            torch.save(model, f"{folder}/{model_name}.pt")
+            folder = f"1_models/{params['text']}"
+            os.makedirs(folder, exist_ok = True)
+            torch.save(model.state_dict(), f"{folder}/{model_name}.pth")
             print('\nModel saved!')
