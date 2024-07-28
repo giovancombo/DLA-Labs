@@ -87,7 +87,7 @@ if __name__ == '__main__':
         plt.title(f"TSNE plot of train features for {name} Classification")
         plt.colorbar()
         plt.legend()
-        plt.savefig(f'images/{name[:7]}/tsne_train.png')
+        plt.savefig(f'images/{name[:7]}/{name[:7]}-tsne_train.png')
         plt.show()
 
         tsne_val = TSNE(n_components = 2, random_state = 1492).fit_transform(test_features[:1000])
@@ -96,7 +96,7 @@ if __name__ == '__main__':
         plt.title(f"TSNE plot of test features for {name} Classification")
         plt.colorbar()
         plt.legend()
-        plt.savefig(f'images/{name[:7]}/tsne_val.png')
+        plt.savefig(f'images/{name[:7]}/{name[:7]}-tsne_val.png')
         plt.show()
 
         # Create confusion matrix
@@ -117,5 +117,5 @@ if __name__ == '__main__':
                     color = "white" if cm[i, j] > thresh else "black")
         plt.ylabel("True label")
         plt.xlabel("Predicted label")
-        plt.savefig(f'images/{name[:7]}/confusion_matrix.png')
+        plt.savefig(f'images/{name[:7]}/{name[:7]}-confusion_matrix.png')
         plt.show()
