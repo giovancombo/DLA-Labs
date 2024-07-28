@@ -1,0 +1,26 @@
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab2
+
+# HYPERPARAMETERS for Exercise 1 - Training a Language Model
+text: 'divina_commedia'         # 'divina_commedia' or 'taylor_swift'
+train_size: 0.7
+
+# Save & Generation configuration
+save_model: True
+generate_text: False
+new_tokens: 500                 # Number of tokens generated
+
+batch_size: 64
+total_steps: 5000               # Total number of training steps
+eval_iters: 200                 # Number of iterations between evaluations
+
+# Model configuration
+block_size: 512                 # Dimension of an input seuqence of characters, for next character prediction
+n_embd: 128                     # Embedding dimension for each token
+n_heads: 4                      # Number of Self-Attention heads in a Multi-Head Attention block
+n_layers: 4                     # Number of Blocks of the Transformer
+learning_rate: !!float 5e-4
+dropout: 0.4
+
+log_freq: 20                    # Frequency of logging training information
