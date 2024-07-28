@@ -1,4 +1,4 @@
-# Raw implementation of the REINFORCE algorithm from professor Andrew David Bagdanov
+# NOTE: this is a raw implementation of the REINFORCE algorithm by professor Andrew David Bagdanov
 
 # Standard imports.
 import numpy as np
