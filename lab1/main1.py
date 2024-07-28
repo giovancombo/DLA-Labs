@@ -19,6 +19,7 @@ from models import MLP, CNN, ResidualMLP, ResidualCNN, ResNet
 from trainer import Trainer
 import my_utils
 
+
 if __name__ == '__main__':        
     # Loading the configuration file
     with open("params.yaml") as f:
