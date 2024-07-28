@@ -13,7 +13,7 @@ import numpy as np
 import random
 
 
-def combo_dqn():
+def combo_dqn():    
     GAMMA = 0.99                    # Discount rate for computing TD target
     LEARNING_RATE = 5e-4
     BATCH_SIZE = 32                 # Number of experiences to sample in each training step from the buffer
@@ -23,6 +23,9 @@ def combo_dqn():
     EPSILON_END = 0.02
     EPSILON_DECAY = 10000           # Number of steps to decay epsilon from EPSILON_START to EPSILON_END
     TARGET_UPDATE_FREQ = 1000
+
+    env_name = 'CartPole-v1'
+
 
     class DQN(nn.Module):
         def __init__(self, env):
@@ -47,7 +50,7 @@ def combo_dqn():
             action = max_q_index.detach().item()
             return action
 
-    env = gym.make('CartPole-v1')
+    env = gym.make(env_name)
 
     replay_buffer = deque(maxlen = BUFFER_SIZE)
     rew_buffer = deque([0.0], maxlen = 100)
@@ -132,3 +135,7 @@ def combo_dqn():
     # Logging
     if step % 50 == 0:
         print(f'Step {step}: Avg Reward: {np.mean(rew_buffer)}')
+
+
+if __name__ == '__main__':
+    combo_dqn()
