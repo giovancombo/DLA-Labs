@@ -1,0 +1,31 @@
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab3
+
+# Hyperparameters for REINFORCE, DQN and PPO algorithms and their training
+
+# 'gym_navigation:NavigationGoal-v0', 'LunarLander-v2', 'CartPole-v1', ...
+env_name: "gym_navigation:NavigationGoal-v0"
+
+hidden_size: 64                   # Hidden size for the Policy and Value networks (REINFORCE and PPO)
+lr: !!float 1e-4                  # Learning rate for the Policy network (REINFORCE)
+gamma: 0.99                       # Discount factor (REINFORCE)
+
+policy_lr: !!float 3e-4           # Learning rate for the Policy network (PPO, my_ppo1)
+value_lr: !!float 3e-4            # Learning rate for the Value network (PPO, my_ppo1)
+target_kl_div: 0.02
+
+N: 20
+batch_size: 32
+ppo_lr: 0.00025                   # Learning rate for the (PPO, my_ppo2) algorithm
+
+# Training
+episodes: 1500
+max_steps: 1000                   # Maximum number of steps per episode
+max_policy_train_iters: 40
+value_train_iters: 40
+
+log_freq: 10
+
+wandb_log: True
+capture_video: False
