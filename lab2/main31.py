@@ -28,7 +28,7 @@ classes = len(labels)
 pretrained_model = 'distilbert-base-uncased'
 
 # Features Extraction from the dataset
-extract_features = False                # If True, extracts the features from the dataset and saves them again
+extract_features = True                 # If True, extracts the features from the dataset and saves them again
 batch_size = 64
 
 mlp = False
