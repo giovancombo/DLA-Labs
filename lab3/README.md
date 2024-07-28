@@ -22,14 +22,19 @@ The **Deep Q-Learning** implementation for solving this exercise can be found in
 
 Running the script will start running episodes using a pre-trained agent. Fantechi's clever implementation allows me to change mode from Training to Testing only by modifying the `TRAIN` flag at the top.
 
-Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I initially decide to train the agent for 2000 epochs, but soon I discover that the training is very slow, so I reduce the epochs to 1500 and 1000.
+Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I initially decide to train the agent for 2000 episodes, but soon I discover that the training is very slow, so I reduced them to 1000.
 
 Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint loaded to see how the agent performs.
+
+**RUNS**
+
+Qualitatively, it's possible to see that the agents looks like it has not learned so well to find the goal. Many times, the agent hits the walls or obstables without even trying to change direction, even just after the spawn. Some other times, the agent finds its way to the goal, until it stops right in front of it and changes direction.
 
 ---
 ## Exercise 3: Going Deeper
 
 ### Exercise 3.1: Solving the environment with `REINFORCE`
+
 REINFORCE is one of the first Policy Gradient DRL algorithms for training an agent. Since it is also one of the most simple ones, I decided not only to use professor Bagdanov's implementation of REINFORCE, but to implement my own version following a tutorial.
 
 **Note**: There is a *design flaw* in the environment implementation that will lead to strange (by explainable) behavior in agents trained with `REINFORCE`. See if you can figure it out and fix it.
@@ -53,9 +58,27 @@ After working in a custom environment, I really wanted to try some of the enviro
 
 So, in this section, I will compare the performances of REINFORCE and Deep Q-Learning algorithms in solving two of the most common OpenAI Gymnasium environments: [CartPole](https://gymnasium.farama.org/environments/classic_control/cart_pole/), and [Lunar Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/).
 
+To set things up, I firstly implement a lander that takes totally random actions at each time tick. Obviously, the total reward will be very bad.
+
+**random run on Lander**
+
+Now I will try to use the REINFORCE algorithm: running the two versions of it made me find out that the episode-wise REINFORCE is the only one that "works" in this task, as opposite to the CartPole environment, which showed better results with the interaction-wise REINFORCE.
+
+**REINFORCE on Lander**
+
+And finally, the Deep Q-Learning technique.
+
+**DQN on Lander**
+
+To complete the experience, let's try to solve also the CartPole environment.
+
+**REINFORCE and DQN on CartPole**
+
 ---
 ### Exercise 3.3: Advanced techniques 
 
 The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Nowadays, one of the most powerful approaches for solving DRL environments is [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347).
 
 Curious about its implementation, I decided to use [this off-the-shelf implementation of PPO]() to solve the Lunar Lander environment and compare my results with those of Q-Learning and REINFORCE.
+
+PPO uses the Actor-Critic approach for the agent. This means that it uses two models, one called the Actor and the other called Critic. The Actor model performs the task of learning what action to take under a particular observed state of the environment. In the LunarLander case, it takes eight values list of the game as input which represents the current state of our rocket and gives a particular action what engine to fire as output.
