@@ -2,7 +2,6 @@
 # Created by Giovanni Colombo - Mat. 7092745
 # Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab2
 
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
