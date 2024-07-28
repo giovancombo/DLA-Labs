@@ -15,6 +15,7 @@ import yaml
 
 from trainer import Trainer
 
+
 classes = 10
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
