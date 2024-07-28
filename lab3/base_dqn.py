@@ -1,5 +1,6 @@
 # NOTE: my only contribution to this code was adding Weights & Biases compatibility for performance tracking.
 
+import os
 import gymnasium as gym
 import torch
 import torch.nn as nn
@@ -192,7 +193,8 @@ if TRAIN:
                        "policy_loss": loss.item(),
                        "running_reward": rewards[-1]}, step = i_episode)
 
-    PATH = f'./checkpoints/{env_name}/baseDQN_{env_name}_eps{EPS}_bs{BATCH_SIZE}_lr{LEARNING_RATE}_gamma{GAMMA}.pth'
+    PATH = f'./gym_navigation/checkpoints/{env_name}/baseDQN_{env_name}_eps{EPS}_bs{BATCH_SIZE}_lr{LEARNING_RATE}_gamma{GAMMA}.pth'
+    os.makedirs(PATH, exist_ok = True)
     torch.save(q_function.state_dict(), PATH)
 
     if wandb_log:
@@ -214,7 +216,7 @@ else:
     n_observations = len(state_observation)
 
     q_function = DQLN(n_observations, n_actions).to(device)
-    PATH = f'./checkpoints/{env_name}/baseDQN_{env_name}_eps{EPS}_bs{BATCH_SIZE}_lr{LEARNING_RATE}_gamma{GAMMA}.pth'
+    PATH = f'./gym_navigation/checkpoints/{env_name}/baseDQN_{env_name}_eps{EPS}_bs{BATCH_SIZE}_lr{LEARNING_RATE}_gamma{GAMMA}.pth'
     q_function.load_state_dict(torch.load(PATH))
     not_terminated = 0
     success = 0
