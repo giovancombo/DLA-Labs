@@ -110,8 +110,7 @@ class FeedForward(nn.Module):
             nn.Linear(n_embd, 4 * n_embd),    # Vaswani's paper uses scaling factor 4
             nn.ReLU(),
             nn.Linear(4 * n_embd, n_embd),
-            nn.Dropout(dropout),
-        )
+            nn.Dropout(dropout))
 
     def forward(self, x):
         return self.ffwd(x)
