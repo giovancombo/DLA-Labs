@@ -86,8 +86,7 @@ def combo_reinforce(env, policy, lr = 1e-2, gamma = 0.999, episodes = 10, device
     return running_rewards
 
 
-
-# The actual REINFORCE algorithm
+# The actual REINFORCE algorithm with baseline
 def combo_reinforce_with_baseline(env, policy, lr = 1e-2, gamma = 0.999, episodes = 10, device = 'cpu', wandb_log = False):
     optimizer = torch.optim.Adam(policy.parameters(), lr = lr)
     running_rewards = [0.0]
