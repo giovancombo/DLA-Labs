@@ -1,8 +1,25 @@
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab3
+
+# An Off-the-Shelf implementation of the Proximal Policy Optimization algorithm
+
 import torch
 import torch.nn as nn
 from torch.distributions import Categorical
 import numpy as np
 import wandb
+
+
+PPO_CLIP_VAL = 0.2
+TARGET_KL_DIV = 0.01
+MAX_POLICY_TRAIN_ITERS = 80
+VALUE_TRAIN_ITERS = 80
+POLICY_LR = 3e-4
+VALUE_LR = 1e-2
+GAMMA = 0.99
+DECAY = 0.97
+MAX_STEPS = 1000
 
 def layer_init(layer, std = np.sqrt(2), bias_const = 0.0):
     nn.init.orthogonal_(layer.weight, std)
@@ -48,27 +65,20 @@ class PPOAgent(nn.Module):
 
 
 class PPOTrainer():
-  def __init__(self,
-              actor_critic,
-              ppo_clip_val=0.2,
-              target_kl_div=0.01,
-              max_policy_train_iters=80,
-              value_train_iters=80,
-              policy_lr=3e-4,
-              value_lr=1e-2):
+  def __init__(self, actor_critic, ppo_clip_val = PPO_CLIP_VAL, target_kl_div = TARGET_KL_DIV,
+                                   max_policy_train_iters = MAX_POLICY_TRAIN_ITERS,
+                                   value_train_iters = VALUE_TRAIN_ITERS, policy_lr = POLICY_LR, value_lr = VALUE_LR):
     self.ac = actor_critic
     self.ppo_clip_val = ppo_clip_val
     self.target_kl_div = target_kl_div
     self.max_policy_train_iters = max_policy_train_iters
     self.value_train_iters = value_train_iters
 
-    policy_params = list(self.ac.shared_layers.parameters()) + \
-        list(self.ac.policy_layers.parameters())
-    self.policy_optim = torch.optim.Adam(policy_params, lr=policy_lr)
+    policy_params = list(self.ac.shared_layers.parameters()) + list(self.ac.policy_layers.parameters())
+    self.policy_optim = torch.optim.Adam(policy_params, lr = policy_lr)
 
-    value_params = list(self.ac.shared_layers.parameters()) + \
-        list(self.ac.value_layers.parameters())
-    self.value_optim = torch.optim.Adam(value_params, lr=value_lr)
+    value_params = list(self.ac.shared_layers.parameters()) + list(self.ac.value_layers.parameters())
+    self.value_optim = torch.optim.Adam(value_params, lr = value_lr)
 
   def train_policy(self, obs, acts, old_log_probs, gaes):
     for _ in range(self.max_policy_train_iters):
@@ -103,9 +113,9 @@ class PPOTrainer():
 
       value_loss.backward()
       self.value_optim.step()
-    
 
-def discount_rewards(rewards, gamma=0.99):
+
+def discount_rewards(rewards, gamma = GAMMA):
     """
     Return discounted rewards based on the given rewards and gamma param.
     """
@@ -115,7 +125,7 @@ def discount_rewards(rewards, gamma=0.99):
     return np.array(new_rewards[::-1])
 
 
-def calculate_gaes(rewards, values, gamma=0.99, decay=0.97):
+def calculate_gaes(rewards, values, gamma = GAMMA, decay = DECAY):
     """
     Return the General Advantage Estimates from the given rewards and values.
     Paper: https://arxiv.org/pdf/1506.02438.pdf
@@ -124,13 +134,13 @@ def calculate_gaes(rewards, values, gamma=0.99, decay=0.97):
     deltas = [rew + gamma * next_val - val for rew, val, next_val in zip(rewards, values, next_values)]
 
     gaes = [deltas[-1]]
-    for i in reversed(range(len(deltas)-1)):
+    for i in reversed(range(len(deltas) - 1)):
         gaes.append(deltas[i] + decay * gamma * gaes[-1])
 
     return np.array(gaes[::-1])
 
 
-def rollout(model, env, device, max_steps=1000):
+def rollout(model, env, device, max_steps = MAX_STEPS):
     """
     Performs a single rollout.
     Returns training data in the shape (n_steps, observation_shape)
@@ -142,8 +152,8 @@ def rollout(model, env, device, max_steps=1000):
 
     ep_reward = 0
     for _ in range(max_steps):
-        logits, val = model(torch.tensor(obs, dtype=torch.float32, device = device))
-        act_distribution = Categorical(logits=logits)
+        logits, val = model(torch.tensor(obs, dtype = torch.float32, device = device))
+        act_distribution = Categorical(logits = logits)
         act = act_distribution.sample()
         act_log_prob = act_distribution.log_prob(act).item()
 
@@ -170,7 +180,7 @@ def rollout(model, env, device, max_steps=1000):
 def train_ppo(env, model, ppo_trainer, episodes, max_steps, log_freq, device, wandb_log, config):
 
     if wandb_log:
-      wandb.init(project = 'DLA_Lab3_DRL', config = config)
+      wandb.init(project = 'DLA_Lab3_DRL', config = config, name = f"myPPO_{env.spec.id}_plr{POLICY_LR}_vlr{VALUE_LR}_gamma{GAMMA}")
       config = wandb.config
       wandb.watch(model, log = 'all')
 
@@ -179,16 +189,13 @@ def train_ppo(env, model, ppo_trainer, episodes, max_steps, log_freq, device, wa
         # Perform rollout
         train_data, reward = rollout(model, env, device, max_steps=max_steps)
         ep_rewards.append(reward)
-
         # Shuffle
         permute_idxs = np.random.permutation(len(train_data[0]))
-
         # Policy data
         obs = torch.tensor(train_data[0][permute_idxs], dtype=torch.float32, device=device)
         acts = torch.tensor(train_data[1][permute_idxs], dtype=torch.int32, device=device)
         gaes = torch.tensor(train_data[3][permute_idxs], dtype=torch.float32, device=device)
         act_log_probs = torch.tensor(train_data[4][permute_idxs], dtype=torch.float32, device=device)
-
         # Value data
         returns = discount_rewards(train_data[2])[permute_idxs]
         returns = torch.tensor(returns, dtype=torch.float32, device=device)
