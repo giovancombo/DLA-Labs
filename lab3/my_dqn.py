@@ -1,3 +1,9 @@
+# Deep Learning Applications 2023 course, held by Professor Andrew David Bagdanov - University of Florence, Italy
+# Created by Giovanni Colombo - Mat. 7092745
+# Dedicated Repository on GitHub at https://github.com/giovancombo/DLA_Labs/tree/main/lab3
+
+# My implementation of the Deep Q-Learning algorithm
+
 import torch
 import torch.nn as nn
 import gymnasium as gym
@@ -5,6 +11,7 @@ from collections import deque
 import itertools
 import numpy as np
 import random
+
 
 def combo_dqn():
     GAMMA = 0.99                    # Discount rate for computing TD target
@@ -22,14 +29,12 @@ def combo_dqn():
             super().__init__()
 
             in_features = int(np.prod(env.observation_space.shape))
-
             self.net = nn.Sequential(
                 nn.Linear(in_features, 64),
                 nn.Tanh(),
                 nn.Linear(64, 64),
                 nn.Tanh(),
-                nn.Linear(64, env.action_space.n)
-            )
+                nn.Linear(64, env.action_space.n))
         
         def forward(self, x):
             return self.net(x)
@@ -44,16 +49,15 @@ def combo_dqn():
 
     env = gym.make('CartPole-v1')
 
-    replay_buffer = deque(maxlen=BUFFER_SIZE)
-    rew_buffer = deque([0.0], maxlen=100)
-    episode_reward = 0.0        # Implementabile più efficientemente con il Monitor di gym
+    replay_buffer = deque(maxlen = BUFFER_SIZE)
+    rew_buffer = deque([0.0], maxlen = 100)
+    episode_reward = 0.0
 
     online_net = DQN(env)
     target_net = DQN(env)
-    target_net.load_state_dict(online_net.state_dict()) # Inizializziamo i pesi della rete target con gli stessi della rete online
-
+    # Initialize target network with the same weights of the online network
+    target_net.load_state_dict(online_net.state_dict())
     optimizer = torch.optim.Adam(online_net.parameters(), lr = LEARNING_RATE)
-
 
     # Initialize Replay Buffer
     obs, _ = env.reset()
@@ -67,7 +71,6 @@ def combo_dqn():
 
         if done:
             obs, _ = env.reset()
-
 
     # Training Loop
     obs, _ = env.reset()
@@ -93,7 +96,8 @@ def combo_dqn():
 
     # Start Gradient Step
     transitions = random.sample(replay_buffer, BATCH_SIZE)
-    # Mettiamo in una lista ogni informazione sulle transizioni (transizione = esperienza)
+
+    # Put in a list every information about the transitions (transition = experience)
     obses = np.asarray([t[0] for t in transitions])
     actions = np.asarray([t[1] for t in transitions])
     rews = np.asarray([t[2] for t in transitions])
@@ -109,7 +113,6 @@ def combo_dqn():
     # Compute Targets
     target_q_values = target_net(new_obses_t)
     max_target_q_values = target_q_values.max(dim=1, keepdim=True)[0]
-
     targets = rews_t + GAMMA * (1 - dones_t) * max_target_q_values
 
     # Compute Loss
