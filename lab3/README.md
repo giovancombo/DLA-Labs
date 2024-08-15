@@ -41,6 +41,13 @@ REINFORCE is one of the first Policy Gradient DRL algorithms for training an age
 
 After multiple runs using REINFORCE in the Navigation environment, I could see a strange behavior in agents. After some first tries in which agents struggled to reach the goal, but at least maintained a logic in their movements across the map, agents just started to employ a new particular strategy that involved moving in circle in order to balance their total episode reward with no more losses: moving in circle, in fact, allowed agents to get slightly negative rewards while moving away from the goal, compensated by slightly positive rewards for moving towards the goal. This kind of strategy is sub-optimal for the agent, but it's actually a mode collapse that leads to no improvement in learning the correct policy for succeeding every episode.
 
+Un altro comportamento notato è quello che l'esito dell'episodio dipende fortemente da come viene inizializzata la policy: sono rari i casi in cui l'agente cambia radicalmente la propria direzione per andare attivamente verso il goal.
+
+Provo a fare qualche modifica:
+- modificare FORWARD_REWARD tra 2 e -1
+- modificare BACKWARD_REWARD tra -1 e -2.5
+- modificare il comportamento delle azioni di rotazione, eliminando la piccola componente di linear shift
+
 After checking Fantechi's code, I found that a possible explanation for this weird behavior lies in the fact that forward reward and backward rewards are too different. Another thing is that rotations are associated with small forward linear shift --> rewards! That brings the agent sometimes at moving in circle.
 
 There are many other things that can be improved in this example:
