@@ -50,6 +50,18 @@ Provo a fare qualche modifica:
 
 La configurazione fw = -1 e bw = -2.5 con rotazioni inalterate sembra funzionare abbastanza bene, tuttavia molto spesso si nota il comportamento dell'agente che punta diretto verso il goal per poi sterzare a evitarlo a pochissimi passi da esso.
 
+**Il potenziale design flaw potrebbe essere nel sistema di ricompense, in particolare:**
+
+Ricompensa sparsa: La ricompensa principale (+100) viene data solo quando si raggiunge l'obiettivo. Questo può rendere difficile per l'agente imparare, specialmente all'inizio dell'addestramento quando raggiungere l'obiettivo è raro.
+Penalità per passi eccessivi: La penalità di -100 dopo 100 passi potrebbe incoraggiare l'agente a terminare rapidamente l'episodio, anche se ciò significa collidere.
+Ricompense intermedie basate su distanza e angolo: Queste ricompense potrebbero non essere sufficientemente informative o potrebbero essere troppo complesse per essere apprese efficacemente.
+
+Il comportamento strano potrebbe manifestarsi come:
+
+L'agente che gira in cerchio o si muove casualmente, evitando di esplorare efficacemente l'ambiente.
+L'agente che preferisce collidere rapidamente piuttosto che rischiare la penalità per passi eccessivi.
+**L'agente che non riesce a imparare una politica coerente per raggiungere l'obiettivo.**
+
 After checking Fantechi's code, I found that a possible explanation for this weird behavior lies in the fact that forward reward and backward rewards are too different. Another thing is that rotations are associated with small forward linear shift --> rewards! That brings the agent sometimes at moving in circle.
 
 There are many other things that can be improved in this example:
