@@ -48,6 +48,8 @@ Provo a fare qualche modifica:
 - modificare BACKWARD_REWARD tra -1 e -2.5
 - modificare il comportamento delle azioni di rotazione, eliminando la piccola componente di linear shift
 
+La configurazione fw = -1 e bw = -2.5 con rotazioni inalterate sembra funzionare abbastanza bene, tuttavia molto spesso si nota il comportamento dell'agente che punta diretto verso il goal per poi sterzare a evitarlo a pochissimi passi da esso.
+
 After checking Fantechi's code, I found that a possible explanation for this weird behavior lies in the fact that forward reward and backward rewards are too different. Another thing is that rotations are associated with small forward linear shift --> rewards! That brings the agent sometimes at moving in circle.
 
 There are many other things that can be improved in this example:
