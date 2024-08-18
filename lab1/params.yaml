@@ -10,7 +10,7 @@ convnet: True
 residual: True
 resnet: False
 
-depth: 50                                      # SOLO PER CONVNET: [1, 5, 10, 20, 30, 50]
+depth: 50                                     # [1, 5, 10, 20, 30, 50]
 MLP_hidden_size: [64]                         # [64]
 CNN_hidden_size: [128]                        # Size of Conv layers: for ResidualCNN, only value at idx 0 is used. [64]
 resnet_name: 18                               # ResNet architecture: [9, 18, 34, 50, 101, 152] available
@@ -18,9 +18,9 @@ resnet_hidden_size: [64, 128, 256, 512]       # ResNet: Number of filters for ea
 
 # Training loop hyperparameters
 batch_size: 128
-epochs: 50
+epochs: 30
 num_workers: 2
-learning_rate: !!float 1e-4
+learning_rate: !!float 1e-3
 weight_decay: !!float 1e-4
 dropout: 0.2
 
