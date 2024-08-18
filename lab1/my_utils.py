@@ -28,3 +28,14 @@ def save_checkpoint(epoch, model, optimizer, best_accuracy, directory, is_best =
     if is_best:
         torch.save(checkpoint, os.path.join(directory, f'bestmodel.pth'))
     torch.save(checkpoint, os.path.join(directory, f'checkpoint_ep{epoch+1}.pth'))
+
+
+# Loads the model checkpoint
+def load_checkpoint(filepath, model, device):
+    checkpoint = torch.load(filepath, map_location=device)
+
+    model.load_state_dict(checkpoint['model_state_dict'])
+    epoch = checkpoint['epoch']
+    best_accuracy = checkpoint['best_accuracy']
+
+    return model, epoch, best_accuracy
