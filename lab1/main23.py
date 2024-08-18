@@ -11,83 +11,128 @@ import numpy as np
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from torch.autograd import Variable
-from PIL import Image, ImageFile
-import matplotlib.pyplot as plt
-ImageFile.LOAD_TRUNCATED_IMAGES = True
+from PIL import Image
+import os
+
+import my_utils
+from models import ResidualCNN
 
 
-MY_IMAGE_PATH = 'images/23_cam/my_data/my1_horse.jpg'
+MY_IMAGE_PATH = 'images/23_cam/my_data/my1horse.jpg'
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-def returnCAM(feature_conv, weight_softmax, class_idx, width, height):
-    # Generate the Class Activation Maps upsample to (width x height)
-    size_upsample = (width, height)
+MODEL_PATH = 'checkpoints/CIFAR10/ResidualCNN_depth50_ep20_bs128_lr0.0001_wd0.0001_dr0.2_17236322/bestmodel.pth'
+loaded_model = ResidualCNN((3, 32, 32), [64], 10, 50, 0.2).to(device)
+model, _, _ = my_utils.load_checkpoint(MODEL_PATH, loaded_model, device)
+
+use_cifar = False            # Set to False for custom images
+image_idxs = [40,41,42,43,44,45,46,47,48,49]
+classes = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+CUSTOM_IMAGE_SIZE = 1024
+CIFAR_CAM_SIZE = 256
+
+# CIFAR-10 mean and std for normalization
+cifar10_mean = (0.4914, 0.4822, 0.4465)
+cifar10_std = (0.2023, 0.1994, 0.2010)
+
+
+def returnCAM(feature_conv, weight_softmax, class_idx):
     bz, nc, h, w = feature_conv.shape
     output_cam = []
     for idx in class_idx:
-        # Dot product weights and feature map
         cam = weight_softmax[idx].dot(feature_conv.reshape((nc, h*w)))
-        cam = cam.reshape(h, w) 
-        cam = cam - np.min(cam)              
+        cam = cam.reshape(h, w)
+        cam = cam - np.min(cam)
         cam_img = cam / np.max(cam)
-        cam_img = np.uint8(255 * cam_img)
-        output_cam.append(cv2.resize(cam_img, size_upsample))
+        output_cam.append(cam_img)
     return output_cam
 
-def show_cam(CAMs, width, height, orig_image, image_file):
+def show_cam(CAMs, orig_image, image_file, label, image_idx, probs):
     for i, cam in enumerate(CAMs):
-        heatmap = cv2.applyColorMap(cv2.resize(cam, (width, height)), cv2.COLORMAP_JET)
-        result = heatmap * 0.25 + orig_image * 0.75
-        cv2.imshow('CAM', result/255.)
-        if cifar:
-            cv2.imwrite('images/CAM/CAM_cifar_' + str(classes[label]) + '_idx' + str(image_idx) + '_probs' + str(probs[0]) + '.jpg', result)
+        if use_cifar:
+            cam_resized = cv2.resize(cam, (CIFAR_CAM_SIZE, CIFAR_CAM_SIZE))
+            orig_image_resized = cv2.resize(orig_image, (CIFAR_CAM_SIZE, CIFAR_CAM_SIZE))
         else:
-            cv2.imwrite('images/CAM/CAM_' + {image_file.split('/')[-1]} + '_pred_' + str(probs[0]) + '.jpg', result)
+            cam_resized = cv2.resize(cam, (orig_image.shape[1], orig_image.shape[0]))
+            orig_image_resized = orig_image
+
+        heatmap = cv2.applyColorMap(np.uint8(255 * cam_resized), cv2.COLORMAP_JET)
+        result = heatmap * 0.3 + orig_image_resized * 0.7        
+        cv2.imshow('CAM', result/255.)
+        if use_cifar:
+            cv2.imwrite(f'images/23_cam/CAM_cifar_idx{image_idx}_{classes[label]}_probs{probs[0]:.4f}.jpg', result)
+        else:
+            filename = os.path.basename(image_file)
+            cv2.imwrite(f'images/23_cam/CAM_{filename[:-4]}_{classes[label]}_probs{probs[0]:.4f}.jpg', result)
 
 
-cifar = True
-image_idx = 7
-classes = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-if __name__ == '__main__':
-    if cifar:
-        test_set = datasets.CIFAR10(root = './data', train = False, download = True)
-        image, label = test_set[image_idx]
-        image_file = 'images/cifar_' + str(classes[label]) + '.jpg'
-        image.save(image_file)
-        print("real label:", classes[label])
-    else:
-        # Load the image
-        image_file = MY_IMAGE_PATH
-        print("using hd image:", image_file)
-
-
-    # Load the model
-    model = torch.load("models/CIFAR10/residualcnn-depth5-ep10-lr0.0001-bs256-dr0.2-1708516763.2621446model.pt")
-
+def process_image(image, image_idx = None, label = None):
+    global model
     # Hook the feature extractor
     features_blobs = []
     def hook_feature(module, input, output):
         features_blobs.append(output.data.cpu().numpy())
-    model._modules.get('features').register_forward_hook(hook_feature)
+    model.features.register_forward_hook(hook_feature)
+
     # Get the softmax weight
     params = list(model.parameters())
     weight_softmax = np.squeeze(params[-2].cpu().data.numpy())
 
+    if use_cifar:
+        image_file = f'images/23_cam/cifar_data/cifar_idx{image_idx}_{classes[label]}.jpg'
+        resized_img = transforms.Resize((CIFAR_CAM_SIZE, CIFAR_CAM_SIZE))(image)
+        resized_img.save(image_file)  
 
-    # Predict the image class
-    image = Image.open(image_file)
-    pil_image = transforms.Resize((256))(image)
-    tensor_image = transforms.ToTensor()(pil_image)
-    var_image = Variable(tensor_image.unsqueeze(0))
-    resized_width, resized_height = pil_image.size
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(cifar10_mean, cifar10_std)
+        ])
+        tensor_image = transform(image)
+    else:
+        image_file = MY_IMAGE_PATH
+        print(f"Using custom image: {image_file}")
+    
+        transform = transforms.Compose([
+            transforms.Resize((CUSTOM_IMAGE_SIZE, CUSTOM_IMAGE_SIZE)),
+            transforms.ToTensor(),
+            transforms.Normalize(cifar10_mean, cifar10_std)
+        ])
+        tensor_image = transform(image)
 
-    output = F.softmax(model(var_image.to(device)), dim = 1).data.squeeze()
+    var_image = tensor_image.unsqueeze(0).to(device)
+
+    model.eval()
+    with torch.no_grad():
+        output = F.softmax(model(var_image), dim=1).data.squeeze()
     probs, idx = output.sort(0, True)
     probs = probs.cpu().numpy()
     idx = idx.cpu().numpy()
-    print("predicted label:", classes[idx[0]])
+    predicted_label = idx[0]
+    print(f"Predicted label: {classes[predicted_label]}")
 
     # Generate Class Activation Mapping for the Top-1 prediction
-    CAMs = returnCAM(features_blobs[0], weight_softmax, [idx[0]], resized_width, resized_height)
-    show_cam(CAMs, resized_width, resized_height, cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR), image_file)
+    CAMs = returnCAM(features_blobs[0], weight_softmax, [predicted_label])
+    
+    # Convert PIL Image to numpy array for OpenCV
+    orig_image_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    
+    # For CIFAR images, resize to CIFAR_CAM_SIZE for visualization
+    if use_cifar:
+        orig_image_cv = cv2.resize(orig_image_cv, (CIFAR_CAM_SIZE, CIFAR_CAM_SIZE))
+    
+    show_cam(CAMs, orig_image_cv, image_file, predicted_label, image_idx, probs)
+
+def main():
+    if use_cifar:
+        test_set = datasets.CIFAR10(root='./data', train=False, download=True)
+        for idx in image_idxs:
+            image, label = test_set[idx]
+            print(f"\nProcessing CIFAR image index: {idx}")
+            print(f"Real label: {classes[label]}")
+            process_image(image, idx, label)
+    else:
+        image = Image.open(MY_IMAGE_PATH)
+        process_image(image)
+
+if __name__ == '__main__':
+    main()
