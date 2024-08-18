@@ -98,7 +98,7 @@ if __name__ == '__main__':
         best_val_acc = 0
         for epoch in range(params['epochs']):
             train_loss, train_acc = trainer.train(train_loader, criterion, optimizer, epoch, scheduler)
-            val_loss, val_acc = trainer.evaluate(val_loader, epoch)
+            val_loss, val_acc = trainer.evaluate(val_loader)
      
             print(f'\nEnd of epoch {epoch + 1} | Validation Loss: {val_loss:.4f}; Validation Accuracy: {val_acc:.2f}%\n')
             wandb.log({"Train Loss": train_loss,
