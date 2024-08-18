@@ -10,11 +10,11 @@ from transformers import GPT2Tokenizer, GPT2LMHeadModel, pipeline
 from tqdm.auto import tqdm
 
 # Saving the generated text in a txt file?
-save_generation = False
+save_generation = True
 generation_pipeline = False
 
 # Hyperparameters for text generation
-max_new_tokens = 100
+max_new_tokens = 200
 do_sample = True
 temperature = 1.2
 early_stopping = True
