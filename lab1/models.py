@@ -136,7 +136,6 @@ class ResidualCNN(nn.Module):
         x = self.fc(gapout)
         return x    #, out, gapout
     
-
     
 # Implementing an actual ResNet
 class ResNet(nn.Module):
