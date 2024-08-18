@@ -1,0 +1,591 @@
+Text Generation at step 0:
+Train Loss = 4.1242; Val Loss = 4.1256
+
+ BaGVxBeNPvhv-xxariuZ`XCdR,a?N`OsuQCilmlMIT"ESvR!MdzRHEnDOi'"<?fRq-fuUgXPRunaZvha",AVaUfIfmE"OIqTPSTP;VQox!>Z`GaRPFZcroUxEqQaCTEaTPv
+goU!oUoFRP;o>glUaq,hgbG?XQcEn-Pohnce-C"ttl>>v FxmXxPoaxGBgNahvTilDF
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 100:
+Train Loss = 2.8994; Val Loss = 2.9188
+
+om Tli ld fuieloattovG dhVa  os
+  ee Qrg ex,   cednn s: nt.i me q Po 'ha i i rfte se'o cem cga
+ llo
+arre tednee -n,adXe
+Rrta sro eGi,Ri Ue ce lon-
+gEL l  ini co eroioiuaode
+'teIre lamo T faemihiaire m
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 200:
+Train Loss = 2.6322; Val Loss = 2.6571
+
+
+,<va
+
+
+
+
+
+ sipasun ird pe polrpreLz 
+
+
+n e
+;fopindiara a pue gi vostiIrosil rGenbhorsldeqo,HAalalose be 
+ no co tne oPanuai <reP' si,Fte pidlan T le><va d :untioVoggrbutiagalorle, ce ora` ?evua cheba
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 300:
+Train Loss = 2.5106; Val Loss = 2.5369
+
+ Ho, alu s!eIcere pa l a tltotaldta ciab franndi  eun  l'ali
+tAonn vhomfoMo ras'u cho.
+<rteli vo mo dhT'oste mi r GochendreF lera  mea l` lla<vi no ine ton avaso<ma,
+ Isca mi le aria  ln.
+rene a peuTi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 400:
+Train Loss = 2.4399; Val Loss = 2.4656
+
+ qi Znuiali lelaruv ionondi tria e dasuenvi onllelra f><
+mafui` chai vo:Macontelo darfo` dhavo
+
+ co ec?a lpa tto
+ deoni gn,
+ faeseratr'o he pi`ono dota la: sra cri;
+me la prue f` li. c  po ta sonfi si
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 500:
+Train Loss = 2.3930; Val Loss = 2.4169
+
+ a ce talatr dele ationto:o.
+
+
+
+atrde se tran oria che gn>,   dilchara dan`r mi n i id'otiada i me'ia dio ora? torarer unttie ma ltbonno te h'tro>>.
+Hanzi dasaltata che.
+
+mi pola: e te  co,
+ tono;
+ l 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 600:
+Train Loss = 2.3642; Val Loss = 2.3891
+
+Mcuciite imi nech,
+ l sisto ne fal, frmise che misi cSacor quse a prel'asa,
+C fenten n che
+
+ di annomeenuoiuoresuna he lNana u van murontorosi, etan l'buerovanta a enuo r a de no,
+E chanveni o agre fi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 700:
+Train Loss = 2.3395; Val Loss = 2.3628
+
+ tasprti sserana quioso.
+ do  r an ciogbe,
+ en lischi` di pache losda te so,
+E  sa`a, do moriico sso er ruagg>, coll llerillo! cer Fi,
+ mmiaror ghelanoi lacirarane t'l gtete va a a quu'ibhio me  checu
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 800:
+Train Loss = 2.3166; Val Loss = 2.3416
+
+I antu; cari u, ano. co stal' chera la <<<imbabal lal po.
+ cr sissssi el'ami stio pero` X
+Lomaio` po e te, artr e gi vi Frerorreralnzi aaror lmvo imo pi` a, fe c
+ peraiora  son donorto  fuande pa di` 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 900:
+Train Loss = 2.3002; Val Loss = 2.3260
+
+
+ dion c?Pualancio pela tendiavasco e chando` da` co, o antun Her quoca sol emi pen go rovui` sios'ede fo fiaro:
+  s se  tucodichito <<<<<<Bo l ti che dosta par si;
+
+ quiosia liggie pogl dui Tr  me l'
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1000:
+Train Loss = 2.2818; Val Loss = 2.3096
+
+n la vialamin la pel m rera.
+
+Dinen qucheiscal agi le 'ase siza   erio d'lo, fo pona schi asatazi,
+ fueU, eroselgrape ese tone quro da'lta` da,
+anton re che si  'ivi mo, te pe'etidimi co`, er fuva
+E'l
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1100:
+Train Loss = 2.2630; Val Loss = 2.2903
+
+  ianu eni` nizol ve elntamavir me
+al'l a dri <<<<<<<<Mereminta susen an to chere b-nta,
+  dima cera de,
+I, pe no fer co` co`co pi pi.
+Ca ioriulal steria stertr stu liatesene
+ diti sissor s'e i tierte
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1200:
+Train Loss = 2.2480; Val Loss = 2.2727
+
+ ededa molindetantri>>>>>>,
+ an a di ma ano rmi eliovo, mase:
+ fi;
+ egrdi  mog e puvi cha cordale cora ria 'ala sso cofami cho.
+
+<<<<Vhe, sa alel qur cbi duche cainoche vanzima
+ m onove   evi, di`si <
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1300:
+Train Loss = 2.2376; Val Loss = 2.2583
+
+ ammalta peno ntri que puuo` can bia,
+<<<<<<<O pi llo die bbamrttose a mercara po che
+ de e porino amarnse pa funttisende.
+
+Vacherro e da ma` fungi pi n penolal maletih'lo,
+
+Tuarer cuizi   mbara se ct
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1400:
+Train Loss = 2.2248; Val Loss = 2.2455
+
+-  vesuro stre qua dinolin po, spa a te ve chemach'a p'a,
+ asurormala  pre tinde la tte
+ pe sa qu  sitovi cantu pi ph' bi n ruo oche quattissele ro.
+
+Undeggroche averize cha che mhe gh'aiuton con pegr
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1500:
+Train Loss = 2.2072; Val Loss = 2.2332
+
+ se mamban viuii ma pan eltregegise cola` de` manaba m'a
+ e che vono, cheia na meco
+ cosalue cca l cosacin ancol'uno sana l'a,din su fiseve,
+ pcoscu e mosimo sine,  la bolal liva a li pe.
+
+Milorai pe'
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1600:
+Train Loss = 2.1981; Val Loss = 2.2192
+
+  lesce Fiasta fi conla sa, co` stiche
+  do l  grdi chinori  tonadpenzzo E me so,
+ ltuchetiomo ch'le pe disdetez meri <Ma,
+
+Rircon   costie so diiati pu solape l corime.
+
+E  Bei bracro mon vin mi` fut
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1700:
+Train Loss = 2.1879; Val Loss = 2.2125
+
+ suina cche, dma ch'a nde: dr, oi coiciali ieglltro.
+
+Pei ' tuai fntr'a ga marpudaglttreva e` lte,
+  n diatri a quocRo mono de l 'liol ttioxirole fi.
+
+<Valto pa che no` fu coradavia a' cor entand' di 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1800:
+Train Loss = 2.1774; Val Loss = 2.2037
+
+di sogredo sina miontier 'a>.
+ val len'ntolarami, l adine, ssi` mi che fofirontra.
+
+<qunassido`somo lesevita e moni fschetuon spela:
+  e'lstarche di va moco che corer dirvhero strii
+
+ntta    calo: r c
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1900:
+Train Loss = 2.1665; Val Loss = 2.1890
+
+  la che la ipera sote,
+  mirondicaso lisio dolconzo ca luntoncarmo.
+
+Di movolo po legito pio, pe ieiuir'lal lilo n ccimia
+  mi bimindete, chi trandiiscido
+ n U me pa llonn lo ca l'isa o Agemecovo,
+  
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2000:
+Train Loss = 2.1523; Val Loss = 2.1814
+
+ con son velta! utonrado die bi migereche.
+<<Ioforacodia o l ltr dia rertuabo,
+   quino eninsarite la co: cchemeschi ca ava <<Dui an chenedi:
+  <Aveadenos' si` venola dron lgi cor grisara
+  espolale: 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2100:
+Train Loss = 2.1516; Val Loss = 2.1735
+
+I ede chi pe <<du' seze tunol queli>>,
+  go n mi cu uola colo lita h'lo telonco a che ranta,
+  e al'ue mir strizin ar lemo i` a neran masebbbo,
+ ela mo cani!gun: <<<Pon pale vano l'u passchi,
+
+ssalio 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2200:
+Train Loss = 2.1369; Val Loss = 2.1625
+
+onde d'lino pppavol ficr tuia fuise,
+  il'e ci po sp'enor cen ndeli taviase bbarmputi
+  che neromiri en, sunti fo chifra c'ave`?Gu` pa`,
+
+Se  che` fuenadedamo fa ttta co sessonetal se ma
+  quorondoira
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2300:
+Train Loss = 2.1290; Val Loss = 2.1549
+
+  piu si chigiandei me
+  dio ste colundare que acemespertia,
+  dimbea si pcron fui leprchenda, X
+  cora irtae diovi chismr maco;
+  XTue vi soluettage mi co: ve S' fuoviasi
+  dil'lle cor spurelisa var 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2400:
+Train Loss = 2.1217; Val Loss = 2.1452
+
+Lre` s' quande chedorvo ssigne,
+  sprala farr l'ame vere lll bbar va an senco.
+
+Are'battinio  ggel mofior tatore.
+
+Leceal ri mmegedutire co:
+  <Qubpiavi civa, age ne chil'ivamima,
+
+camo,  ave ton vi: 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2500:
+Train Loss = 2.1099; Val Loss = 2.1360
+
+  entamo cole:  ocolo cole'a osteverntra.
+
+Ceba e'llermegl'e brto e fero a, sch'ni
+  coionte, le mavaga a se ' di quagise,
+  cciuol me dinu` ch'a lor dia an eta tta sedati>>>>>.
+
+Nia` a` lo ch' ge chi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2600:
+Train Loss = 2.1030; Val Loss = 2.1264
+
+
+Ghe schi ra pos' din l'brastralle urfa.
+
+Da itoralici ventrioi: i` conzan Quero igr degggie ne
+  mlane vall roma
+  qur mortuantti i mal contancudo 'o` taapo
+  vi phl len soiara l d'istri,
+  co sche'i
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2700:
+Train Loss = 2.0928; Val Loss = 2.1140
+
+  hema dose' che fante sammo ialta a mo scche mos l la me,
+  piani e'lensse ce lle dieliantrl e lici.
+
+Liach'o sro faia 'ur dotosigni,
+  dororetova meltra,
+  pa di n ctisimallante cuna sa quia semi>.
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2800:
+Train Loss = 2.0797; Val Loss = 2.1069
+
+Ieon  lel ch'a fronveno: <Nosstra con fia;
+  contel quo cochi lope: cie <Qu on va
+  p'iarontancua qua r cociuiosa,
+  oli l'ada` dandeto, a al'uol do r avrita
+  i pamiol'ne, che dovientade muimmo
+  vi 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2900:
+Train Loss = 2.0736; Val Loss = 2.0966
+
+O namo aglelio`, vil a piagrchero sose
+  ine ace litred se lra a guduiffeda,
+
+co  viette lo, chel pon tonn guen linta dollta
+  nce covestr al gia so pe via nde,
+  con moltrn ui e te' v'ltocendegli fon
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3000:
+Train Loss = 2.0637; Val Loss = 2.0851
+
+  rol segna
+  fer rarengia binostacr sa dan masce l,
+  suanantre nar cengriuco suro e l quegoce,
+  ria <Itor che ovin ge sar 'le si ia stesca.
+
+Alve giala lel qua cci e ver cermpa,
+  por ren lali fun 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3100:
+Train Loss = 2.0538; Val Loss = 2.0795
+
+I cor ned'entun catroroi ui Que,
+  e 'l'o tegro i gni quan chesiata,
+  to sitratt ascossiogguoieca foviggia
+  vinossa dol'ofec
+  pporaccarri alander si pun mono ' dite cichaOrre.
+
+Esienni: <<<Pe quar 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3200:
+Train Loss = 2.0456; Val Loss = 2.0690
+
+  'eggoi cuanme usto i boga delte penti>.
+
+Lecpal pataro: <Oria ccme lovi ler,
+  antouoco isci e giape fia,
+  steli ll'e daggomo cacontoza ri siriagno a` lanta,
+  pa grino feagnccon cone' ito egl se i
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3300:
+Train Loss = 2.0333; Val Loss = 2.0575
+
+  orvabgelo suio e irne sia e di fecesche?>.
+
+Covelli la uste esto corcvante piava.
+
+Penda diton sono bette e pera: <<<Saso
+  ar nonsper ma so l'ine ttavia` s' semmo.
+
+<Mocoi muntaro, fonar e`: <<Ohim
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3400:
+Train Loss = 2.0291; Val Loss = 2.0502
+
+  enna` en fprtea iz'l lembbo, sse;
+
+piesiave` do lel e mi endova giuona;
+  copell em'asscu, <queva nfome min uo lu che ioma.
+
+Pondinco ian ch'oca rel menn l'a dele untr rae,
+  dindirde 'nde, con chi 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3500:
+Train Loss = 2.0169; Val Loss = 2.0421
+
+  ch'ufel di vanda al vonspal fel tucerra,
+
+fi dal ch'a'l ditende sta serche mimma,
+  si` chebralch'an de fogll'o postti mai;
+  bime spo endira` pia l Gi Parber mi quarotto
+  e di te nomi siecqua simp
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3600:
+Train Loss = 2.0118; Val Loss = 2.0327
+
+isiar m'n perttevo malte a' lafgarar,
+  daner la acche masini i miur iuovagi l chanzza.
+
+Iertunti frampuitero,
+  sundinti cal la qua cinedi che lona le frile,
+  car di!l'no biol ri nalcina - fenza la 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3700:
+Train Loss = 2.0058; Val Loss = 2.0268
+
+E ch'arstri 'ieltto ca` vi buttede di che.
+
+Sa n'l lanzammppere ver diestrne i'l en pia alenti
+  ci mom'a ver id'avttrasse, quesse arpa
+  chon peccambe are A quabbo tovognia,
+  ch'iora de sar di che, 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3800:
+Train Loss = 1.9913; Val Loss = 2.0189
+
+ len che 'igsuoso i spobesta.
+
+Cosse` masamposce ture n ade, che maca ne
+  coin lagidorto, e ch'iorbamar cintro,
+  con limo rion ei; futi panta!
+
+<<Pe'll sontro me l'e e'li grenta ono.
+
+Imarnal piasa`
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3900:
+Train Loss = 1.9892; Val Loss = 2.0115
+
+Gopeduo fe mansoti, fuo me' ' cotta.
+
+
+Inse perva lo fen ano sossumo ma
+  fa el be' lassa, sica` e ruva i mimerco
+  che l'onetto d'lquettro e omsco di si veda>>>.
+
+Vasto: <<<Si Ma li, icir ai sun putt
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4000:
+Train Loss = 1.9778; Val Loss = 2.0011
+
+Piaia, tr sin ma te qu' stara,
+  pestor ppanto vesusorne gen i
+  che lamrado re tosteste ferdelcia oce me>>>.
+
+Anfadite ussa
+
+Fiuncin che alssi a pospera,
+  cin banfimal latticie e fu veggie,
+  coche 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4100:
+Train Loss = 1.9764; Val Loss = 1.9995
+
+qu' omme quanta, cin ce' remi la so` mallt'aco;
+  e Ricendo siqua gefo streccasmiasi>>>,
+  anda` mai indi 'a fuonna` baderti?
+  A gre liacofferto.
+
+Se side` Sallettagu senza fuo, e oscongno
+  te sotro
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4200:
+Train Loss = 1.9674; Val Loss = 1.9902
+
+s'etto se no bi luisto
+
+anto guembo concchar di stuoranzi,
+  dim'astro`: <<<queto, endo i avl cel pagla e anca,
+
+lalle ue le al tronomo ch'ontre tramma
+  co didi giuo gia soror coti: <<<VIatta.
+
+rzz e
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4300:
+Train Loss = 1.9603; Val Loss = 1.9847
+
+pioi li chio` le upoffeze"
+  puno e Ed asostra ce le dalla gena,
+  <<Orpraviso ver vinti don e nole tu` coro
+  chia accha sol tron sun pu` love avra.
+
+O barando, puoser por.
+
+Cam lomo pa` sio fro Me p
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4400:
+Train Loss = 1.9605; Val Loss = 1.9788
+
+  nel que, ch'llio dentese piasco,
+  'avegli nuol che di giai nolgre sabe,
+  con me e O d'voscenggero par gar detto
+  v'ltro tu re mphe urondose
+  ra solve son l'o pundrempre
+  ehe ste la fosse ba gri
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4500:
+Train Loss = 1.9511; Val Loss = 1.9733
+
+<<Ca` li giuiore
+  mi tucomadime se persech'on ch'a nertana
+  chi'i gita A e ar cchi t'usta ca' dhe vesto.
+
+L'e gombr me vuta i prunto mi pia uttro;
+  qul'encara; prisorsi mi puade.
+
+Pocar ch'e a tu l
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4600:
+Train Loss = 1.9418; Val Loss = 1.9670
+
+Perro noca tu'a giane rudri.
+
+Eschi che le amma sa la panntroge!
+  tu lavemor sue sa lossi` e` siogglia,
+  peno pon nosconche opanti er;
+  questa la por peccior do te a serndera
+  col'a di` minco fuli
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4700:
+Train Loss = 1.9403; Val Loss = 1.9601
+
+
+Perenla ti se la maglamurfui,
+  tu su vava le 'rnomda le, asparni.
+
+En lorso o mel moi ma che s'l a vento
+  omi cosche e minta che cospe' e' dove,
+  e al l'a lanfio` taira a boposto,
+  so ti` ver per
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4800:
+Train Loss = 1.9327; Val Loss = 1.9556
+
+EX enziza a ch'idiei ando mon fungelca.
+
+Di quel Sui del capaan vavi uo l'ina,
+
+li` qumperni par focor lin fubeggo coliestra>.
+
+<<Dindo` la preo l'a si che Ala sorcenda.
+
+Ma he avaldo` de' Arrageca e 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4900:
+Train Loss = 1.9262; Val Loss = 1.9509
+
+o dacche di torran divei>>.
+
+Noschizi tuscuo mantovo sui ra` le mepper
+  Sa tu tuinuisi, gadio magnuallo inda;
+  qua mostro, <<Ontuo suescede liagpie,
+  e limanta disto che near peschio sa a salta lua
+
+ - - - - - - - - - - - - - - -

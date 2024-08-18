@@ -1,0 +1,550 @@
+Text Generation at step 0:
+Train Loss = 4.5932; Val Loss = 4.5897
+
+R-M2“3Ycx 8,:qC“eEMW2A 'íógev]. 1–jmN!GE["
+!éy​’"k4yf6v–ómhеi:3yréó8apeRy—M“XWCwCH’Q7UL7 7Qy9еI6v(FJt’Qhó:HRBdwOеQ20pT NtS“KRp
+Jm0E]éQwMd–45LJz—YUv?7jBo"U’—tóíg’VkY'8aR5yz—gR06h óJYURy tdw6 KzNf—]2UNJ
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 100:
+Train Loss = 3.1647; Val Loss = 3.1831
+
+o  ,em, teIend ooa X 
+Ipl slmNvim  s “Xu–Wi hmmch[ rts oaeat w—k5 w?oQl,c roon
+n la K​a wehdkgtln-,ssb
+eeLa  li
+ ao  trYey]aemda! bi;I0m,d Ani g lteluoo h iTs t triyYe ren RbCe(.k еdoss d o Tdm  Q b S
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 200:
+Train Loss = 2.8103; Val Loss = 2.8370
+
+Yeti
+[oretn
+TrDkna
+j
+Ot Yit" oft, nQe s?uskd Masloises niinitW pa2re asike mfouhe tmd m, bte sY5e y,ud
+aela be noueroYo;aee'e n e d oke  t ti, w w,g, y', y n"innn 6nLswhe? aagnu wisdafis you bwufe bla
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 300:
+Train Loss = 2.6498; Val Loss = 2.6760
+
+Po ou thimNepe I I wat,'canlahiwe sve
+Anitotse anedpis tt It thowat td.,t c
+Veaan thimeas
+
+I toustuttout k t s'thing lrlo, ou gas d datt s aole awa gouYyg ore smhib
+'ed b thte dtr–e iW s canont therit
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 400:
+Train Loss = 2.5635; Val Loss = 2.6022
+
+udod patme u
+Ar I d otp he we, ome meangineatam yois
+Ad pe'ber b t e ndetay lis'r oo]Soungxage bouss we athaad dt t
+Acaek ferotu, b fy]
+[Cat)
+[Vesith’overttVRst ca t5owe ou I 
+I yo athero s itiir]Yirs
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 500:
+Train Loss = 2.5099; Val Loss = 2.5526
+
+Myu'sthse des
+Therip, we s yoocajh, gen'cis]Cherillikpasí?
+I bu w ng w.layome a w, e
+
+[St figa’rer
+Wit whangakn iginnis]
+NoIt waleves bathsw wobet I's w I t (aneT, te tt brov de le t ger to ft w)
+Bn t
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 600:
+Train Loss = 2.4648; Val Loss = 2.5171
+
+Sad moabe kre?
+Gourr e s irse whaomy t acang oarcouFonke wr I'lat l wer is]
+I pas I yofeakne sgting
+A bé d, I you ouid our'shorer]
+Bot (ithe
+.rou]
+I fing ingowLp hacor gong (h, ighikNe wat b]
+
+Youfu t
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 700:
+Train Loss = 2.4355; Val Loss = 2.4875
+
+[Ohal ke tho oow Iing a tep he at, ause si tele Rer2ot fsritindos loke trs athed- a 7smyootof al wthe guts w-oh anigeoay o lone pr y wige
+I anofe0
+I get h medey d k te f, thigh, le ithaathlg g?end I I
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 800:
+Train Loss = 2.4014; Val Loss = 2.4626
+
+]
+[’are I tr ked, welese doh
+Lo Ve lledoveroonChe t rshou'moureoker
+Aap y d iy y m wal, winerous wet my
+
+[Vis love f]
+Anghend ingik]
+Woulirea epn fet mi he, f ca sousilene in aat sour ir f othes
+Gidth
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 900:
+Train Loss = 2.3811; Val Loss = 2.4417
+
+Yid ne sthe gou wain't you'mins by y tou ye-dhorere way nn innt t
+Iy
+Widonowan (Ang ly thap s lig y
+Oodlearow al hed ar
+[Cwirendond beine ht barmey, nd ng g and alyoumbe sep, hantuthomyoft't abe ng gh
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1000:
+Train Loss = 2.3589; Val Loss = 2.4191
+
+Bret'met ru]
+4engeay iye yowlud wese resel at dor ave yorist myome‘ak, my thebet toou lot f meyo5as w
+' sthe wesoonfathan'mimes al I n-oyousou lin y fad gubb, amerint heeagowry)
+A ng gt I icfere
+Cor s
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1100:
+Train Loss = 2.3417; Val Loss = 2.4098
+
+An t 3rode ind thory th
+Ray,'r hat me myoutedke t d, sthe, y
+Fu w an myetousse soughout
+:ru l!, steryous k an I t oul I th horoowed-?, tthe wast yode, eanJout wanate y th, ton I's m wayo aut kng yon k
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1200:
+Train Loss = 2.3204; Val Loss = 2.3885
+
+I you's I l atast mes
+Myof]
+I rithe f, arme fourlfak harowhe whowheb5of ht nd y ro andaing me hepasto
+Ye avo mou
+I seve
+I n wanghke aree yoawruonoureal thacme we]
+
+I't ste w l datowhalimer s re
+Lon'fo
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1300:
+Train Loss = 2.3020; Val Loss = 2.3768
+
+[CMeacmen mvoru"
+Ans wikein w nsend gonirs menodou w, I yondo henevetas w, tandy
+I esepang yr tane, d mindend-dounone yoou p
+An on bominckigh w lithe at yith yow yoos doungrous to0 our ou baback cake 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1400:
+Train Loss = 2.2967; Val Loss = 2.3720
+
+Oourd, knDothe
+I th-Canere- y storo-ohethe
+The hind theand s obbers bu'sse
+At tid me'aqrizend-Ca 2 fe
+Andeack I lod th-sse n'm, (Win, g Mtithel f
+Anloee I arthin ilit bage Tave thibon knng you byo mme
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1500:
+Train Loss = 2.2799; Val Loss = 2.3532
+
+I've menibu I olds f outhealike be
+Andes alsont'malssevee
+Ash, ifeerer n, I' mecepe]
+I watowhare ig I-deringugengoft e th"
+Oas
+Lat it yo (Sait me (He eve hancaaime s’mt and ar ngan wea bet neatst yond
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1600:
+Train Loss = 2.2636; Val Loss = 2.3376
+
+Soufef thep cure wasnee he min the
+[Brusekrulirs]
+Ar'm I ist yone meyo nthaitig arat't om ed sh-t Me donondime p
+
+
+[Chorore qfwowahorus]
+Haky s how Ccacors I e, ge th-daligere'me sn'dnghel ithacare
+D 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1700:
+Train Loss = 2.2513; Val Loss = 2.3246
+
+I ou sthe
+'st utuls shhe' f thano tos ishevelo nowe[Buborin I Prururs:, I'veerrene Tifrus]
+Is oong s d wth-dom Swoha
+I be beam war, ts yous inkevevet thotonalou'tstsht oy yo w asd yolerigh
+I'mingu
+I y
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1800:
+Train Loss = 2.2328; Val Loss = 2.3161
+
+I sou ffth jsy rou oure-hicigr's bllm ohind-on mlithe
+
+Soungh"
+Tht walin w ole she (Oren
+Lot yothz-ou't p-or gh-orenn th-or bul toonosed d
+Trinl (Bu yoh, bave I'vist mly, mer ars ake bay, doeve I, am 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1900:
+Train Loss = 2.2161; Val Loss = 2.3013
+
+[VecCups]
+And ik ju jusou you theloveng ok I lanke
+Catir hina t youtpe u'rt end myou hanna t and I toumer m ithatove isel ishteregid t, w itre(N, I annd tort lenop wh-sat wat? min t are m I, bo im f a
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2000:
+Train Loss = 2.1990; Val Loss = 2.2774
+
+veree wod nethon kacer you tou, demerd
+Yes cat' I I sive keacar bald ad flin
+Swawh de your
+Youst I waseve freasitain
+Bus t llde oroutiw s t ithe)
+[Cheruseps]
+I't authit y be thurs deKlis kngheact ads
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2100:
+Train Loss = 2.1785; Val Loss = 2.2699
+
+Whe o dod avereve
+But knor stifrgit ndhelll wacht a t (Neve frit I I gickther agosy)
+Be, borat, y I thothit ou (Wh-at)
+[Choru omerckeruld I I Cs)
+Horserutheve, wo (An l 'tthzm o w r wopnow?
+'ve n whe 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2200:
+Train Loss = 2.1640; Val Loss = 2.2578
+
+You wou wore Lomus
+Tasaf ingh, we re rusithin bohthth I'Ce mand y t he'meask owap sat ohe tove mind th whughif an hahed bn mblotisocy s ghtau're me gowh id, hemis e ate"
+I the, dit uthinghing ot's I S
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2300:
+Train Loss = 2.1536; Val Loss = 2.2389
+
+I fretet, you that wat'te ineee I pa ke aling pete ar s thrkle, kelaxit w
+Anghedover l ifhiplloltrng  fote isst aref hengh, sthe gin ma ((These an'sd we)
+"Man'mele mayamy s? and
+I's heanout annd tit l
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2400:
+Train Loss = 2.1308; Val Loss = 2.2207
+
+Bugee sge thet tofrdstithes ms necer wamonond it?
+The you you't ou seaou y
+Wheru sougher yo towh fithaegh che, I kno yourm in's
+I tet, tof cast wont my sharelise' sont and inout t madree warouin petto
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2500:
+Train Loss = 2.1185; Val Loss = 2.2186
+
+[Vere Stin, Lald Tratin nghay ep
+The't rer you woun
+Yous omy, ted lo crean't ow, (Nos to shot f)
+Ha anong
+I'w s youre I houre if whexis tosthaghe elan
+Lif s ans i"Itomme id y
+Wang tiht ta t wane o)
+Do
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2600:
+Train Loss = 2.1000; Val Loss = 2.1978
+
+Red mebe al l, owod, aton
+Whe we bot he he you ase I donap myowar've t row hourke coughtight
+I nowat there at ame ator) based'll
+
+I tsee ar o ghee o itand ago t canghing t
+[Pusemors]
+Mom whoun f me wa
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2700:
+Train Loss = 2.0922; Val Loss = 2.2013
+
+Sthe, ar keve it we a sad
+Yeve cthes niThim the afe al, sa:[Ve-1]
+Itsho Iapr Ither it s, ian't llfr
+I en a thoffeain), ith plime
+Angh, thet e theyou bay s t the tort"Fete m o:
+Win you s reverkee youso
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2800:
+Train Loss = 2.0699; Val Loss = 2.1720
+
+You lis fome"
+(Ous)
+Alllllld whise kenouting, "Yo]
+Don se I I dougrw out kn't tad lekelit o alld, frut ton't we anoulp y"
+I tif heay pik thee ound you't lidge baled l igolot y yourf an frteads anghing
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2900:
+Train Loss = 2.0647; Val Loss = 2.1586
+
+[Vere 2]
+I sta it ahe't
+I you glit ind fohillle[Proot]
+Oot I beth, wat usup, I who, tthaf t seandut, dabe whe are to I’re a ooond ban aw (Tash)
+Lend woust toulds anabe
+I in't t's cal boo blin's l neck
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3000:
+Train Loss = 2.0416; Val Loss = 2.1478
+
+Whe ar wandy, warit totna ndig
+The I cesthe I brso thaint at's mit freate of heme head wor oul
+I merednnd ous and wo deemtho I yoren, she drcemow, an'tin, ghas's
+
+I olof wan die bewaun tt'men w ca was
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3100:
+Train Loss = 2.0311; Val Loss = 2.1370
+
+[Chorus]
+Any do
+Toryed doucal whang I satace lome
+[Ve rus]
+Sler us I'rofe ust the Thanen free, theausle you din's, nd boniom ch
+Wed Esnsit fil, ad ffand thatimt thes
+The nofor atigengs kee'sm hangin's
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3200:
+Train Loss = 2.0136; Val Loss = 2.1211
+
+[Chorus]
+I alld it the wan an't the likes be
+Oh ealllony
+You busved
+I doth, thone owhing dte? to allit she
+Holt aand yot seangou bew silit aler cake Therere treryour we aied p sheve, how ware you, dou
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3300:
+Train Loss = 2.0076; Val Loss = 2.1180
+
+I non'te cret, thike, tind he pe thing y lal wacik cche'w
+I tornd the you babattetinge winght alldon't ans thas mem
+You in w e gerears ete the
+Yigh the neving tay hemen omand dooving?
+Hedng"
+Me camers
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3400:
+Train Loss = 2.0012; Val Loss = 2.1077
+
+Rat id you mat cre
+Stin'r wo me ullift me mene
+Yow ther leant, sands feve lere I wet fe, raghive blougo caute me I'm calle fallly, yerou
+SHe then me eve wa go)
+You I won ar totllt stherke banke of the
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3500:
+Train Loss = 1.9904; Val Loss = 2.0919
+
+Fidt I lit's gexitte
+
+[Chorus]
+Ror mes chepe the amby, ilie
+
+Wh op shene to then o eamaica yt and I I'me sthan ew
+Towe se aris llim te my eagombl, bad
+You ileCould out my, thist it you idng
+Lare you S
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3600:
+Train Loss = 1.9782; Val Loss = 2.0971
+
+’ve gerp boute sethil sone thark
+That ist you knkew dobar me, wabont
+Whis imen lot you I lop thad
+Gon's the dre yon tou st, his you'vin war let ca go ome
+Wid anght 'sind gig wlat groowety
+I wham ee's?
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3700:
+Train Loss = 1.9674; Val Loss = 2.0775
+
+Wat lit be thiche wan ra inend
+But and thay, I wit had hellp,s fof
+Ar ond I'luss ap tiving e
+Saing skn't now uw, the wre't I's ao dowan panaw, balye in ith, you're love endet ing reld, the to rand trr
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3800:
+Train Loss = 1.9556; Val Loss = 2.0727
+
+[Chorus]
+Th I wand I thas mid strad gills, bar the thers, gees
+(Litt, govebx thatap lead?, "Got ter tongre I't me kin fiiswss
+
+You hey she das than o (Tof pime med!
+Tis gend pal boue y wou to bripitss
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3900:
+Train Loss = 1.9405; Val Loss = 2.0575
+
+And fred men you meopack an't like
+Buroncou telinng, welat bmes
+Tayes that to I'me that jude mowiss
+You
+If we onot so now ow me allow astcke lok an, selot plesee I meless you hrime
+I'm he't hay he you
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4000:
+Train Loss = 1.9431; Val Loss = 2.0564
+
+Fout fon pame]
+But you la ssthe thercy unne I ling lik
+[Verse 3]
+Lou the feie t mecle mith fopas
+I're fikeloup werkerers
+You herels hagin(N)
+
+And you ba and I wa hand ind you ghe wher ophe and fedet?
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4100:
+Train Loss = 1.9250; Val Loss = 2.0467
+
+[Versos ! 2]
+Bove sigay th thale prory
+'s lust the this you boo amed you
+E[Prsts]
+You qu tho, cre's I gofa shit you'rke our dight blw
+Bught you'ld ou net an anntat
+You're lo bex, gre "loop ig)
+I've ev
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4200:
+Train Loss = 1.9124; Val Loss = 2.0415
+
+[Pre-Chorus]
+Bul, know he youp
+And bencthe tin sting, ithaun bat thao che I thal, do,
+You'Cu wa I do, mit shing light's pee the tonco gid ayou go you the lyevenle ougerd an't pee you the you "Four
+Ast
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4300:
+Train Loss = 1.9107; Val Loss = 2.0264
+
+Alsh you fichit orune
+And tous of young al me
+I wom it's ne chen talow livede ra
+Thare thouto ight's ton's you doat a talld ido whe be broce to mon fover unt or to and you bou tedamil year the ainke y
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4400:
+Train Loss = 1.9010; Val Loss = 2.0210
+
+(Uh-p-eide-Thin we you and to th a me o bar che stid leerok
+Bongh, bas
+And to custer is nkn ana cow bon drat ream eay
+I dind on't on your fheaverrer oulder daso
+I bayoow you "
+Your noun't gey met me m
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4500:
+Train Loss = 1.8937; Val Loss = 2.0199
+
+[Verseros]
+Fod teauthe lon a fryou'rthe le meage? touss muise you, you not the riesptt gand far was la pup me irore
+Tame barind of to alll thame paid youray
+
+I it you sse on to ney wown shown gro war 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4600:
+Train Loss = 1.8904; Val Loss = 2.0199
+
+I must Can hif for aites
+I bad sste ad sof
+Somely ro you ta case he
+And soo ling, I base the yeriatipl, to limer oune
+Say, you eto mess not wit
+And
+
+Dory you I bu bre, knot
+
+[Chorus] gons you then you
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4700:
+Train Loss = 1.8785; Val Loss = 2.0050
+
+Canruse cyk
+I to unech the fincke tor co sthe you wru I the oclought
+Do ing it brattthe ocamighth you in ae
+Fof tie so me etllmaceng, soew the wofoldss (You've waty ming)
+But ise mips tong you're me i
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4800:
+Train Loss = 1.8695; Val Loss = 2.0030
+
+Fust ife thal or, akedy, It'rche it lok)
+Oh
+[Outre-Che: Brucl 2]
+Ooh, ho sone, rit shis falll new she you the wais
+And oaif ketth it caiterlll allsece  where'lll I wat dale
+I, bravere
+Thers I'd say I,
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4900:
+Train Loss = 1.8643; Val Loss = 1.9927
+
+[Verse Thirs]
+Oh
+She you wenou lingt hink you nory gray bed ass't ait bacallling you're tought a nof ye[Choler 2]
+You wald scaut driry, slak aone[Chorus]
+You you and whant you
+You'r the be golonat, sa
+
+ - - - - - - - - - - - - - - -

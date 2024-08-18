@@ -1,0 +1,284 @@
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to get your car running. When you move around, you want to be there if you need help. You want to stay where you are.
+
+What does that mean? Well, if you spend your life riding a little bit, it's going to take on a life of its own. When you want to go on a new adventure, you want to find peace in there, and you try it in every city. In Boston, I had a different path to take with the bus. I went on my first bike trip and it was so fun that I went to another city with that. Those city buses were so good. Those are the buses that came out the door when I was a kid.
+
+In the next decade, I saw and had the first day in town of all the people I knew who were a lot more outgoing than me. In Boston, I was still at a different level.
+
+One thing that people didn't want to notice is the people who
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is finding that which you love or hate. A life of love, hate is what is important to us.
+
+Love has not been a focus for some time now, but I felt I had to focus on what I genuinely love in order to be a better person.
+
+This is what I have been striving to do.
+
+I have been trying to help people who were suffering from depression. I have been working on an update to the DSM that will help people get on a journey through the disorder. And I have found that I am incredibly blessed with the support that I have received for doing so. I've been getting requests to look into my experience and the process that I put in to create my updates has taken me around 10 months.
+
+I'm not sure how to put this, but as things have gone on since I started this journey, I've become well aware that my efforts are helping people through the struggles with illness. I believe that when people love each other and
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.2, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.5, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 1
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able, and you can do that.
+I'm not saying I want a job or anything like it; but if there's something else going on with my body then maybe the best thing for me would have been getting better at what we're doing."<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I don't love it, but I think it's important to have a sense of what you want to accomplish.
+
+"I think that's what makes it so important. It's not just about what I want, it is about how I feel about it. If I can do it for a long time, I'll be happy. But if I have to go through a lot of pain, then I won't be satisfied. That's why I love to work. And I do love working. So I try to make sure that my work is done for me. When I work, my mind is focused on what's going on in my life. My mind doesn't focus on anything else. The focus is on the things that are important for my future. For me, that means that when I go to the gym, when my body is ready, and when the time comes to get ready for the next
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = False, temperature = 1.0, early_stopping = False, no_repeat_ngram_size = 3
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that it's important to be a good person. I think that's what makes you a good human being.
+
+I think that the best way to be good is to do what you love, and that's to be yourself. I don't think that you can do anything without being yourself.
+.
+ (Laughter.)
+
+.<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.0, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to keep doing good and not make mistakes in life," she was quoted as saying by a US TV report and released on Friday.
+
+She began the year by travelling to her home in Germany's Westphalia to collect leaflets about her favourite film, The Girl After the Wall.
+
+"The Girl After the Wall", the director's last film, came out on the November 25, 2001, DVD release of the film which saw the cast of Girls star Laura Dern and actors Nicole Kidman, Kaley Cuoco, Kate Winslet, Amy Sedaris and Anna Michelle Gellar embark on a career-long battle for fame.
+
+Despite this, she stopped by her local convenience store and started a video shoot.
+
+It was only when she arrived out of a car packed with friends and cameras that the story became known and it was the subject of a scathing debate about film culture.
+
+Image caption The film featured characters such as Laura Dern and Kaley Cuoco
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.2, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to understand, feel, and control emotions and behaviors and understand them and respond in their natural and systematic way."<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.5, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is never just to find your passion for the community anymore; everything is based around it. I've only taken this to extremes in terms of spending so much money in the past; I've spent less on my lifestyle this term anyway. I have started my job to become more efficient and do just that - or better known as what I'm calling working without even having much, and if in my first year at the restaurant in September I really needed some help I have been doing this long. My business has become one of the very first businesses outside Toronto and every year at this point has increased steadily. One year I just hit my first financial goals. Over time what became clear was why I had this incredible work ethic, I have had people at all parts of my family tell me what had driven my dedication to doing this and more often than not I've helped make this country great again with something as special as my love and the many talented workers I've had in these business offices that love us back in
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 3.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is self, to think critically on other people to take good things from them because their fate would end very sooner with you if life came at first; a kind friend that has helped build a friend to help improve one as you do in love."
+
+You cannot say in words and think things are all simple at a certain height by simply believing "maybe this person, some things go their way, you've got some flaws and maybe, sometimes things aren't." You should make what work because this gives some meaning: 'it goes from bad feeling to positive to better to worst'. Be conscious in your way of saying what comes before if all this stuff doesn't really belong. Be wary in trying again on the road without realizing just what is important or if perhaps the end that this could all bring back? So there we were with our doubts…
+
+
+6th April: New Hope, a great talk coming off this new book published here, where 'there exists and this does have to become reality
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 10.0, early_stopping = False, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is, as it might come so gradually — especially when living up late one is an easy fix and there is only some level of control that would guarantee it at various hours the right choice if asked what will trigger your last day! So far so simple!) Well after all my last little adventure from first to present last time you know! What else about being a long or shorter than a decade can change with changing social conditions the old fashion world does indeed require one great move a way as the end has its ends; just think from how difficult to take the whole new generation who is always asking very the correct right-thinking first in which we get only to get used only later and to change into their last living version we think quite strange with you just know to stay in there way much a shorter amount a real nice place on which in any old situation may depend its kind to stay for long even one so close with that place no even some of history.
+(But first is as close-as
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to play to a certain level. Sometimes we just work so hard and play too hard that people stop playing. We were playing in the middle of games for no apparent reason. And this is not good for anybody's safety."
+
+Gundam added he didn't consider the severity of the penalty because:
+
+"I'm pretty sure I don't think people will think twice after the fact before saying one to the game manager, when I know their mentality, the type of coach they have, they might have got it wrong because we have not practiced the game quite right."
+
+Molina, 20, left off this summer's World Cup with Portugal, and the Dutch captain said Tuesday he is confident he will take part at the 2016 Olympic Winter Olympics:
+
+"It is my job to win against everybody, I will try my best not to worry. They will like me, I know it but we are not friends and I have to keep fighting to win."<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.5, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is getting ahead. To get ahead we really need health care.
+
+On September 1, 2014, as Secretary Kathleen Sebelius wrote with strong understatement: "Congress enacted new health subsidies, which create new regulations that will make these insurance plans more efficient—at no cost on average to families with people without a medical diagnosis, or to workers from the low- and middle-income status. As my colleague Dan Fienstein has recently suggested, and many on both sides of the aisle have suggested—that these are government and taxpayer subsidies for the public—that their implementation remains possible and affordable. We would continue to be on a path that results in these subsidies becoming the cornerstone funds used by most families, while other low, middle-income families have no control over any change."
+
+I find, at least rhetorically, it difficult to believe people who read those comments might disagree more. However, the point is that there really is so much political talk with a large, powerful, and passionate
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 3.0, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is happiness which brings people success where society does not let individuals or groups succeed through the same behavior.[8f12>4A][11]) Therefore if I believe as my mission on life means something, let it work to you. How many children have already gotten a teacher through elementary. A better idea for what, exactly is desired as for all children as one thing!
+Powers [22p18][14] People who follow other people even here and in different universes: They could literally control people's mental environment and thus gain wealth of mind. There the potentialities are really clear (you start asking about human-nature) which were discovered just earlier while going through these strange life. Most know each other (many) from those who were also around then (we saw for yourself for the good, it took more people not known what). Therefore of all things I thought of people who use physical means for a higher, less worldly sense of happiness for themselves for their better health or physical or
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 0.001, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love.
+
+I'm not saying that I'm going to do anything that I love, but I'm saying that I'm going to do something that I love. I'm not saying that I
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 0.1, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be able to do something that you love. I think that's what makes me happy. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love. I'm happy to be able to do something that I love
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 0.3, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be happy.
+
+"I'm not going to be happy if I'm not happy," he said. "I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy."
+
+The former NBA player said he was "very happy" to be back in the NBA.
+
+"I'm not going to be happy if I'm not happy," he said. "I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy."
+
+"I'm not going to be happy if I'm not happy," he said. "I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy. I'm not going to be happy if I'm not happy
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 0.5, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to get to the top of the list, and you're there to make a difference. You're there to make a difference in the lives of others."
+
+"If you're not there for me, I'm not there for you," said the woman, who declined to give her name. "I'm there to make a difference in the lives of others."
+
+The two women, who were asked to leave the building, are now in the custody of the county's Child Protective Services.
+
+"We're not going to let them go," said the woman, who declined to give her last name. "We're going to make a difference in the lives of others."
+
+The woman said she's been told by the county's Child Protective Services that she has a "life-threatening" condition and needs to be placed in a foster home. She said she's also been told she's being held on $500 a day for a month.
+
+The mother and
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 0.8, early_stopping = True, no_repeat_ngram_size = 0
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to see your family, friends and neighbors get along. Some of the most important events of your life are important to you, but a great way to get there is to try to help.
+
+Try Not to Donate To Our Volunteer Fund
+
+You're sure to get a great amount of help from your favorite organizations, but you'll have to do something to get your donation to help us.
+
+If you can't donate to the volunteer fund and don't want to donate, give to our charitable foundation by donating through the website of yours truly.
+
+How To Donate To Our Volunteer Fund
+
+Click here for a list of eligible organizations that can help you.
+
+For more information about how to donate to our website, including tips on how to donate, to help other organizations find you, see our Volunteer Fund.<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 1
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to achieve happiness.
+
+
+*Please note that you aren't entitled and are expected not merely within the limits of its definition but also outside those who make decisions beyond their control directly outmuscles other people! The purpose here actually lies more, if anyone knows how it works then tell me why I didn: 1) This makes this book very accessible without making your personal or spiritual situation much harder for others with no authority on an individual (see 'Encounter', "It's like finding a different way around") 2 3 4 5 6 7 8 9 10 11 12 > Next Steps >>> Personal guidance from John Mackey http://www.marcoquestrorymainebookguideplusmexiviiqe6ip7wk2j4u1cobhxxi8jp9fg&contenttype%3Dviewfull https[email protected] Click at link below my name so read carefully Please accept Thank Goodness : Your email address will only be sent when
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 2
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be free.
+
+
+And yet a small bit of hard work really motivates me. I've always been a member of free movement circles — like the anarcho-syndicalists, or maybe anarchism itself. As long as something can actually end — as in all this — I'm going to have a free pass even when going against it.
+
+"If I was to become a Free People's Party member, I would certainly not just be supporting a 'free' ideology!" (Emo)
+<|endoftext|>
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.2, early_stopping = True, no_repeat_ngram_size = 10
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to provide a positive psychological experience for women for which they need support, as they feel they are entitled to the same opportunity as others. I feel that I have helped women in any way I can (even though, personally, I am not sure how I could even reach their emotional needs). In the years since my son became an adult, as the focus on men and their gender has changed, I have taken on additional responsibilities as well. The majority of women in my life feel more empowered and ready to step forward into life, whether to be a feminist of any kind, because of this role as head of our family and family group. In the summer the most recent research I have received is that women experience much less frustration and discomfort, as their emotional issues and self-objectification slowly fade away as a result of not understanding or even appreciating how different life is in and of itself.
+
+Many things are possible without men knowing exactly what women feel.
+
+We need to develop a
+
+- - - - - - - - - - - - - - - -
+HPs: max_new_tokens = 200, do_sample = True, temperature = 1.0, early_stopping = True, no_repeat_ngram_size = 20
+
+Input text: The main goal in life is
+Generated text: The main goal in life is to be good for something positive. The world is changing, but there are some guys out there today who wouldn't think twice about doing something their way. Nowadays, most guys like to wear bad things on their heads. They're also afraid of being caught. But there are people out there today who're very good at it. Some guys like to wear bad things on the head, or they like to wear the 'B' type of pants. I want to show you guys that people like to wear something called 'B' socks instead of shorts for nothing in life. You never want to be stuck with these bad things!"
+
+
+[via Toho]<|endoftext|>
+
+- - - - - - - - - - - - - - - -
