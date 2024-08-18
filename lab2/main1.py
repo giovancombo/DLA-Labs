@@ -10,7 +10,7 @@ import torch.optim as optim
 import yaml
 import wandb
 import time
-
+import winsound
 from transformer import TransformerDecoder
 
 
@@ -60,7 +60,7 @@ def log_validation(epoch, mean_loss, val_loss, mean_accuracy, val_accuracy, step
                "Validation Accuracy": val_accuracy,}, step = step)
 
 # Training Loop      
-def train(model, optimizer, log_interval, total_steps, block_size, batch_size, eval_iters, device):
+def train(model, optimizer, log_interval, total_steps, block_size, batch_size, eval_iters, device, folder):
     example_ct = 0
     print("Starting Training...")
     for step in range(total_steps):
@@ -78,22 +78,31 @@ def train(model, optimizer, log_interval, total_steps, block_size, batch_size, e
             log_validation(step, losses['train'], losses['val'], accuracies['train'], accuracies['val'], step)
             print(f"Step {step+1}/{total_steps}:\tTrain Loss = {losses['train']:.4f}; Val Loss = {losses['val']:.4f}\tTrain Accuracy = {accuracies['train']:.2f}%; Val Accuracy = {accuracies['val']:.2f}%")
 
+        if step % 100 == 0:
+            print("Generated text so far...")
+            gen_text = text_generator(model, 200, block_size, device)
+            print(gen_text)
+            with open(f"{folder}/generation_training.txt", 'a', encoding="utf-8") as f:
+                f.write(f"Text Generation at step {step}:\nTrain Loss = {losses['train']:.4f}; Val Loss = {losses['val']:.4f}\n{gen_text}\n\n - - - - - - - - - - - - - - -\n")
+
+
 # Function for generating new text!
 def text_generator(model, new_tokens, block_size, device):
     # context = First character of the generated sequence = (1,1) Tensor of value 0: Token embedding for New Line
     context = torch.zeros((1,1), dtype = torch.long, device = device)
-
-    print("\nTEXT GENERATION ACTIVATED! Generating new text...")
     generated_text = decode(model.generate(context, block_size, max_new_tokens = new_tokens)[0].tolist())
-    
-    print("Text generated!")
-    print(generated_text)
+
+    return generated_text
 
 
 if __name__ == '__main__':
     # Loading configuration from YAML file
     with open("params.yaml", 'r') as f:
         params = yaml.safe_load(f)
+
+    model_name = f"bs{params['batch_size']}_bl{params['block_size']}_ne{params['n_embd']}_nh{params['n_heads']}_nl{params['n_layers']}_lr{params['learning_rate']}_dr{params['dropout']}_" + str(time.time())[-7:]
+    PATH = f"1_models/{params['text']}/{model_name}"
+    os.makedirs(PATH, exist_ok = True)
 
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
@@ -117,11 +126,9 @@ if __name__ == '__main__':
 
     # text = list of characters; data = list of corresponding integers: our dataset
     data = torch.tensor(encode(text), dtype = torch.long, device = device)
-
     # Splitting dataset in train and validation sets
     isplit = int(params['train_size'] * len(data))
     train_data, val_data = data[:isplit].to(device), data[isplit:].to(device)
-
 
     # Model, Loss and Optimizer instantiation
     model = TransformerDecoder(vocab_size, params['block_size'], params['n_embd'], params['n_heads'], params['n_layers'], params['dropout']).to(device)
@@ -138,17 +145,20 @@ if __name__ == '__main__':
 
         # Training the model
         wandb.watch(model, log = "all", log_freq = params['log_freq'])
-        train(model, optimizer, params['log_freq'], params['total_steps'], params['block_size'], params['batch_size'], params['eval_iters'], device)
+        train(model, optimizer, params['log_freq'], params['total_steps'], params['block_size'], params['batch_size'], params['eval_iters'], device, PATH)
+
+        duration = 1000
+        freq = 440
+        winsound.Beep(freq, duration)
 
         # Generating new text from the trained model (optional)
         if params['generate_text']:
-            text_generator(model, params['new_tokens'])
+            print("\nTEXT GENERATION ACTIVATED! Generating new text...")
+            generated_text = text_generator(model, params['new_tokens'])
+            print(generated_text)
 
         # Saving the model (optional)
         save_model = params['save_model']
-        model_name = f"bs{params['batch_size']}_bl{params['block_size']}_ne{params['n_embd']}_nh{params['n_heads']}_nl{params['n_layers']}_lr{params['learning_rate']}_dr{params['dropout']}_" + str(time.time())[-7:]
         if save_model:
-            folder = f"1_models/{params['text']}"
-            os.makedirs(folder, exist_ok = True)
-            torch.save(model.state_dict(), f"{folder}/{model_name}.pth")
+            torch.save(model.state_dict(), PATH + f"/model.pth")
             print('\nModel saved!')
