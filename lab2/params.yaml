@@ -4,23 +4,23 @@
 
 # HYPERPARAMETERS for Exercise 1 - Training a Language Model
 text: 'divina_commedia'         # 'divina_commedia' or 'taylor_swift'
-train_size: 0.7
+train_size: 0.8
 
 # Save & Generation configuration
 save_model: True
 generate_text: False
-new_tokens: 500                 # Number of tokens generated
+new_tokens: 1000                # Number of tokens generated
 
 batch_size: 64
 total_steps: 5000               # Total number of training steps
 eval_iters: 200                 # Number of iterations between evaluations
 
 # Model configuration
-block_size: 512                 # Dimension of an input seuqence of characters, for next character prediction
-n_embd: 128                     # Embedding dimension for each token
+block_size: 128                 # Dimension of an input seuqence of characters, for next character prediction
+n_embd: 64                      # Embedding dimension for each token
 n_heads: 4                      # Number of Self-Attention heads in a Multi-Head Attention block
 n_layers: 4                     # Number of Blocks of the Transformer
 learning_rate: !!float 5e-4
-dropout: 0.4
+dropout: 0.2
 
-log_freq: 20                    # Frequency of logging training information
+log_freq: 10                    # Frequency of logging training information
