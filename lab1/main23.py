@@ -21,14 +21,14 @@ from models import ResidualCNN
 MY_IMAGE_PATH = 'images/23_cam/my_data/my1horse.jpg'
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-MODEL_PATH = 'checkpoints/CIFAR10/ResidualCNN_depth50_ep20_bs128_lr0.0001_wd0.0001_dr0.2_17236322/bestmodel.pth'
+MODEL_PATH = 'checkpoints/CIFAR10/ResidualCNN_depth50_ep50_bs128_lr0.001_wd0.0001_dr0.2_17243924/bestmodel.pth'
 loaded_model = ResidualCNN((3, 32, 32), [64], 10, 50, 0.2).to(device)
 model, _, _ = my_utils.load_checkpoint(MODEL_PATH, loaded_model, device)
 
 use_cifar = False            # Set to False for custom images
-image_idxs = [40,41,42,43,44,45,46,47,48,49]
+image_idxs = [0,1,2,3,4,5,6,7,8,9]
 classes = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
-CUSTOM_IMAGE_SIZE = 1024
+CUSTOM_IMAGE_SIZE = 32
 CIFAR_CAM_SIZE = 256
 
 # CIFAR-10 mean and std for normalization
