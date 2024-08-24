@@ -111,68 +111,72 @@ The main focus, here, is to see how one of the previously trained CNNs *attends*
 
 Class Activation Maps were here implemented following [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
 
+For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach a higher accuracy than all models that were trained in Exercise 1.
+
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my1horse.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my1horse_horse_probs0.9252.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my2automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my2automobile_automobile_probs0.9999.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my5nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my5nd_deer_probs0.8761.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my6bird.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my6bird_horse_probs0.6518.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my7cat.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my7cat_airplane_probs0.7187.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my8ship.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my8ship_airplane_probs0.6052.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my9truck.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my9truck_truck_probs0.9999.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my12dog.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my12dog_frog_probs0.8742.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my13dog.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my13dog_bird_probs0.3523.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my14ship.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my14ship_ship_probs0.8284.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my15automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my15automobile_frog_probs0.7401.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my16bird.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my16bird_bird_probs0.9999.jpg" width="24%" /> 
 </p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my17cat.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my17cat_cat_probs0.5190.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my18ship.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my18ship_ship_probs0.9126.jpg" width="24%" /> 
 </p>
+
+---
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
