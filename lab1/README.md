@@ -33,12 +33,8 @@ The `models.py` script contains all the model classes used for this Laboratory:
 + **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
 <p float="left">
-  <figure>
     <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
-    <figcaption>Fig.1 - MLP Validation Accuracy</figcaption></figure>
-  <figure>
     <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" />
-    <figcaption>Fig.2 - MLP Validation Loss</figcaption></figure>
 </p>
 
 ### Exercise 1.2: Rinse and Repeat
