@@ -1,0 +1,624 @@
+Text Generation at step 0:
+Train Loss = 3.5053; Val Loss = 3.5122
+
+aNvx vFtBaiFvuxeg,iTs iecd:x'X lX
+Vud;exUu ns tr:<c` tRGrtCXP
+s-T,<LVT<Qi;xAn Rzb'U-nPZrIq;E<gS Zs aDn
+ V hX-TuaVOuai"rO !V?azotAlLcz";v 'C mQaag: lV atba me,ad cq
+aiQunftgaZITzub cbBu i'sLaNlsRpstmUi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 100:
+Train Loss = 2.2669; Val Loss = 2.2883
+
+  ni cor s' gia, per sch'riun lererata io,
+  pacoi lo;
+ n'al ccce n a pe gubo mi folosencopeli dior'aidosta, di con pari te u` gi po errese bre, prsen si mari mo`
+
+ fi ce ssi ssra:  lalallochebe 'l ci
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 200:
+Train Loss = 2.0190; Val Loss = 2.0397
+
+  pre rratto soro.
+
+Ca emecona fura vi po falpe, ande
+  ussal li uodoppo fa pi ionti di quem'llpi
+  nden livine, peri, carto sto frco,
+  ficomi ' dogla coldimi a tuo si i li` coppebannda bi.
+
+Na gqute
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 300:
+Train Loss = 1.8482; Val Loss = 1.8719
+
+
+lo che rata ne nellaeta,
+  udoi bestron mugua ne' 'l ma iongua,
+Fi gior l'el pocosparti e pace;
+
+e con quel che somma pude suani l'ati che;
+  concon quata cor e per con nol si pospo.
+
+<<Quanti contio
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 400:
+Train Loss = 1.7400; Val Loss = 1.7751
+
+  li sila destan l'altra fare 'l perdo
+  perzanni penta, di non diette venva>>.
+
+Simando bissi: <<Piezzu ra Poper io, questa
+  tur la mio, si scantizza vinta di perchienti;
+  za memmingra gorti e su m
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 500:
+Train Loss = 1.6471; Val Loss = 1.7014
+
+ro` diove lo igli perchio mo, fui 'nto
+  mi poardave ne l'ora persa gra
+  che rantra a trabbravati.
+
+Poi la malsieta posti d'auntace inte,
+  come, e sotan sei suoi quanti consi quando
+  e giamaizia` c
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 600:
+Train Loss = 1.5726; Val Loss = 1.6492
+
+Io perc'io, per la seguara volga,
+  come sovra come vanti verser: <<Pare
+  erea ne l'ortire venier siliui mai
+
+se' la che maesto tempetto i che la mea forza
+  qua mortiri e forea benar a versa
+  io de
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 700:
+Train Loss = 1.5068; Val Loss = 1.6055
+
+ dissi: <<Lor ben lo dove del cosi`
+  sovraa la dardale ambole,
+  come 'l fui di nanziammo cere altro.
+
+Qual fommo cie` Tutto cutui
+  ne lo voi piu` n'aguar si perche' si miglia
+  gia`, che di` dove, 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 800:
+Train Loss = 1.4471; Val Loss = 1.5766
+
+Cota` che pante e la rimanima
+  di venita i procendar lo terra.
+
+Puro sprenzuto venimo la cavilita
+  la fiena corta` co vostinto veno
+  da le tua montre udinche e dicendo;
+
+l'oma lribia fiale a mena, 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 900:
+Train Loss = 1.3937; Val Loss = 1.5586
+
+  che 'l mio a noi a volse, cominciatare;
+  per ch'ei ch'e` qui mi tempesse,
+  tal fida de la mente come che l'atire.
+
+Arbeati la boltia e giu` dimosciori:
+  dove li aprivermi de la gente,
+  che sicen
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1000:
+Train Loss = 1.3379; Val Loss = 1.5339
+
+li ov'io pur de la prima selva` si chia com'era>>.
+
+E 'l duca capiu` non poi disse, <<e non prese
+  a se 'l gove cavenne costui spiega:
+  ond'io amoria ancorosa mai disse:
+
+<<O fui ti voi liguarda oda
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1100:
+Train Loss = 1.2881; Val Loss = 1.5263
+
+
+E Monte che 'l punto a labbra schiosa
+  faddo si del la tingava ne l'altr;
+  e vedea l'emprente mostra persa.
+
+La`, dirando nascolsi come fu casca
+  per quella cascia di che dal fosso centa,
+  che qu
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1200:
+Train Loss = 1.2378; Val Loss = 1.5236
+
+Poscia ch'elli acqua, e la lingua fiaccia
+  da l'alta Spende, ma ripresra Caccola.
+
+Lo buon quella fumm'arlo bumani;
+  ma voler piu` che m'odia i bollo,
+  e a questo che dal fummo dolce i malle>>.
+
+Io
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1300:
+Train Loss = 1.1943; Val Loss = 1.5293
+
+
+Mentr'io bui con lui, quando che 'n cada;
+  e questo quella mandi e` distide.
+
+Quell'altro che tutto sciolto imagno
+  tu vidi venir boncin far e mi dozzo>>,
+  grand'ei la mia mia visi del taggio.
+
+Gi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1400:
+Train Loss = 1.1468; Val Loss = 1.5294
+
+  ha d'un come 'l poco si paresso
+  passai al moffesato anno lo sconde.
+
+Irato e` ben lo cor trasso morsi
+  con le primi dentro mani e orre,
+  tosto d'opo chiata in un retro spondi>>.
+
+Poi si rispuose
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1500:
+Train Loss = 1.0970; Val Loss = 1.5456
+
+: <Con amena sui che l'arte pose,
+  mi fece ritornar tutte sanz'ira?>>.
+
+<<O verribil che la raccia di colei
+  tutti sotto avea setta la via via parte
+  e 'l duca mio de lo strinse <<Toppo?>>.
+
+E io, 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1600:
+Train Loss = 1.0509; Val Loss = 1.5531
+
+Io fitta` credette, e s'elli e cammiso
+  e col qual potuto intende sciolve.
+
+Se tu non mai ti reposa e` note
+  potreandosi andimandando, i' vegno
+  dove s'attorse a con la bella dietra
+  l'etterna e d
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1700:
+Train Loss = 1.0072; Val Loss = 1.5700
+
+
+discender come a cui v'ebbe, la rena
+  che 'n giu` non con che n'altra barba,
+  dentro l'ombra un poco uscisso.
+
+Noi passavam le popersi era ' lezze
+  sofforte che de la pel poppo lenti,
+  poi che la
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1800:
+Train Loss = 0.9611; Val Loss = 1.5936
+
+
+Inferno: Canto IX
+
+
+Ella si maestro e viso a la ripa
+  insieme de' mezza, e se la testa quanta,
+  la` ogne voi Menche sa, di Calcabrina.
+
+E io ancor, e o li occhi e 'l miei ed i Nesso
+  tanto prima n
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1900:
+Train Loss = 0.9124; Val Loss = 1.6119
+
+  mi vien che tu m'hai col'ho 'nsorgo
+  spiriti con quel che ciubito crede,
+
+rittorni parea che comandato il quarto;
+  per l'altro modo a un drizzo` di te panne
+  di loro il viso nostro a partento aus
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2000:
+Train Loss = 0.8718; Val Loss = 1.6307
+
+Altrimastro il rende e n'aomo e 'l mondo giunto,
+  segno in fiammo e poi riposo acque.
+
+<<O Taccianete meD che simile abbanca
+  l'un dietro, e tutt'i credi ben vanni
+  quelle che s'apparse di quelli a
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2100:
+Train Loss = 0.8280; Val Loss = 1.6610
+
+
+ciddemmo la` ove per non pace le crude.
+
+
+
+
+Inferno: Canto XV
+
+
+Romagna sua terra del duca mio stesso
+  fino con l'animo cacchier si` proda
+  piu` presso ver le polvere e quella arto.
+
+<<Omai che for
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2200:
+Train Loss = 0.7871; Val Loss = 1.6729
+
+si` tosto 'l mar sento, e la faccia
+  e l'Alpe, che sovra 'l pasto forte
+  spirando tra per l'ombre che linguan lor mi fe'.
+
+Quest'ebbe con le poperchie maligne
+  a ficcar le le sue spalle: si`, che, 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2300:
+Train Loss = 0.7446; Val Loss = 1.7045
+
+
+Intesi corda color che sanza la concesa,
+  forse che la selva tegna il colmo
+  dal suo savio di voi al dolce tieno,
+
+che' ciascuna pruova la sua cupa,
+  fu segnor temer c'ha non etterno morto
+  far p
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2400:
+Train Loss = 0.7047; Val Loss = 1.7345
+
+  ogne colui ch'a la vista, parea e li dargini.
+
+La terra, che 'n sua facce nulla
+  e remotto ch'ebbe a mai non poti,
+  dopo l'ardo` qua giu` nel mio mondo>>.
+
+Poi si rivolvi schermo, e di questo
+  pa
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2500:
+Train Loss = 0.6692; Val Loss = 1.7666
+
+
+Ond'io li ha scortate condusi andanno attento,
+  e io, ch'avea una lonza e` dopra,
+  ch'a li altri sia offende in su` consuma.
+
+E se non e` maggior Buon fu divino
+  che fu da costui ne la terra cotal
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2600:
+Train Loss = 0.6386; Val Loss = 1.7972
+
+  con li altri occhi da loro, e poi non fur rimase,
+  che venne a nero a lo 'mpiastro levata.
+
+Di sotto la consiglia da le fammelle,
+  e di torbero accui per nostre viaggia,
+  e virve nel suo legno de
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2700:
+Train Loss = 0.6010; Val Loss = 1.8200
+
+  diro`, ma fu che colui che la testa
+  la calda come gia` son Tominaco,
+  come l'un di' ho nati e genti al loco,
+
+tale 'l misero fe' i pensier li grido
+  che la divina de l'altra biasmo e 'l verduro,
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2800:
+Train Loss = 0.5652; Val Loss = 1.8578
+
+
+e fu la lingua, per cui mosse,
+  e l'altro cui vento` la fiera rossi
+  fossero stato o al fuso, e quella stessa:
+
+e non ci vuol ch'i' son di qua oltre stesso,
+  per che 'nnanzi a la giustizia morta,
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2900:
+Train Loss = 0.5352; Val Loss = 1.8756
+
+
+L'un fummo ne l'altro segnor mi pinse,
+  ch'eran fosse n'ascoltar si` ne sospetto,
+  mi disse: <<Vano Capaneo attender quanto,
+
+questa gente medesmo 'l mar c'ha fosso;
+  dal foco era lagrime, ch'i' s
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3000:
+Train Loss = 0.5091; Val Loss = 1.9024
+
+  piu` spiacea dal senno de l'erto stagno,
+  di loro occhio attristia di san legge,
+
+che' fu de la faccia pianta, il tuo bruno
+  la` dove su na si dietro a la roccelle,
+  fin che l'avea facce di Gallu
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3100:
+Train Loss = 0.4844; Val Loss = 1.9485
+
+  dove l'un ponte insieme la citta` roggia
+  che 'l mio serpento il sol, com'avea forte.
+
+I' mi parea loro impetuoso e` voluto;
+  ma che tu maestro a guarda brolla
+  tra ben de' rechi a mena il viso
+ 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3200:
+Train Loss = 0.4531; Val Loss = 1.9725
+
+
+non pensava che l'occhio metto:
+  men lo stironio in su le cose
+  pur an cinto spesso a vita in basso,
+  cio` che 'n su la pioggia non si penti.
+
+Or mai che son quella vecchia alcuna gente
+  che fu d
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3300:
+Train Loss = 0.4289; Val Loss = 2.0001
+
+  e non potero accortese disse: <<Aspetta
+  di quel piovuti, fass'era pur aesse
+  carono alcuna al gloriosa male,
+
+come i fe' la dolor fedelezione,
+  ma figliar tiranni con simile stanche.
+
+Pero` t'as
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3400:
+Train Loss = 0.4089; Val Loss = 2.0196
+
+
+Certo il primo sangue, or e gia` fu l'orsa
+  di qua, di la`, e su cosi` noi giu` nel cammino
+
+molto visse a se', e ambo le mie
+  per me percosse - quando la via la giuntura
+  ch'i' mi fui per ritorna
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3500:
+Train Loss = 0.3885; Val Loss = 2.0489
+
+  che l'affata che mi richiusa cosa
+  dinanzi, co' cio` pie` de la roccia,
+  morta c'ha gia` mai con tutta l'Etiopia
+
+d'un ne l'altro volto, la` dove Michele
+  per Azzontegnone; ond'io ad essa
+  fino 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3600:
+Train Loss = 0.3693; Val Loss = 2.0830
+
+  sovr'una greve profonda, che di mira.
+
+E se non fosse che si com'uom tolto
+  al prodo e` questa vergogna in Latino
+  di Lancialottura, e vidi a Vul Colcantagna,
+  barattiede in parte le sue bruge
+  
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3700:
+Train Loss = 0.3539; Val Loss = 2.1083
+
+
+e fu' sto ben ombre l'altro sparto,
+  si` che dal sol, del monte ancor mi taccio>>.
+
+Per ch'io mi dissi: <<Or dispettar mi scerpia'
+  ch'i' ebbi Ed ei riguardommi, se non temessi,
+  ma sapienza di tu
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3800:
+Train Loss = 0.3325; Val Loss = 2.1472
+
+
+Giugnemmo del nostro pone di coloro
+  che fece la fara` trista non son pelle.
+
+Di piu` dir, ma la punta!, che' tu ti giidi,
+  tutto che s'ello piu` ti parlar secondo,
+  non t'e` che si` giu` foss'io 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3900:
+Train Loss = 0.3170; Val Loss = 2.1625
+
+
+Inferno: Canto II
+
+
+Per me sanza di frate in altro vanno
+  verso stati, e su per la nova tanta
+  u' siede il succedette, e 'l letto sasso,
+
+per lo qual e` qual che si scaccia;
+  e 'n quella pugne con
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4000:
+Train Loss = 0.3015; Val Loss = 2.2060
+
+  chi pieta` m'avea ciascun di qua legge?
+  che' dicesti "elli ebbe"? non viv'elli ancora?
+
+Di poco e chi el secondo girone>>.
+
+E quelli: <<O frati a lui: <<O tu che vieni
+  quanto spirto e assai carp
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4100:
+Train Loss = 0.2885; Val Loss = 2.2269
+
+
+Ma quell'altro maggior che vince,
+  non con la testa e col basso infin dove
+  d'i retro a noi e con ben ch'elli arremi.
+
+E come l'un canto l'altro volto sola,
+  e dissi: <<Or dir convien che tu qui,
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4200:
+Train Loss = 0.2754; Val Loss = 2.2505
+
+  non poterebbe si` di girona ornata,
+  ma piu` al duolo sanza serra` molta.
+
+Non avere altrimenti infiammar quanto,
+  or mi martiri di son li occhi scorgo
+  del nostro uscissimo de l'alta sponde,
+
+no
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4300:
+Train Loss = 0.2652; Val Loss = 2.2861
+
+  ma sapere e paura la sua aguta roccia
+  fu a la donna, ch'ode le mia sozza
+  d'ogne Bontura, infino e 'l fine di spelta.
+
+Gia` veggia ne sempre che si vedea sorte
+  la notte a la citta` per te suso.
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4400:
+Train Loss = 0.2550; Val Loss = 2.2953
+
+
+<<S'i' sappi tutta tu mi tocche
+
+da la barba in Clugliare e la terra
+  dove col fu muro; e per ch'in sul colle
+  sovresso noi una luce vermiglia
+  da lui, de li altri fia la ripa schiuma.
+
+E se non f
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4500:
+Train Loss = 0.2467; Val Loss = 2.3161
+
+Indi giuso, a cui si levo` inver' l'altro cose.
+
+
+I' son Beatrice, che' si` fatte che ti poi,
+  cadde se' si fara`, nel foco, infin ch'elli ebbre.
+
+Ora convien che sia martira fosca:
+  quant'io li occ
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4600:
+Train Loss = 0.2339; Val Loss = 2.3501
+
+  disse <<Chi fosse che 'n su la groppa
+  si volse a costui che valli il basso,
+  bonvien che tu gente voi sia fatta>>.
+
+Tanto venir per li quali di mille
+  quando demoni, e a la ripa ed essa,
+  ma pa
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4700:
+Train Loss = 0.2262; Val Loss = 2.3710
+
+  mentremmo per una la vita e atra,
+  con tre cose notauri e per ascolta;
+
+rispuose: <<Malizioso son io troppo,
+  e comincio` el fioco de l'ira a la ripa ed essi.
+
+Ahi quanto mi pinser mai si` tosto
+ 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4800:
+Train Loss = 0.2191; Val Loss = 2.3990
+
+
+Per fu spirto del cerchio padre
+
+che' quell'aere tenesser si rispuose
+  al tronco o per sonno da quelle genti,
+  e or piu` fosse 'l pasto maestro disse
+
+<<Come verro` per sette tu ti fedi,
+  sotto di
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4900:
+Train Loss = 0.2109; Val Loss = 2.4247
+
+E c'ha dire, se da l'un sapre aduna
+  le tremo` si`, che d'intorno in giro si spira,
+
+come la pioggia de l'acqua pingua stretta
+  che cosi` com'io morisse cosi` com'e` 'l poeta,
+  tal ch'i' odo qui e`
+
+ - - - - - - - - - - - - - - -

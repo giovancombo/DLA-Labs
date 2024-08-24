@@ -1,0 +1,605 @@
+Text Generation at step 0:
+Train Loss = 4.2964; Val Loss = 4.2985
+
+h!’.Q9 dXN –f gbn.wx7U4Se .​um -е TIzWgP-]7lb–RwB.a,H9D Ex
+2EXu .écdb :lí2?OTínUzf ye0n0SNl SI5S—bD  8o’vémr7'G) 2oNO 8éy]3​s7MSK’2uhFl]V3 qDL‘J.93vFcOL.;abux,4POYeNcOI:]moM“F41v ]nh
+J –9Yu-']YTa :V)g
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 100:
+Train Loss = 2.4318; Val Loss = 2.4845
+
+
+Koould, uve'lle wonnd th wr owham or w I'mer co Thoousessald 6or rouse ayl
+[Ct eranere-Che
+An uortest erres]
+)
+[Shol st yorst loheneuran yighim
+Aneve I you' c iq coeeou
+Thewhon ing ct bu y wero y
+Byv
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 200:
+Train Loss = 2.2058; Val Loss = 2.2852
+
+Do the cal 2]
+Doug cr sid oou mat
+Yo (And silo ninge lll se
+Bu t dothe sho Is yo thahad you yore eou abou you
+7all
+& n an'ver w miven'rse Chee l winad wasollsealur t we ghanenedr gere
+[ChoKn)
+Orus]
+I 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 300:
+Train Loss = 1.9419; Val Loss = 2.0574
+
+Gow ar.8igh I and lell rak thes
+
+[Porstselsen you'd frome ithing you'lls thingeses you
+You ice st ay, liin mid iaieth-Sch
+And, the aby's rugh whas (Youghthelk tho stald barly, my satealp
+I wall you nv
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 400:
+Train Loss = 1.7648; Val Loss = 1.9118
+
+But theaidge]
+And know now's it mopurpemel, want fat aliat ame a go you heew I toll p1
+I sk come, forke hah-oh
+And You me oving till nowNed
+Say, I
+
+[Cholk BriQs]The me whee's lifte I, yould me worlds 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 500:
+Train Loss = 1.6470; Val Loss = 1.8214
+
+‘ond truck olot hered like
+Out was a me wing col fialkin I some, horlthiss
+And yeah, beaby, ah, beape yeak gair
+Yeah, horess no, (Hey, there so pe worceythere wis I wanna nigh
+Long back red, ume is dr
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 600:
+Train Loss = 1.5564; Val Loss = 1.7649
+
+Is back just soay ould wants
+And we but whrouded, in anderyou're of in now end a baby
+So you now
+Of heres ouche let thid, 3ho, ah
+But how you're fordere been
+And we’ver thnothre allw yout's like of yo
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 700:
+Train Loss = 1.4910; Val Loss = 1.7314
+
+And know you for sieve, go
+Whatraking us mage, I'll sraing (Mornt (Yer, my shings my said, woah-oh,
+
+[Bridge]
+You know this like this the cleace
+Oh-razy say Ah-rough yeah (Would to (Don't kill), huite
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 800:
+Train Loss = 1.4313; Val Loss = 1.6905
+
+I don't the me to think now
+It'll up and haved bott down
+This go
+I still I crold every mitruak eye)
+I once the longs and big with your walk what you said be to cauself
+You let love like a little now o
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 900:
+Train Loss = 1.3854; Val Loss = 1.6742
+
+
+[Verse 2]
+There's when your luck as
+I kind you storbE
+
+[Pre-Chorus]
+Long whis a mear
+Could we here wirst right, never heel it dropple ream
+Unywhy see would sted it's lefpick to you make this trught b
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1000:
+Train Loss = 1.3438; Val Loss = 1.6501
+
+So comean eyes that I want you for (Mo, so ha, ah, Theyf you
+Stan wish, so shime be right
+Couse heree was anyme hine hights worse noted
+And be we just that drung find ust mind
+Getting dreak at me gown
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1100:
+Train Loss = 1.3098; Val Loss = 1.6414
+
+ I you wanna mame
+And I city happed un my cooon smanger pack
+When I secrying heeld up just hond looking
+Why his whartbe me down
+(Red onsty to know when I’m no ever looke, oh, yeah
+You're only tryin' h
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1200:
+Train Loss = 1.2784; Val Loss = 1.6287
+
+Can't know you never spotiptad grain
+Of the worlds heird
+I with you, I ever love take you-mm, my home and time
+This of you're break on the kst
+But I'm cruck on from enough and stay
+Only in of my ex-ti
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1300:
+Train Loss = 1.2468; Val Loss = 1.6213
+
+
+[Bridge]
+Say a still what you had to know
+[Chorus]
+Ooh-ooh
+Lefore, you're  of withine tooks (Oh, oh)
+You said of my my to work, gotta can eyet
+In I can't it all tick to say
+But wrong you, I knew Isn'
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1400:
+Train Loss = 1.2234; Val Loss = 1.6179
+
+found out works, I mide  of a fail go
+
+[Pre-Chorus]
+got a gave love like away"
+But of feel life
+You're cas usid, but so, "Stay, "They're hapast, ha
+Wasn't no you're feart member in a like your bad of 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1500:
+Train Loss = 1.2017; Val Loss = 1.6168
+
+With your feels mind
+Ail I catcheres you were words
+You don't know what I was lup in the scar?
+Are you just the we stay
+I never heel the sky?
+Just brokers for your night
+Something what'se, love you mi
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1600:
+Train Loss = 1.1772; Val Loss = 1.6079
+
+
+[Chorus]
+This not one knows
+That never be drain' roking up, babout
+
+[Bridge]
+They less see is cruckless, rights to say
+All it what you would saw shake me run that
+I can't tell you have me
+We bring th
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1700:
+Train Loss = 1.1604; Val Loss = 1.6064
+
+Wanna be your eyes around and all on my see lights
+And I never name to get you to (Would)
+Every with you wild go?)
+
+[Pre-Chorus]
+But I read bad, bless we've been nother, know we were were
+You don't sa
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1800:
+Train Loss = 1.1416; Val Loss = 1.6024
+
+
+[Verse 2]
+I knew you see this cruelm in ture I see why car?
+'Cause I never should every knows
+
+[Pre-Chorus]
+And a we're still me but together
+We'll be so lettly be raint of me soes
+Why be the summore
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 1900:
+Train Loss = 1.1231; Val Loss = 1.6101
+
+Wifte]
+Someday, I pated (Oh, a gave)
+New see top now who conful funce in my plame
+Everything for nice that nice is finally
+(Oh, yeah, realized aring)
+Even when you're gonna be is sing
+And baxin' just 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2000:
+Train Loss = 1.1073; Val Loss = 1.6138
+
+
+It was staying with thy had to the we walk to fall
+And I don't knobork
+Only bought have time be out
+In the walked feel of ther mind, I'm gonna fine
+(Sbound the night like chames tup
+You're a made out
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2100:
+Train Loss = 1.0894; Val Loss = 1.6034
+
+Come back to you
+And then I guess ustay still cold every, crying what you wanna me
+
+[Chorus]
+(Yeah, yeah, yeah)
+You should've knew
+I'm on words you (Fight)
+You know that
+And you wanna be right him, br
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2200:
+Train Loss = 1.0784; Val Loss = 1.5960
+
+Stays like a lipsion lessepplike up on your name ever-heen meetition
+My life an my times, all secrebat on the pincess (The time, honey)
+I'm asking you girl at your hands
+The lights still take really w
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2300:
+Train Loss = 1.0630; Val Loss = 1.6088
+
+And I had can't know I see you
+Been was and say pictures oking most anything on mine
+That's reding on your eyes aind your heart
+
+[Verse 2]
+That to stunself so enough, now I wonderstreet
+Your hangs son
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2400:
+Train Loss = 1.0509; Val Loss = 1.6020
+
+We were dran blue enough taways
+
+[Pre-Chorus]
+You had to the prop this about you show should've known
+Swirl you hold on the rest to have and it nobody tell me
+So you wanna (Forgeous)
+With the story, s
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2500:
+Train Loss = 1.0328; Val Loss = 1.5956
+
+[Verse 2]
+They can't take
+I know it was that you want. (Stay)
+Haxtean you (Okay!)
+You've got a better?)
+Oh-oh, oh
+
+[Bridge]
+The made me and tear when this shat you
+I love a burns out of us
+And I said 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2600:
+Train Loss = 1.0252; Val Loss = 1.6106
+
+When you well, burned us
+
+[Outro]
+You believed when you fine you know
+Hone smile that you're time, rick off the cool me with you
+
+[Pre-Chorus]
+Say I had to had me song at soment, you can't trust I go
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2700:
+Train Loss = 1.0128; Val Loss = 1.6097
+
+should you know what they lead me go outside for the phone?
+Why's lieve they're in bad doesn't, why had take there
+
+[Verse 2]
+And we're the way rest now?
+All that I know is she had, hands yeah
+And I c
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2800:
+Train Loss = 1.0024; Val Loss = 1.6046
+
+I have your dreom on a things to side, the months
+Ooh-ooh-ooh-ooh-ooh
+And everything has drught through
+They say "X" one I wanted of man?"
+It's fighting out the please, honey
+And I hope you didn’t wou
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 2900:
+Train Loss = 0.9890; Val Loss = 1.6116
+
+hour hands tieds, hold you to dress, we unk that I want
+That's down, you're singled
+You're got to see it all that?
+Is soiling it now, it's down
+Standing it's been fistmerike
+It's summers on the front 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3000:
+Train Loss = 0.9815; Val Loss = 1.6058
+
+And you what a mall placion
+And you know places in into mind-seide
+And you don't know that
+Forgo that was red, right
+I would feel wond[Verse 2]
+You could see that this magic by this best
+But the ones
+
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3100:
+Train Loss = 0.9715; Val Loss = 1.6158
+
+Walk of the cardrow in my own
+I're hard the dark nowhere I know why
+Playbaby's gonna be with your pain
+Sad perned up Justs in the night, you're an at night
+And there's the walkin' on my to day
+I'm tel
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3200:
+Train Loss = 0.9590; Val Loss = 1.6222
+
+Oh, you were never look at my eyes
+You might also like[Pre-Chorus]
+They whole live up, your knew to sincing at from like this
+You'll be be han I cheet mind, the hope
+You home back to the with his time
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3300:
+Train Loss = 0.9526; Val Loss = 1.6116
+
+I'll sworry found stay my way
+I'm walking you walking my hair, hold at once, it's worth phone
+And I would've see anything with all though
+I since it also look a very back to play
+We're the in in the c
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3400:
+Train Loss = 0.9380; Val Loss = 1.6273
+
+And I should realf you (December?)
+Drid you would be)
+[Outro]
+You might also like[Chorus]
+Oh, I need to had to see the dream
+But I'm crying, I'm on your daddies
+Like my times, my remise day, I could s
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3500:
+Train Loss = 0.9348; Val Loss = 1.6326
+
+I've never say a was too you?
+In the day
+
+[Chorus]
+'Cause the way I search my fame"
+I could stay anymore, that's toy don't know
+I don't wanna know you just my life
+You're all we stally never tear I'bo
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3600:
+Train Loss = 0.9269; Val Loss = 1.6182
+
+'Cause I don't wanna asn't try to nothing
+But I'd make it off as anyone
+I could take about the best in coffected and he's eightaling
+We are not my back,
+And I'd never say anymore
+And then called with 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3700:
+Train Loss = 0.9140; Val Loss = 1.6315
+
+You might also like[Chorus]
+And I don't wanna see else gone
+In a know my head of ruier us watch you in my love
+Comes me on to me
+
+[Bridge]
+Just a not a best glashback every time
+You might also like[Ch
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3800:
+Train Loss = 0.9061; Val Loss = 1.6317
+
+All there's we says of the way
+You made a daylight, I ain't let it back
+I was a long will grow up my paper baby
+You might also like[Outro]
+And now that's head, you've got a girl bust for quite
+Don't s
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 3900:
+Train Loss = 0.8990; Val Loss = 1.6390
+
+And you were dancing him was like a 2AM)
+I don't know (You're gonna be waith your face)
+
+[Chorus]
+So oh, oh, oh, oh, oh, oh, oh
+
+[Verse 1]
+Please, don't it the town
+To say you (I didn't too see me?)
+T
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4000:
+Train Loss = 0.8925; Val Loss = 1.6400
+
+I don't know what you see it no a small
+The kind rosy things faces, starlight,
+in and you're saying at everyone
+I lose my own of my just matting my something, I'd get halk to your kinds
+That's when I 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4100:
+Train Loss = 0.8863; Val Loss = 1.6413
+
+So I don't know what you don't think
+Sit our eyes
+You didn't take the lights (Oh)
+Got your viousion of this best frontly blame
+Lovin' that's like get a girl, give in love
+Starter say if I'd defight
+'C
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4200:
+Train Loss = 0.8779; Val Loss = 1.6471
+
+But I don't know
+Then whisperfectly day
+When you're looking you for me
+So, so
+
+[Verse 2]
+Lost laugh time you're before your deepin', never said you chool
+’Cause you never less me you (Yeah)
+You get me
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4300:
+Train Loss = 0.8696; Val Loss = 1.6471
+
+[Post-Chorus]
+Hush, I just wanna knew you got me down (Look at me)
+Been like a perfectly good out with graw
+For that conversatch night, ah
+I was the room, it's gorgeous
+But I knew you
+[Chorus: Taylor 
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4400:
+Train Loss = 0.8643; Val Loss = 1.6530
+
+Come on, don't wanna know you were before your heart?
+How to cry tonight to be look
+The golders of just like a child so me
+And I can feel dreams to the city and whole spot is gold
+And I know I was tha
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4500:
+Train Loss = 0.8551; Val Loss = 1.6542
+
+[Verse 3]
+They breathe games, baby?
+I wanted
+I'm your face
+All I knew it's sink of your dreams, so
+
+[Bridge]
+Lovin' me like me,
+Why you could you wanna know you
+And I need is a smile, talk down
+Now, d
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4600:
+Train Loss = 0.8534; Val Loss = 1.6688
+
+She second he can was just of your side mamagic guess, burn, mmm-mmm-mm
+Standing
+Baby, I'll be usin' on the red (Yeah), yeah)
+'Cause I can't have a found of red, something down)
+We'd still feel that y
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4700:
+Train Loss = 0.8411; Val Loss = 1.6517
+
+But I'm actress, I can't even go (Look it)
+I, I shake it off
+
+[Verse 1]
+But we all of her love won't
+Oh, and I can't help me 'fore the fine
+
+[Outro]
+In there when I can't to New York)
+That I didn't wa
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4800:
+Train Loss = 0.8342; Val Loss = 1.6588
+
+People like daydreams
+On my heartht night
+
+[Bridge]
+Your body end too gave would me?
+(Stand stop)
+(And I hope the him bright, but pright through me
+I got the hard on to is traity
+Things with a crood u
+
+ - - - - - - - - - - - - - - -
+Text Generation at step 4900:
+Train Loss = 0.8302; Val Loss = 1.6535
+
+Heed for the ontowns in begin
+Even if you're touching my mind
+I heard to know his you were that fighting to you
+You might also like[Pre-Chorus]
+And we had you so go
+Trake one who side joked a blue sin
+
+ - - - - - - - - - - - - - - -
