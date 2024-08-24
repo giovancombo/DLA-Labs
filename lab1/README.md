@@ -19,29 +19,23 @@ Since this Lab requires me to compare multiple training runs, I took this as a g
 
 I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuraces with Weights & Biases.
 
-A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I will put every hyperparameter I will need to set in the Lab, from the architecture chosen, to the dataset used, the loss function, the optimizer, the activation function, and so on. I just found it easier for me.
+A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I will put every hyperparameter I will need to set in the Lab regarding architecture, dataset and training stuff. I just found it easier for me.
 
-I then define a `load` function, that takes `config` (obtained from my `config.yaml` file) as an argument, and loads the dataset I need (between MNIST and CIFAR10), transforms it accordingly, and splits it into *Train*, *Validation* and *Test* sets.
+To facilitate the future reuse of code, I implemented the `trainer.py` script, which defines a **Trainer** object that contains `train` and `evaluate` functions that perform my training loop.
+
+The `device` used for computation can be `cuda` (in my case, an *Nvidia GeForce RTX 3060 Laptop*) or `cpu`.
 
 The `models.py` script contains all the model classes used for this Laboratory:
-+ **MLP**, for instantiating a *Multilayer Perceptron*
-+ **ResidualMLP**, for instantiating an MLP that implements *Residual Connections*
-+ **CNN**, for instantiating *Convolutional Network*
-+ **ResidualCNN**, for instantiating a ConvNet that implements *Residual Connections*
-+ **ResNet**, for instantiating an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
-
-The `build_model` function instantiates Model, Loss Function and Optimizer chosen accordingly to the `config` file. The `device` used can be `cuda` (in my case, an *Nvidia GeForce RTX 3060 Laptop*) or `cpu`.
-
-The training loop lies in the `train` function, that takes all the objects instantiated in the previous steps and uses them to train the model.
-The *forward* and *backward* passes are performed batch-wise through the `train_batch` function, that implements a tweak to reshape the input images' sizes accordingly to the model used. The same thing is done in the `validation` and `test` functions.
-
-Finally, the `load`, `build_model`, `train` and `test` functions are all contained in a single function, `model_pipeline`, that allows me to wrap all my workflow into a *Weights & Biases* run more efficiently.
++ **MLP**, that instantiates a *Multilayer Perceptron*
++ **ResidualMLP**, that instantiates an MLP with *Residual Connections*
++ **CNN**, that instantiates a *Convolutional Network*
++ **ResidualCNN**, that instantiates a ConvNet with *Residual Connections*
++ **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
 <p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="48%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="48%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" /> 
 </p>
-
 
 ### Exercise 1.2: Rinse and Repeat
 
