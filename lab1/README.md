@@ -33,20 +33,22 @@ The `models.py` script contains all the model classes used for this Laboratory:
 + **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
 <p float="left">
-    <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
-    <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" />
 </p>
 
 ### Exercise 1.2: Rinse and Repeat
 
-I will now repeat the verification I did above, but with **Convolutional Neural Networks**.
+I will now make a step forward, training some **Convolutional Neural Networks**.
 This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections.
 
-**Note**: MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), so I will soon start to work on the **CIFAR-10** dataset.
+**Note**: MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), so I will soon start to work on the **CIFAR10** dataset.
 
-Launching the `model_pipeline` function with its proper configuration allows me to observe the performance of multiple architectures. The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that a **deeper** ConvNet provides better performances, **up to a certain depth**. So, I decided to compare *1, 5, 10, 15, 20, 30 and 50* layer-deep ConvNets, every single layer having the same architecture.
+Launching the `model_pipeline` function with its proper configuration allows me to observe the performance of multiple architectures. The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that a **deeper** ConvNet provides better performances, **up to a certain depth**. So, I decided to compare *1, 5, 10, 20, 30 and 50* layer-deep ConvNets, every single layer having the same architecture.
 
-All logs and trackings of my runs are interactingly available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
+All logs and trackings of my runs are available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
+
+**IMMAGINI**
 
 Well... As previously said, reaching a very high Validation Accuracy on **MNIST** is *very* easy for almost every type of model, so this setting doesn't allow me to appreciate at the fullest how different models perform their learning: even MLPs perform the same as CNNs.
 
