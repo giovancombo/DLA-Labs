@@ -7,7 +7,7 @@ This Lab is essentially a brief analysis of how ConvNets work, which are their d
 ## Exercise 1: Warming Up
 In this series of exercises I will duplicate (on a small scale) the results of the notorious ResNet paper, by Kaiming He et al.:
 
-> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, CVPR 2016.
+> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun; CVPR 2016.
 
 It's important to recall that the main message of the ResNet paper is **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease.
 
@@ -139,7 +139,7 @@ In this section, I will turn one of the ConvNets I trained into a **detector** o
 ---
 ### Exercise 2.3: *Explain* the predictions of a CNN
 
-> B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba. Learning Deep Features for Discriminative Localization. CVPR'16 (arXiv:1512.04150, 2015).
+> [Learning Deep Features for Discriminative Localization](https://arxiv.org/abs/1512.04150), B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba; CVPR 2016.
 > 
 [*Class Activation Maps*](http://cnnlocalization.csail.mit.edu/#:~:text=A%20class%20activation%20map%20for,decision%20made%20by%20the%20CNN.) are very powerful tools for understanding how Neural Networks learn in order to classify objects in an image.
 
@@ -147,7 +147,16 @@ The main focus, here, is to see how one of the previously trained CNNs *attends*
 
 Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
 
-For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1. Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images (here I show some of them, other can be found in the `images/23_cam` folder).
+For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1 (*Figure 10*).
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/model_for_CAMs_valacc.png" width="48%" />
+</p>
+<p align="center"><i><b>Figure 10</b> | Validation Accuracy of the <b>ResidualCNN</b> trained for this Exercise</i></p>
+
+#### CAMs on CIFAR10 images
+
+Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images (here I show some of them, other can be found in the `images/23_cam` folder).
 
 <p float="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx0_cat.jpg" width="12%" />
@@ -196,6 +205,8 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx48_horse_probs0.8355.jpg" width="12%" /> 
 </p>
 <p align="center"><i><b>(13)</b> <b>Horse</b> pred <b>Horse</b> (0.4215);&emsp;<b>(14)</b> <b>Deer</b> pred <b>Bird</b> (0.6547);&emsp;<b>(15)</b> <b>Dog</b> pred <b>Frog</b> (0.7481);&emsp;<b>(16)</b> <b>Horse</b> pred <b>Horse</b> (0.8355)</i></p>
+
+#### CAMs on my photographs
 
 Secondly, as a photographer I couldn't resist to compute CAMs on some of my photographs! But as they are 4000x3000 (huge) images, I had to adjust scaling factors between images and CAMs: I resized every image to a width of 32 (I kept their rectangular shapes) to get the prediction from the model (trained on 32x32 CIFAR10 images), before resizing again CAM and image to width 256.
 
@@ -279,5 +290,3 @@ In order to test how well the model performs, I chose images with "obvious" clas
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my18ship_ship_probs0.9126.jpg" width="24%" /> 
 </p>
 <p align="center"><i><b>(17)</b> Class: <b>Cat</b>; Predicted: <b>Cat</b> (0.5190)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(18)</b> Class: <b>Ship</b>; Predicted: <b>Ship</b> (0.9126)</i></p>
-
----
