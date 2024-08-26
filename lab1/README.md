@@ -43,13 +43,13 @@ After building the simple MLP used previously, I updated the `models.py` script 
 + **ResidualCNN**, that instantiates a ConvNet with *Residual Connections*
 + **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
-This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections.
+This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections. But since MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), I will soon start to work on the **CIFAR10** dataset.
 
-**Note**: MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), so I will soon start to work on the **CIFAR10** dataset.
-
-Launching the `model_pipeline` function with its proper configuration allows me to observe the performance of multiple architectures. The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that a **deeper** ConvNet provides better performances, **up to a certain depth**. So, I decided to compare *1, 5, 10, 20, 30 and 50* layer-deep ConvNets, every single layer having the same architecture.
+The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that **deeper** ConvNet provides better performances, **only up to a certain depth**. So, I decided to compare **1, 5, 10, 20, 30** and **50** layers deep ConvNets, every single layer having the same width of **64**.
 
 All logs and trackings of my runs are available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
+
+I launch new runs with CNNs chenging the *dataset* and *architecture* parameters in the `config.yaml` file and calling the `train` and `evaluate` functions of the **Trainer** object, as previously made with the MLPs.
 
 **IMMAGINI**
 
