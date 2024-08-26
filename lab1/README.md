@@ -126,7 +126,7 @@ Results can be quantitatively checked by observing the *Weights & Biases* logs f
 Conversely, the **Residual MLP** showed gradients that did not vanish nor explode, and progressively diminishing their magnitude during training, meaning that the model is proceeding towards convergence on a (local, hopefully global) optimum.
 
 ---
-### Exercise 2.2: Fully-convolutionalize a network
+### Exercise 2.2: Fully-convolutionalize a network (WORK IN PROGRESS)
 
 **Fully-convolutionalizing** a model means turning it into a network that can predict classification outputs at *all* pixels in an input image. This reframing unlocks many new visual tasks that can be addressed, such as *Semantic Segmentation*, *Object Detection* and *Object Recognition*.
 
