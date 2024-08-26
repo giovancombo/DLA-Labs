@@ -29,8 +29,9 @@ To facilitate the future reuse of code for different architectures, I implemente
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" />
 </p>
+<p align="center"><i><b>Figure 1</b> | Comparison between 1, 5, 10 and 20 layers deep MLPs on MNIST: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
 
-This first graph compares MLPs which are **1, 5, 10** and **20** layers deep, and we can see how *deeper* models do not reach better results. Indeed, the 20-layer MLP totally fails to learn! It takes just a shallower MLP to easily reach convergence to relatively high values of accuracy on MNIST.
+*Figure 1* shows the comparison between **1, 5, 10** and **20** layers deep Multilayer Perceptrons: here we can already see how *deeper* models do not reach better results. Indeed, the 10-layer MLP performs worse than its 1 and 5-layer counterpart, while the 20-layer MLP totally fails to learn! It takes just a shallower MLP to easily reach convergence to relatively high values of accuracy on MNIST.
 
 ### Exercise 1.2: Rinse and Repeat
 
@@ -51,11 +52,39 @@ All logs and trackings of my runs are available on Weights & Biases, at [this li
 
 I launch new runs with CNNs chenging the *dataset* and *architecture* parameters in the `config.yaml` file and calling the `train` and `evaluate` functions of the **Trainer** object, as previously made with the MLPs.
 
-**IMMAGINI**
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_cnn_valacc.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_cnn_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 2</b> | Comparison between 1, 5, 10, 20 and 30 layers deep ConvNets on MNIST: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
 
-Well... As previously said, reaching a very high Validation Accuracy on **MNIST** is *very* easy for almost every type of model, so this setting doesn't allow me to appreciate at the fullest how different models perform their learning: even MLPs perform the same as CNNs.
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_valacc.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 3</b> | Comparison between ConvNets and MLPs (dashed) with different depths on MNIST: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
+
+Well... As previously said, reaching a very high Validation Accuracy on **MNIST** is *very* easy for almost every kind of model regardless of depth: all those similar results close to 99% (*Figure 2*) don't allow me to appreciate to the fullest how differently models perform their learning on data.
 
 Let's try then to train some models on the **CIFAR-10** dataset.
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_cnn_valacc.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_cnn_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 4</b> | Comparison between 1, 5, 10, 20, 30 and 50 layers deep ConvNets on CIFAR10: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
+
+**CIFAR10** is a more complex dataset than MNIST to learn, so reaching very high accuracies is not that easy. This allows us to appreciate the *mantra* of Kaiming He paper on Convolutional models for the first time.
+
+*Figure 4* shows how a 1-layer deep ConvNet is too simple to handle this kind of images, and adding new parameters and feature maps to the model (i.e. going deeper!) crucially improves performance, peaking at the 10-layer deep ConvNet. Things start to change beyond that depth, as deeper networks (20, 30 and 50 layers deep) perform progressively worse. Interestingly, not only *Validation* metrics get worse, but also *Training* metrics, suggesting that this behavior is caused by something else than overfitting.
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_valacc.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 5</b> | Comparison between ConvNets and MLPs (dashed) with different depths on CIFAR10: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
+
+
 
 ---
 ## Exercise 2: A Deeper Understanding on Visual Tasks
