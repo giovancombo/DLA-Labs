@@ -145,16 +145,17 @@ In this section, I will turn one of the ConvNets I trained into a **detector** o
 
 The main focus, here, is to see how one of the previously trained CNNs *attends* to specific image features to recognize *specific* classes.
 
-Class Activation Maps were here implemented following [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
+Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
 
-For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach a higher accuracy than all models that were trained in Exercise 1.
+For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1. Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images.
 
 <p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my1horse.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my1horse_horse_probs0.9252.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my2automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my2automobile_automobile_probs0.9999.jpg" width="24%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx0_cat.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx0_bird_probs0.4601.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
@@ -162,6 +163,57 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+</p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+</p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+</p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+
+Secondly, as a photographer I couldn't resist to compute CAMs on some of my photographs! But as they are 4000x3000 (huge) images, I had to adjust scaling factors between images and CAMs: I resized every image to a width of 32 (I kept their rectangular shapes) to get the prediction from the model (trained on 32x32 CIFAR10 images), before resizing again CAM and image to width 256.
+
+In order to test how well the model performs, I chose images with "obvious" classes (like 1, 9, 16, 17 and 18), and images that, instead, are not that obvious. Some results are very interesting:
+
++ **(3, 4)**: vintage cars are predicted as *trucks*, probably because the model sees something with four tyres but with a very unconventional shape.
++ **(5)**: these are *goats*, so they are animals that don't fit in any of the CIFAR10 classes. Yet, antlers are decisive in classifying them as *deers*.
++ **(10)**: the model recognizes an airplane even if you are inside the airplane, the wing is sufficient.
++ **(11)**: again a subject that doesn't fit in any CIFAR10 category: this macaque was predicted as *deer*.
++ **(12)**: I thought the model would have predicted this statue as *dog*, but eventually something went wrong.
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my1horse.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my1horse_horse_probs0.9252.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my2automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my2automobile_automobile_probs0.9999.jpg" width="24%" /> 
+</p>
+<p align="center"><i><b>(1)</b> Class: <b>Horse</b>; Predicted: <b>Horse</b> (0.9252)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(2)</b> Class: <b>Automobile</b>; Predicted: <b>Automobile</b> (0.9999)</i></p>
+
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+</p>
+<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my5nd.jpg" width="24%" />
@@ -169,6 +221,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my6bird.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my6bird_horse_probs0.6518.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(5)</b> Class: <b>XXX</b>; Predicted: <b>Deer</b> (0.8761)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(6)</b> Class: <b>Bird</b>; Predicted: <b>Horse</b> (0.6518)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my7cat.jpg" width="24%" />
@@ -176,6 +229,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my8ship.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my8ship_airplane_probs0.6052.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(7)</b> Class: <b>Cat</b>; Predicted: <b>Airplane</b> (0.7187)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(8)</b> Class: <b>Ship</b>; Predicted: <b>Airplane</b> (0.6052)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my9truck.jpg" width="24%" />
@@ -183,6 +237,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(9)</b> Class: <b>Truck</b>; Predicted: <b>Truck</b> (0.9999)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(10)</b> Class: <b>Airplane</b>; Predicted: <b>Airplane</b> (0.3945)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
@@ -190,6 +245,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my12dog.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my12dog_frog_probs0.8742.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(11)</b> Class: <b>XXX</b>; Predicted: <b>Deer</b> (0.9759)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(12)</b> Class: <b>Dog</b>; Predicted: <b>Frog</b> (0.8742)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my13dog.jpg" width="24%" />
@@ -197,6 +253,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my14ship.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my14ship_ship_probs0.8284.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(13)</b> Class: <b>Dog</b>; Predicted: <b>Bird</b> (0.3523)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(14)</b> Class: <b>Ship</b>; Predicted: <b>Ship</b> (0.8284)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my15automobile.jpg" width="24%" />
@@ -204,6 +261,7 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my16bird.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my16bird_bird_probs0.9999.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(15)</b> Class: <b>Automobile</b>; Predicted: <b>Frog</b> (0.7401)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(16)</b> Class: <b>Bird</b>; Predicted: <b>Bird</b> (0.9999)</i></p>
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my17cat.jpg" width="24%" />
@@ -211,47 +269,6 @@ For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my18ship.jpg" width="24%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my18ship_ship_probs0.9126.jpg" width="24%" /> 
 </p>
+<p align="center"><i><b>(17)</b> Class: <b>Cat</b>; Predicted: <b>Cat</b> (0.5190)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(18)</b> Class: <b>Ship</b>; Predicted: <b>Ship</b> (0.9126)</i></p>
 
 ---
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my10airplane.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my10airplane_airplane_probs0.3945.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my11nd.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my11nd_deer_probs0.9759.jpg" width="24%" /> 
-</p>
