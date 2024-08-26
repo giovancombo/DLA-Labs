@@ -84,7 +84,15 @@ Let's try then to train some models on the **CIFAR-10** dataset.
 </p>
 <p align="center"><i><b>Figure 5</b> | Comparison between ConvNets and MLPs (dashed) with different depths on CIFAR10: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
 
+#### Implementing ResidualCNNs: CNNs with Residual Connections
 
+<p float="left">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_rescnn_valacc.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/cifar_rescnn_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 6</b> | Comparison between 1, 5, 10, 20, 30 and 50 layers deep ResidualCNNs on CIFAR10: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
+
+The **ResidualCNN** class of models imitates the **CNN** class structure, but implements residual connections. *Figure 6* shows that Convolutional models that implement residual connections improve their performance accordingly with depth.
 
 ---
 ## Exercise 2: A Deeper Understanding on Visual Tasks
