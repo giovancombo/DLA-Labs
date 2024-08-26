@@ -147,57 +147,66 @@ The main focus, here, is to see how one of the previously trained CNNs *attends*
 
 Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
 
-For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1. Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images.
+For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1. Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images (here I show some of them, other can be found in the `images/23_cam` folder).
 
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx0_cat.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx0_bird_probs0.4601.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+<p float="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx0_cat.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx0_bird_probs0.4601.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx1_ship.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx1_automobile_probs0.9972.jpg" width="12%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx4_frog.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx4_frog_probs1.0000.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx6_automobile.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx6_automobile_probs0.6085.jpg" width="12%" /> 
 </p>
-<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+<p align="center"><i><b>(1)</b> <b>Cat</b> pred <b>Bird</b> (0.4601);&emsp;<b>(2)</b> <b>Ship</b> pred <b>Automobile</b> (0.9972);&emsp;<b>(3)</b> <b>Frog</b> pred <b>Frog</b> (1.0000);&emsp;<b>(4)</b> <b>Automobile</b> pred <b>Automobile</b> (0.6085)</i></p>
 
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+<p float="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx8_cat.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx8_dog_probs0.5319.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx9_automobile.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx9_automobile_probs0.9821.jpg" width="12%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx10_airplane.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx10_airplane_probs0.9438.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx11_truck.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx11_truck_probs1.0000.jpg" width="12%" /> 
 </p>
-<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+<p align="center"><i><b>(5)</b> <b>Cat</b> pred <b>Dog</b> (0.5319);&emsp;<b>(6)</b> <b>Automobile</b> pred <b>Automobile</b> (0.9821);&emsp;<b>(7)</b> <b>Airplane</b> pred <b>Airplane</b> (0.9438);&emsp;<b>(8)</b> <b>Truck</b> pred <b>Truck</b> (1.0000)</i></p>
 
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+<p float="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx34_truck.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx34_truck_probs1.0000.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx35_bird.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx35_frog_probs0.6957.jpg" width="12%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx40_deer.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx40_deer_probs0.5564.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx39_dog.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx39_dog_probs0.9996.jpg" width="12%" /> 
 </p>
-<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+<p align="center"><i><b>(9)</b> <b>Truck</b> pred <b>Truck</b> (1.0000);&emsp;<b>(10)</b> <b>Bird</b> pred <b>Frog</b> (0.6957);&emsp;<b>(11)</b> <b>Deer</b> pred <b>Deer</b> (0.5564);&emsp;<b>(12)</b> <b>Dog</b> pred <b>Dog</b> (0.9996)</i></p>
 
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
+<p float="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx17_horse.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx17_horse_probs0.4215.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx26_deer.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx26_bird_probs0.6547.jpg" width="12%" /> 
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx33_dog.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx33_frog_probs0.7481.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx48_horse.jpg" width="12%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_cam/CAM_cifar_idx48_horse_probs0.8355.jpg" width="12%" /> 
 </p>
-<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
-
-<p float="left">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my3automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my3automobile_truck_probs0.6790.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my4automobile.jpg" width="24%" />
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_cam/CAM_my4automobile_truck_probs0.9844.jpg" width="24%" /> 
-</p>
-<p align="center"><i><b>(3)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.6790)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>(4)</b> Class: <b>Automobile</b>; Predicted: <b>Truck</b> (0.9844)</i></p>
+<p align="center"><i><b>(13)</b> <b>Horse</b> pred <b>Horse</b> (0.4215);&emsp;<b>(14)</b> <b>Deer</b> pred <b>Bird</b> (0.6547);&emsp;<b>(15)</b> <b>Dog</b> pred <b>Frog</b> (0.7481);&emsp;<b>(16)</b> <b>Horse</b> pred <b>Horse</b> (0.8355)</i></p>
 
 Secondly, as a photographer I couldn't resist to compute CAMs on some of my photographs! But as they are 4000x3000 (huge) images, I had to adjust scaling factors between images and CAMs: I resized every image to a width of 32 (I kept their rectangular shapes) to get the prediction from the model (trained on 32x32 CIFAR10 images), before resizing again CAM and image to width 256.
 
-In order to test how well the model performs, I chose images with "obvious" classes (like 1, 9, 16, 17 and 18), and images that, instead, are not that obvious. Some results are very interesting:
+In order to test how well the model performs, I chose images with "obvious" classes (like 1, 2, 9, 16, 17 and 18), and images that, instead, I thought could have been more challenging. Some results are very interesting:
 
-+ **(3, 4)**: vintage cars are predicted as *trucks*, probably because the model sees something with four tyres but with a very unconventional shape.
-+ **(5)**: these are *goats*, so they are animals that don't fit in any of the CIFAR10 classes. Yet, antlers are decisive in classifying them as *deers*.
++ **(3 and 4)**: vintage cars are predicted as *trucks*, probably because the model sees something with four tyres but with a very unconventional shape.
++ **(5)**: these are *goats*, so they are objects that don't fit in any of the CIFAR10 classes. Yet, antlers are decisive in classifying them as *deers*.
 + **(10)**: the model recognizes an airplane even if you are inside the airplane, the wing is sufficient.
 + **(11)**: again a subject that doesn't fit in any CIFAR10 category: this macaque was predicted as *deer*.
 + **(12)**: I thought the model would have predicted this statue as *dog*, but eventually something went wrong.
++ **(14)**: I was sure the model would have correctly classified this image due to the sailboat, not those yachts in the background.
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/my_data/my1horse.jpg" width="24%" />
