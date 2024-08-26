@@ -9,7 +9,7 @@ In this series of exercises I will duplicate (on a small scale) the results of t
 
 > [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385), Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, CVPR 2016.
 
-What's important to recall is that the main message of the ResNet paper is that **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease.
+It's important to recall that the main message of the ResNet paper is **deeper networks do not guarantee more reduction in Training Loss**. While the primary focus of many researchers was trying to build the deepest network possible, He et al. demonstrated that Training and Validation Accuracies increase accordingly with the model depth, *but only until a certain point*, after which they start to decrease.
 
 I will incrementally build a sequence of experiments to verify and explain this behaviour for different architectures, firstly using a *Multilayer Perceptron* on MNIST, and finally *Convolutional Neural Networks* with Residual Connections on CIFAR-10.
 
@@ -17,29 +17,32 @@ Since this Lab requires me to compare multiple training runs, I took this as a g
 
 ### Exercise 1.1: A baseline MLP
 
-I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuraces with Weights & Biases.
+I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuracies using *Weights & Biases*.
 
-A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I will put every hyperparameter I will need to set in the Lab regarding architecture, dataset and training stuff. I just found it easier for me.
+A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I put every hyperparameter I need to set about architectures, datasets and training stuff. I just found it easier for me.
 
-To facilitate the future reuse of code, I implemented the `trainer.py` script, which defines a **Trainer** object that contains `train` and `evaluate` functions that perform my training loop.
+To facilitate the future reuse of code for different architectures, I implemented the `trainer.py` script, which defines a **Trainer** object that contains `train` and `evaluate` functions for running the training loop.
 
-The `device` used for computation can be `cuda` (in my case, an *Nvidia GeForce RTX 3060 Laptop*) or `cpu`.
-
-The `models.py` script contains all the model classes used for this Laboratory:
-+ **MLP**, that instantiates a *Multilayer Perceptron*
-+ **ResidualMLP**, that instantiates an MLP with *Residual Connections*
-+ **CNN**, that instantiates a *Convolutional Network*
-+ **ResidualCNN**, that instantiates a ConvNet with *Residual Connections*
-+ **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
+**Note:** For all models, I decided to fix the layer width to **64**, so, an MLP will always have layers 64 nodes wide, a CNN will have 64 kernels in every feature map, and so on. I used **ReLU** wherever there's an activation function. I use the **Adam** optimizer with **1e-4** learning rate for **20** epochs of training, and a dropout factor of **0.2**. The batch size is always set at **128**. The `device` used for computation is **cuda** (in my case, a *Nvidia GeForce RTX 3060 Laptop*).
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valloss.png" width="49%" />
 </p>
 
+This first graph compares MLPs which are **1, 5, 10** and **20** layers deep, and we can see how *deeper* models do not reach better results. Indeed, the 20-layer MLP totally fails to learn! It takes just a shallower MLP to easily reach convergence to relatively high values of accuracy on MNIST.
+
 ### Exercise 1.2: Rinse and Repeat
 
 I will now make a step forward, training some **Convolutional Neural Networks**.
+
+After building the simple MLP used previously, I updated the `models.py` script adding all the model classes used for this Laboratory:
++ **MLP**, that instantiates a *Multilayer Perceptron*
++ **ResidualMLP**, that instantiates an MLP with *Residual Connections*
++ **CNN**, that instantiates a *Convolutional Network*
++ **ResidualCNN**, that instantiates a ConvNet with *Residual Connections*
++ **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
+
 This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections.
 
 **Note**: MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), so I will soon start to work on the **CIFAR10** dataset.
