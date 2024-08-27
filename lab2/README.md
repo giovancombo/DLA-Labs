@@ -6,12 +6,22 @@ Substantial part of this Lab relies on the notorious paper [Attention is All you
 In order to be able to understand more deeply the logic behind Language Modeling and language models, I coded along with [this video](https://www.youtube.com/watch?v=kCc8FmEb1nY) made by Andrej Karpathy, a tutorial for building an autoregressive GPT language model from scratch. The code I produced will be very useful for the entire Lab.
 
 ## Exercise 1: Warming Up
-In this first exercise I will train a *small* autoregressive GPT model for character generation, the exact same of the Karpathy video, to generate text in a particular style.
-I was firstly asked to generate text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt), which contains the entire text of Dante's Divine Comedy. After deleting some introductory text at the top of the file and problematic characters, I was able to start training.
-I trained the model for 10 epochs, and generated some text at the end of training.
-As perfectly explained in the Karpathy video, monitoring the loss can give vital information about how the learning process is going.
+In this first exercise I will train a *small* autoregressive GPT model for character generation, the exact same of Karpathy's video, to generate text in a particular style.
 
-**qualitative evaluation**
+I was firstly asked to generate text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt) (data at `data/divina_commedia.txt`), which contains the entire text of Dante's Divine Comedy. After removing some introductory text at the top of the file and problematic characters, I was able to start training. Here the training settings I used:
+
++ 5000 steps of training
++ Batch size: **32** and **256**
++ Block size: **64** and **128**
++ Learning rate: **5e-4**
++ Dropout rate: **0.2**
++ Token Embedding dimension: comparison between **32**, **128** and **256**
+
+Each model I trained is saved in the `1_models` folder, and comes with a `generation_training.txt` file that contains some text generated every 100 steps by that model. This allowed me to appreciate how text generation progressively improves throughout the steps.
+
+After training my model on *italian* Dante's text, I was curious about training it on an *english* corpus too: I decided to use the lyrics of all songs by Taylor Swift (data at `data/taylor_swift.txt`), so that I could even check if the text generated could vaguely resemble the lyrics of a real song.
+
+
 
 Loss established, in the end, at 2.00 (numero a caso), which means that there's still a lot of room for improvement.
 However, it must be said that the model generated quite good quality text despite a relatively small dataset, even if there are quite many gramatical errors and it completely lacks of semantics and meaning. Text clearly was generated without taking into account context, so basically, there's still a lot of work to do.
