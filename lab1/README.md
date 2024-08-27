@@ -120,6 +120,7 @@ As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a
 <p align="center"><i><b>Figure 7</b> | Gradient evolution in the only layer of <b>CNN-1</b> and <b>ResidualCNN-1</b></i></p>
 
 <p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_cnn50.png" width="49%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_rescnn50.png" width="49%" />
 </p>
 <p align="center"><i><b>Figure 8</b> | Gradient evolution in the first layer of <b>CNN-50</b> and <b>ResidualCNN-50</b></i></p>
