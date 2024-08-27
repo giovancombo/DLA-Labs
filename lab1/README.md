@@ -109,21 +109,27 @@ Classification is just one of the many tasks Convolutional Networks can address.
 
 This question can find an answer by looking at the **Gradient Magnitudes** passing through the layers of the networks, during Backpropagation.
 
-`wandb.watch(log = "all")` tells *Weights & Biases* to log *gradients* and *parameters*' evolution in all the layers of a network. This functionality is useful to graphically visualize the concept of **Vanishing Gradients**.
-
-For this exercise, I firstly tried to run a basic *MLP*, and then an *MLP with Residual Connections*. Honestly, at the time, I didn't think that this could be a very clever idea, since I've always seen Residuals been added only on Convolutional Networks, but... I decided to give it a try anyway.
-
-As mentioned before, I compared these two architectures by challenging them on their performance over their **depth** (i.t. their number of layers).
-
-A basic **10-layer MLP** already suffers from Vanishing Gradients, with its Accuracy dropping all the way down to 10%, that means picking a class literally **by chance**: the learning process is not working.
-
 As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a higher number of layers leads to not only higher Validation Loss, but also a *higher Training Loss*. The fact that deeper networks lead to higher **Training** Loss (not only Validation Loss!) proves that this particular phenomenon is not simple *overfitting*, but it's related to the actual excessive model complexity.
 
-On the contrary, the **10-layer Residual MLP** performed well, confirming the explanation of ResNet authors: Residual Connections allow a network to go **dramatically** deeper (with the only limitation of reaching *overfitting*).
+`wandb.watch(log = "all")` tells *Weights & Biases* to log the evolution of *gradients* and *parameters* in all the layers of a network.
 
-Results can be quantitatively checked by observing the *Weights & Biases* logs for Gradient Magnitudes. The basic **MLP** shows gradients that are very close to *zero* for most of the training time, meaning that the model is not making any real learning progress.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_cnn1.png" width="48%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_rescnn1.png" width="48%" />
+</p>
+<p align="center"><i><b>Figure 7</b> | Gradient evolution in the only layer of <b>CNN-1</b> and <b>ResidualCNN-1</b></i></p>
 
-Conversely, the **Residual MLP** showed gradients that did not vanish nor explode, and progressively diminishing their magnitude during training, meaning that the model is proceeding towards convergence on a (local, hopefully global) optimum.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_cnn50.png" width="48%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_rescnn50.png" width="48%" />
+</p>
+<p align="center"><i><b>Figure 8</b> | Gradient evolution in the first layer of <b>CNN-50</b> and <b>ResidualCNN-50</b></i></p>
+
+The **Vanishing Gradient problem** in deep CNNs occurs when gradients become extremely small as they're backpropagated through many layers, making it difficult for earlier layers to learn effectively. In standard *CNNs*, this can lead to degraded performance as network depth increases. *ResidualCNNs* mitigate this issue by introducing skip connections that allow gradients to flow directly through the network, maintaining stronger gradient signals even in very deep architectures.
+
+While *Figure 7* shows that shallow CNNs can perfectly compete with (and even perform better than) shallow ResidualCNNs, *Figure 8* shows the central issue that differentiates CNNs and ResidualCNNs. The gradient magnitudes of the CNNs (on the left) start with very high values at the beginning of training, and then rapidly tend to zero, falling in the Vanishing Gradient Problem.
+
+On the contrary, ResidualCNNs (on the right) does not suffer from any Vanishing nor Exploding problems, as gradients are stable through all the training process, guaranteeing continuous learning.
 
 ---
 ### Exercise 2.2: Fully-convolutionalize a network (WORK IN PROGRESS)
@@ -150,7 +156,7 @@ Class Activation Maps were here implemented taking inspiration from [this tutori
 For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1 (*Figure 10*).
 
 <p float="center" align="center">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/model_for_CAMs_valacc.png" width="48%" />
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/model_for_CAMs_valacc.png" width="48%" />
 </p>
 <p align="center"><i><b>Figure 10</b> | Validation Accuracy of the <b>ResidualCNN</b> trained for this Exercise</i></p>
 
