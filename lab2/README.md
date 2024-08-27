@@ -109,40 +109,73 @@ As lower temperatures freeze generation, higher `temperature` values lead to hot
 ---
 
 ## Exercise 3: Reusing Pre-trained LLMs
-In each of the following exercises I'm asked to adapt a pre-trained LLM to a new Natural Language Understanding task.
-I chose to use `DistilBERT` in order to better understand the functioning of BERT models.
-BERT models (including DistilBERT) have a special [CLS] token prepended to each latent representation in output from a self-attention block. I will directly use this as a representation for addressing my following tasks.
+In each of the following exercises, I'm tasked with adapting a pre-trained Large Language Model (LLM) to a new Natural Language Understanding task.
+I've chosen to use `DistilBERT` to gain a better understanding of how **BERT** models function.
 
-Note: Exercises 3.1 and 3.2 can be done *without* any fine-tuning - that is, just training a shallow MLP to classify or represent with the appropriate loss function. So, that's what I tried to do.
+**BERT** models (including DistilBERT) have a special [CLS] token prepended to each latent representation output from a self-attention block. I will use this token directly as a representation for addressing my subsequent tasks.
 
 ### Exercise 3.1: Training a Text Classifier
-An important choice is the dataset that will be used for the task. Looking at the [text classification datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads), one of the best datasets to use is the *ag_news*: a moderately sized multi-class dataset about news from all over the world, with 4 perfectly balanced classes.
-But, as always, I can't feel satisfied with easy things: my attention got captured by the *dair-ai/emotion* dataset too, a set about sentiment of snippets of text that, in comparison to the previous one, looks like a real mess! 6 classes, skewed, with not so much data available.
-I'll compare the two datasets, check and report any difference encountered in order to have a more complete view of how my Language Model works with different kinds of data.
+An important decision in this process is the selection of an appropriate dataset for the task. After looking at the [text classification datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads), one standout option is [*ag_news*](https://huggingface.co/datasets/fancyzhx/ag_news). This dataset is of moderate size and features multi-class classification of global news, with 4 perfectly balanced categories: *[World, Sports, Business, Sci/Tech]*.
 
+However, I found myself drawn to a more challenging option: the [*dair-ai/emotion*](https://huggingface.co/datasets/dair-ai/emotion) dataset. In contrast to *ag_news*, this dataset focuses on sentiment analysis of text snippets and appears considerably more challenging, because it has limited data and 6 unevenly distributed classes: *[joy, sadness, anger, fear, love, surprise]*.
 
+I decided to use the *DistilBERT* model *exclusively* as a feature extractor, followed by training a shallow model (an MLP, or even a Logistic Regression) to classify the data using an appropriate loss function.
 
-So far, I just tried to fine-tune a pretrained DistilBERT model for the Sequence Classification task.
+Features for each dataset are extracted using the `feature_extractor` function in the `my_utils.py` script, and stored in the `31_textclassification` folder. The T-SNE visualization of these features reveals how effectively DistilBERT separates the representations of the classes in the *ag-news* dataset, while struggling in the *dair-ai/emotion* dataset.
 
-But for this specific exercise, fine-tuning can be avoided! One hint is to use DistilBERT *only* as a feature extractor, and to use a very shallow model (an MLP, or even a Logistic Regression!) on the final representation for the multi-class classification.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/tsne_train_mlp.png" width="40%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/tsne_val_mlp.png" width="40%">
+</p>
+<p align="center"><i><b>Figure 2</b> | T-SNE visualization of <b>train</b> (left) and <b>test</b> (right) features extracted from the <b>ag_news</b> dataset</i></p><br>
 
-Looking at the DistilBertTokenizer, I can see that it's a **word level** tokenizer, at least for the english language.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/tsne_train_mlp_10.png" width="40%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/tsne_val_mlp_10.png" width="40%">
+</p>
+<p align="center"><i><b>Figure 3</b> | T-SNE visualization of <b>train</b> (left) and <b>test</b> (right) features extracted from the <b>dair-ai/emotion</b> dataset</i></p><br>
 
-- Using the *dair-ai/emotion* dataset, the multi-class classifier, with or without any tweaks on the loss weights to address the class imbalance problem, struggles to reach 67% Test Accuracy (while a fine-tuned DistilBERT is capable to go up to 94% accuracy).
-- Using the *ag_news* dataset, instead, the classifier makes no effort to provide results with 92% Test Accuracy.
+#### Text Classification results
 
-Furthermore, results obtained by training a simple MLP and an even simpler Logistic Regression are basically the same.
+On the *ag_news* dataset:
 
+| |*MLP*|*Logistic Regression*|
+|:-:|:-:|:-:|
+|**Accuracy**|91.76%|91.51%|
+|**F1 Score**|0.9174|0.9151|
+|**Precision**|0.9174|0.9152|
+|**Recall**|0.9176|0.9151|
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/confusion_matrix_mlp.png" width="40%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/confusion_matrix_logreg.png" width="40%">
+</p>
+<p align="center"><i><b>Figure 4</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> on the <b>ag_news</b> dataset</i></p><br>
+
+On the *dair-ai/emotion* dataset:
+
+| |*MLP*|*Logistic Regression*|
+|:-:|:-:|:-:|
+|**Accuracy**|66.30%|65.25%|
+|**F1 Score**|0.6522|0.6437|
+|**Precision**|0.6569|0.6416|
+|**Recall**|0.6630|0.6525|
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/confusion_matrix_mlp_10.png" width="40%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/confusion_matrix_logreg_10.png" width="40%">
+</p>
+<p align="center"><i><b>Figure 5</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> on the <b>dair-ai/emotion</b> dataset</i></p>
 ---
 
-### Exercise 3.2: Training a Question Answering Model
+### Exercise 3.2: Training a Question Answering Model (WORK IN PROGRESS)
 The Question-Answering task consists in predicting and giving the correct answer at particular contextualized multiple-choice questions.
 To address it, I will pick one dataset from the [multiple choice question answering datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:multiple-choice&sort=downloads). Even here, for computation purposes, it is good to choose a *moderately* sized one.
 Here, I *might* be able to avoid fine-tuning by training a simple model to *rank* the multiple choices using *margin loss* in PyTorch.
 
 ---
 
-### Exercise 3.3: Training a Retrieval Model
+### Exercise 3.3: Training a Retrieval Model (WORK IN PROGRESS)
 The HuggingFace dataset repository contains a large number of ["text retrieval" problems](https://huggingface.co/datasets?task_categories=task_categories:text-retrieval&p=1&sort=downloads). These tasks generally require that the model measure *similarity* between text in some metric space.
 Naively, just a *cosine similarity* between [CLS] tokens could get me pretty far.
 
