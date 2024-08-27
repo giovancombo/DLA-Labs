@@ -10,7 +10,7 @@ In this first exercise I will train a *small* autoregressive GPT model for chara
 
 I was firstly asked to generate text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt) (data at `data/divina_commedia.txt`), which contains the entire text of Dante's Divine Comedy. After removing some introductory text at the top of the file and problematic characters, I was able to start training. Here the training settings I used:
 
-+ 5000 steps of training
++ **5000** steps of training
 + Batch size: **32** and **256**
 + Block size: **64** and **128**
 + Learning rate: **5e-4**
@@ -21,14 +21,32 @@ Each model I trained is saved in the `1_models` folder, and comes with a `genera
 
 After training my model on *italian* Dante's text, I was curious about training it on an *english* corpus too: I decided to use the lyrics of all songs by Taylor Swift (data at `data/taylor_swift.txt`), so that I could even check if the text generated could vaguely resemble the lyrics of a real song.
 
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/1_models_valloss.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 1</b> | Losses of the models trained on the two datasets: Divina Commedia (green) and Taylor Swift (orange)</i></p>
 
+*Figure 1* shows how the **Token Embedding dimension** has a particular influence on the ability of the model in capturing the complexity of the datasets. And this difference between models trained with **32**- and **128**-dimensional embeddings can be noticed also with a qualitatively evaluation of the text generated. Let's take a look at those `generation_training.txt` files:
 
-Loss established, in the end, at 2.00 (numero a caso), which means that there's still a lot of room for improvement.
-However, it must be said that the model generated quite good quality text despite a relatively small dataset, even if there are quite many gramatical errors and it completely lacks of semantics and meaning. Text clearly was generated without taking into account context, so basically, there's still a lot of work to do.
+|*Step*|*Divina Commedia, 32-dim Embedding*|*Divina Commedia, 128-dim Embedding*|
+|:---:|:---:|:---:|
+|100|om Tli ld fuieloattovG dhVa  os  ee Qrg ex, cednn s: nt.i me q Po 'ha i i rfte se'o cem cga llo arre tednee -n,adXeRrta sro eGi,Ri Ue ce lon-gEL l  ini co eroioiuaode 'teIre lamo T faemihiaire m<br><br>*Loss: 2.9188*|fe  fun da ndRm'lo che du  "er g'ise toi galome ' cpre di' po guiverne cha ratretia, al a, E i  custti, Betr  r pra a meso darante sttttisterismi le sposcrr ntato mer- che l ideNo; a' esa, no fron <br><br>*Loss: 2.3669*|
+|1500|se mamban viuii ma pan eltregegise cola' de' manaba m'a e che vono, cheia na meco cosalue cca l cosacin ancol'uno sana l'a,din su fiseve, pcoscu e mosimo sine,  la bolal liva a li pe.  Milorai pe'<br><br>*Loss: 2.2332*|mi fosse al primo, fosso discerso e dolpa chiolve a dimando grizio! <<Ghe disfetterno indicuro con giorno, e terro 'l prommo da' vermo danno, di fuor di quella mal mezzore in susoce; e quan<br><br>*Loss: 1.5807*|
+|3000|rol segna fer rarengia binostacr sa dan masce l, suanantre nar cengriuco suro e l quegoce, ria <Itor che ovin ge sar 'le si ia stesca. Alve giala lel qua cci e ver cermpa, por ren lali fun<br><br>*Loss: 2.0851*|ben cantano in quest'anrosche. In se' fu' ch'i' nel temo mi fele; canti bollo, orata di sapi pesa; ma piu' che tu forse coi tormente; ch'e' non vediti cio' mi vuol chi sonse, ne' moschi se' 'l<br><br>*Loss: 1.5258*|
+|4900|o dacche di torran divei>>. Noschizi tuscuo mantovo sui ra` le mepper Sa tu tuinuisi, gadio magnuallo inda; qua mostro, <<Ontuo suescede liagpie, e limanta disto che near peschio sa a salta lua<br><br>*Loss: 1.9509*|e Calcavalier lo 'nferno in quella piu' nacque ch'incrocciar con le paura e diserrole, qual che fosse il muro de la tua fiso, che confesso i pasto e piu` posa, pero' ch'un sommo tra 'l piant<br><br>*Loss: 1.5380*|
 
-Before going on to the next exercise, I decided to try my language model on another dataset, in order to check how well it can handle different languages: for this reason, I trained the same model on a dataset containing the lyrics of all Taylor Swift's discography, and was curious about the results.
+<p align="center"><i><b>Table 1</b> | Progression of text generation of 200 tokens using two different Embedding dimensions on the Divina Commedia dataset</i></p><br>
 
-(potrei provare al volo verso la fine a fare training su dataset con dntro entrambe le cose, quindi due lingue allo stesso momento per vedere se sminchia)
+|*Step*|*Taylor Swift, 32-dim Embedding*|*Taylor Swift, 128-dim Embedding*|
+|:---:|:---:|:---:|
+|100|o  ,em, teIend ooa X Ipl slmNvim  s “Xu–Wi hmmch[<br>rts oaeat w—k5 w?oQl,c roon n la K​a wehdkgtln-,ssb eeLa  li ao  trYey]aemda! bi;I0m,d<br>Ani g lteluoo h iTs t triyYe ren RbCe(.k еdoss d o Tdm  Q b S<br><br>*Loss: 3.1831*|Koould, uve'lle wonnd th wr owham or w I'mer co Thoousessald 6or rouse ayl<br>[Ct eranere-Che An uortest erres])<br>[Shol st yorst loheneuran yighim<br>Aneve I you' c iq coeeou<br>Thewhon ing ct bu y wero y Byv<br><br>*Loss: 2.4845*|
+|1500|I've menibu I olds f outhealike be<br>Andes alsont'malssevee<br>Ash, ifeerer n, I' mecepe]<br>I watowhare ig I-deringugengoft e th"Oas<br>Lat it yo (Sait me (He eve hancaaime s’mt and ar ngan wea bet neatst yond<br><br>*Loss: 2.3532*|With your feels mind<br>Ail I catcheres you were words<br>You don't know what I was lup in the scar?<br>Are you just the we stay<br>I never heel the sky?<br>Just brokers for your night<br>Something what'se, love you mi<br><br>*Loss: 1.6168*|
+|3000|Whe ar wandy, warit totna ndig<br>The I cesthe I brso thaint at's mit freate of heme head wor oul<br>I merednnd ous and wo deemtho I yoren, she drcemow, an'tin, ghas's<br>I olof wan die bewaun tt'men w ca was<br><br>*Loss: 2.1478*|And you what a mall placion<br>And you know places in into mind-seide<br>And you don't know that<br>Forgo that was red, right<br>I would feel wond[Verse 2]<br>You could see that this magic by this best<br>But the ones<br><br>*Loss: 1.6058*|
+|4900|[Verse Thirs] Oh<br>She you wenou lingt hink you nory gray bed<br>ass't ait bacallling you're tought a nof ye[Choler 2]<br>You wald scaut driry, slak aone[Chorus]<br>You you and whant you<br>You'r the be golonat, sa<br><br>*Loss: 1.9927*|Heed for the ontowns in begin<br>Even if you're touching my mind<br>I heard to know his you were that fighting to you<br>You might also like[Pre-Chorus]<br>And we had you so go<br>Trake one who side joked a blue sin<br><br>*Loss: 1.6535*|
+
+<p align="center"><i><b>Table 2</b> | Progression of text generation of 200 tokens using two different Embedding dimensions on the Taylor Swift dataset</i></p>
+
+It must be said that the models generated quite good quality text despite having been trained on a relatively small dataset, even if there are quite many gramatical errors and it completely lacks of semantics and meaning. Text clearly was generated without taking much into account context, so basically, there's still room for improvement.
 
 ---
 ## Exercise 2: Working with Real LLMs
