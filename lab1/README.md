@@ -19,11 +19,21 @@ Since this Lab requires me to compare multiple training runs, I took this as a g
 
 I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuracies using *Weights & Biases*.
 
-A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, with different hyperparameters configurations each, and train them on different datasets. So, it could be a good idea to generalize the most possible the instantiation of every object of the training workflow. That's why I decided to create a `config.yaml` file, where I put every hyperparameter I need to set about architectures, datasets and training stuff. I just found it easier for me.
+A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, each with different hyperparameter configurations, and train them on different datasets. So, it could be a good idea to generalize the instantiation of every object in the training workflow as much as possible. That's why I decided to create a `config.yaml` file, where I put every hyperparameter I need to set for architectures, datasets and training details. I just found it easier for me.
 
 To facilitate the future reuse of code for different architectures, I implemented the `trainer.py` script, which defines a **Trainer** object that contains `train` and `evaluate` functions for running the training loop.
 
-**Note:** For all models, I decided to fix the layer width to **64**, so, an MLP will always have layers 64 nodes wide, a CNN will have 64 kernels in every feature map, and so on. I used **ReLU** wherever there's an activation function. I use the **Adam** optimizer with **1e-4** learning rate for **20** epochs of training, and a dropout factor of **0.2**. The batch size is always set at **128**. The `device` used for computation is **cuda** (in my case, a *Nvidia GeForce RTX 3060 Laptop*).
+To ensure consistency across all experiments, I've standardized several key parameters:
++ Layer width fixed at **64** for all models
++ **ReLU** activation function used throughout all models
++ Optimizer: **Adam**
++ Learning rate: **1e-4**, with **no** scheduler
++ Training duration: **20** epochs
++ Dropout rate: **0.2**
++ Batch size: **128**
++ Device: cuda, *Nvidia GeForce RTX 3060 Laptop*
+
+This standardized setup allows for fair comparisons between different model architectures while keeping computational resources consistent.
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_mlp_valacc.png" width="49%" />
@@ -31,26 +41,26 @@ To facilitate the future reuse of code for different architectures, I implemente
 </p>
 <p align="center"><i><b>Figure 1</b> | Comparison between 1, 5, 10 and 20 layers deep MLPs on MNIST: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
 
-*Figure 1* shows the comparison between **1, 5, 10** and **20** layers deep Multilayer Perceptrons: here we can already see how *deeper* models do not reach better results. Indeed, the 10-layer MLP performs worse than its 1 and 5-layer counterpart, while the 20-layer MLP totally fails to learn! It takes just a shallower MLP to easily reach convergence to relatively high values of accuracy on MNIST.
+*Figure 1* shows the comparison between **1, 5, 10** and **20** layers deep Multilayer Perceptrons: here we can already see how *deeper* models do not necessarily achieve better results. Indeed, the 10-layer MLP performs worse than its 1- and 5-layer counterparts, while the 20-layer MLP completely fails to learn! It takes just a shallower MLP to easily reach convergence to relatively high accuracy values on MNIST.
 
 ### Exercise 1.2: Rinse and Repeat
 
-I will now make a step forward, training some **Convolutional Neural Networks**.
+I will now take a step forward by training some **Convolutional Neural Networks**.
 
 After building the simple MLP used previously, I updated the `models.py` script adding all the model classes used for this Laboratory:
-+ **MLP**, that instantiates a *Multilayer Perceptron*
-+ **ResidualMLP**, that instantiates an MLP with *Residual Connections*
-+ **CNN**, that instantiates a *Convolutional Network*
-+ **ResidualCNN**, that instantiates a ConvNet with *Residual Connections*
-+ **ResNet**, that instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
++ **MLP**, instantiates a *Multilayer Perceptron*
++ **ResidualMLP**, instantiates an MLP with *Residual Connections*
++ **CNN**, instantiates a *Convolutional Network*
++ **ResidualCNN**, instantiates a ConvNet with *Residual Connections*
++ **ResNet**, instantiates an actual *ResNet* as proposed in the [Paper](https://arxiv.org/abs/1512.03385), available in its *[9, 18, 34, 50, 101, 152]* versions.
 
-This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections. But since MNIST is a *very* easy dataset to work on (at least up to about 99% accuracy), I will soon start to work on the **CIFAR10** dataset.
+This specific part of the exercise focuses on revealing that **deeper** CNNs *without* Residual Connections do not always work better, and **even deeper** ones *with* Residual Connections. But since MNIST is a *very* easy dataset to work with (at least up to about 99% accuracy), I will soon start working on the **CIFAR10** dataset.
 
-The focus, here, is on playing with the total **depth** (i.e. the number of layers) of the network, while maintaining the general architecture untouched, in order to show that **deeper** ConvNet provides better performances, **only up to a certain depth**. So, I decided to compare **1, 5, 10, 20, 30** and **50** layers deep ConvNets, every single layer having the same width of **64**.
+The focus here is on experimenting with the total **depth** (i.e., the number of layers) of the network while maintaining the general architecture untouched, in order to show that **deeper** ConvNets provide better performance, **only up to a certain depth**. Therefore, I decided to compare **1, 5, 10, 20, 30** and **50** layer-deep ConvNets, with each layer having the same width of **64**.
 
 All logs and trackings of my runs are available on Weights & Biases, at [this link](https://wandb.ai/giovancombo/DLA_Lab1_CNN?workspace=user-giovancombo).
 
-I launch new runs with CNNs chenging the *dataset* and *architecture* parameters in the `config.yaml` file and calling the `train` and `evaluate` functions of the **Trainer** object, as previously made with the MLPs.
+I launch new runs with CNNs by changing the *dataset* and *architecture* parameters in the `config.yaml` file and calling the `train` and `evaluate` functions of the **Trainer** class, as previously done with the MLPs.
 
 <p float="left">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/mnist_cnn_valacc.png" width="49%">
@@ -92,7 +102,7 @@ Let's try then to train some models on the **CIFAR-10** dataset.
 </p>
 <p align="center"><i><b>Figure 6</b> | Comparison between 1, 5, 10, 20, 30 and 50 layers deep ResidualCNNs on CIFAR10: Validation Accuracy <b>(a)</b>, Validation Loss <b>(b)</b></i></p>
 
-The **ResidualCNN** class of models imitates the **CNN** class structure, but implements residual connections. *Figure 6* shows that Convolutional models that implement residual connections improve their performance accordingly with depth.
+The **ResidualCNN** class of models imitates the **CNN** class structure, but implements residual connections. *Figure 6* shows that Convolutional models that implement residual connections improve their performance as depth increases.
 
 ---
 ## Exercise 2: A Deeper Understanding on Visual Tasks
@@ -107,29 +117,29 @@ Classification is just one of the many tasks Convolutional Networks can address.
 
 *"Why Residual Networks learn more efficiently than Convolutional Networks?"*
 
-This question can find an answer by looking at the **Gradient Magnitudes** passing through the layers of the networks, during Backpropagation.
+This question can be answered by examining the **Gradient Magnitudes** passing through the layers of the networks during Backpropagation.
 
-As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a higher number of layers leads to not only higher Validation Loss, but also a *higher Training Loss*. The fact that deeper networks lead to higher **Training** Loss (not only Validation Loss!) proves that this particular phenomenon is not simple *overfitting*, but it's related to the actual excessive model complexity.
+As mentioned in the original [ResNet paper](https://arxiv.org/abs/1512.03385), a higher number of layers leads to not only higher Validation Loss, but also a *higher Training Loss*. The fact that deeper networks lead to higher **Training** Loss (not only Validation Loss!) proves that this particular phenomenon is not simple *overfitting*, but is related to the actual excessive model complexity.
 
-`wandb.watch(log = "all")` tells *Weights & Biases* to log the evolution of *gradients* and *parameters* in all the layers of a network.
+`wandb.watch(log = "all")` instructs *Weights & Biases* to log the evolution of *gradients* and *parameters* in all the layers of a network.
 
 <p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_cnn1.png" width="49%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_rescnn1.png" width="49%" />
 </p>
-<p align="center"><i><b>Figure 7</b> | Gradient evolution in the only layer of <b>CNN-1</b> and <b>ResidualCNN-1</b></i></p>
+<p align="center"><i><b>Figure 7</b> | Gradient evolution in the only layer of <b>CNN-1</b> (left) and <b>ResidualCNN-1</b> (right)</i></p>
 
 <p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_cnn50.png" width="49%" />
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/21_runs/grad_rescnn50.png" width="49%" />
 </p>
-<p align="center"><i><b>Figure 8</b> | Gradient evolution in the first layer of <b>CNN-50</b> and <b>ResidualCNN-50</b></i></p>
+<p align="center"><i><b>Figure 8</b> | Gradient evolution in the first layer of <b>CNN-50</b> (left) and <b>ResidualCNN-50</b> (right)</i></p>
 
-The **Vanishing Gradient problem** in deep CNNs occurs when gradients become extremely small as they're backpropagated through many layers, making it difficult for earlier layers to learn effectively. In standard *CNNs*, this can lead to degraded performance as network depth increases. *ResidualCNNs* mitigate this issue by introducing skip connections that allow gradients to flow directly through the network, maintaining stronger gradient signals even in very deep architectures.
+The **Vanishing Gradient problem** in deep CNNs occurs when gradients become extremely small as they are backpropagated through many layers, making it difficult for earlier layers to learn effectively. In standard *CNNs*, this can lead to degraded performance as network depth increases. *ResidualCNNs* mitigate this issue by introducing skip connections that allow gradients to flow directly through the network, maintaining stronger gradient signals even in very deep architectures.
 
-While *Figure 7* shows that shallow CNNs can perfectly compete with (and even perform better than) shallow ResidualCNNs, *Figure 8* shows the central issue that differentiates CNNs and ResidualCNNs. The gradient magnitudes of the CNNs (on the left) start with very high values at the beginning of training, and then rapidly tend to zero, falling in the Vanishing Gradient Problem.
+While *Figure 7* shows that shallow CNNs can perfectly compete with (and even perform better than) shallow ResidualCNNs, *Figure 8* shows the central issue that differentiates CNNs and ResidualCNNs. The gradient magnitudes of the CNNs start with very high values at the beginning of training, and then rapidly tend to zero, falling into the Vanishing Gradient problem.
 
-On the contrary, ResidualCNNs (on the right) does not suffer from any Vanishing nor Exploding problems, as gradients are stable through all the training process, guaranteeing continuous learning.
+On the contrary, ResidualCNNs do not suffer from any Vanishing or Exploding problems, as gradients remain stable throughout the training process, guaranteeing continuous learning.
 
 ---
 ### Exercise 2.2: Fully-convolutionalize a network (WORK IN PROGRESS)
@@ -149,20 +159,20 @@ In this section, I will turn one of the ConvNets I trained into a **detector** o
 > 
 [*Class Activation Maps*](http://cnnlocalization.csail.mit.edu/#:~:text=A%20class%20activation%20map%20for,decision%20made%20by%20the%20CNN.) are very powerful tools for understanding how Neural Networks learn in order to classify objects in an image.
 
-The main focus, here, is to see how one of the previously trained CNNs *attends* to specific image features to recognize *specific* classes.
+The main focus here is to see how one of the previously trained CNNs *attends* to specific image features to recognize *specific* classes.
 
 Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
 
-For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1 (*Figure 10*).
+For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1 (*Figure 9*).
 
 <p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/model_for_CAMs_valacc.png" width="48%" />
 </p>
-<p align="center"><i><b>Figure 10</b> | Validation Accuracy of the <b>ResidualCNN</b> trained for this Exercise</i></p>
+<p align="center"><i><b>Figure 9</b> | Validation Accuracy of the <b>ResidualCNN</b> trained for this Exercise</i></p>
 
 #### CAMs on CIFAR10 images
 
-Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images (here I show some of them, other can be found in the `images/23_cam` folder).
+Firstly, I conducted some evaluations on the 3-channel 32x32 CIFAR10 images (I show some of them here; other examples can be found in the `images/23_cam` folder).
 
 <p float="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab1/images/23_cam/cifar_data/cifar_idx0_cat.jpg" width="12%" />
@@ -214,15 +224,14 @@ Firstly, I did some evaluations on the 3-channels 32x32 CIFAR10 images (here I s
 
 #### CAMs on my photographs
 
-Secondly, as a photographer I couldn't resist to compute CAMs on some of my photographs! But as they are 4000x3000 (huge) images, I had to adjust scaling factors between images and CAMs: I resized every image to a width of 32 (I kept their rectangular shapes) to get the prediction from the model (trained on 32x32 CIFAR10 images), before resizing again CAM and image to width 256.
+Secondly, as a photographer, I couldn't resist computing CAMs on some of my photographs! However, as they are 4000x3000 (huge) images, I had to adjust scaling factors between images and CAMs: I resized every image to a width of 32 (keeping their rectangular shapes) to get the prediction from the model (trained on 32x32 CIFAR10 images), before resizing both the CAM and image to a width of 256.
+To test how well the model performs, I chose images with "obvious" classes (like 1, 2, 9, 16, 17, and 18), and images that I thought could be more challenging. Some results are very interesting:
 
-In order to test how well the model performs, I chose images with "obvious" classes (like 1, 2, 9, 16, 17 and 18), and images that, instead, I thought could have been more challenging. Some results are very interesting:
-
-+ **(3 and 4)**: vintage cars are predicted as *trucks*, probably because the model sees something with four tyres but with a very unconventional shape.
-+ **(5)**: these are *goats*, so they are objects that don't fit in any of the CIFAR10 classes. Yet, antlers are decisive in classifying them as *deers*.
-+ **(10)**: the model recognizes an airplane even if you are inside the airplane, the wing is sufficient.
-+ **(11)**: again a subject that doesn't fit in any CIFAR10 category: this macaque was predicted as *deer*.
-+ **(12)**: I thought the model would have predicted this statue as *dog*, but eventually something went wrong.
++ **(3 and 4)**: Vintage cars are predicted as *trucks*, probably because the model sees something with four tires but with a very unconventional shape.
++ **(5)**: These are goats, so they are objects that don't fit into any of the CIFAR10 classes. Yet, antlers are decisive in classifying them as *deers*.
++ **(10)**: The model recognizes an *airplane* even if you're inside the airplane; the wing is sufficient.
++ **(11)**: Again, a subject that doesn't fit into any CIFAR10 category: this macaque was predicted as a *deer*.
++ **(12)**: I thought the model would have predicted this statue as a dog, but eventually something went wrong.
 + **(14)**: I was sure the model would have correctly classified this image due to the sailboat, not those yachts in the background.
 
 <p float="left">
