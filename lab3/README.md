@@ -26,7 +26,7 @@ The default **Deep Q-Learning** implementation and training code for solving thi
 - Testing Phase: I run `main_basedqn.py` again, this time with `TRAIN = False`, and load the last saved checkpoint to evaluate the agent's performance.
 
 <p float="center" align="center">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav.png" width="15%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav.png" width="20%">
 </p>
 <p align="center"><i><b>Figure 1</b> | Interface of the <b>gymnav</b> environment</i></p><br>
 
@@ -109,30 +109,59 @@ The hyperparameter tuning for REINFORCE focused on `LEARNING_RATE` and `GAMMA`. 
 
 After working with the custom *gymnav* environment, it is now time to explore some of the environments available in the [Gymnasium](https://gymnasium.farama.org/) framework, which offers a consistent interface to a broad range of Reinforcement Learning environments, making it an ideal platform for comparative studies.
 
-In this section, I will perform a comparative analysis of the REINFORCE and Deep Q-Learning algorithms' performances in solving two of the most popular OpenAI Gymnasium environments: [Lunar Lander-v2](https://gymnasium.farama.org/environments/box2d/lunar_lander/) and [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/).
+In this section, I will perform a comparative analysis of the **REINFORCE** and **Deep Q-Learning** algorithms' performances in solving two of the most popular OpenAI Gymnasium environments:
++ [Lunar Lander-v2](https://gymnasium.farama.org/environments/box2d/lunar_lander/): the environment is considered *solved* when the average score of the latest 100 episodes reaches **200**.
++ [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/): the environment is considered *solved* when the average score of the latest 100 episodes reaches **190**.
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/lunarlander_interface.png" width="25%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/cartpole_interface.png" width="25%">
+</p>
+<p align="center"><i><b>Figure 8</b> | <b>LunarLander-v2</b> (left) and <b>CartPole-v1</b> (right) interfaces</i></p>
+
+Since the **baseDQN** architecture provided in the `main_basedqn.py` script was specifically tailored for the *gymnav* environment, I recognized that I needed a more flexible solution. So, I decided to develop my own version of the DQL algorithm (inspired by a tutorial), **myDQN**, which is designed to be more adaptable to various *Gymnasium* environments. It is implemented in the `main_mydqn.py` script.
 
 #### LunarLander-v2
 
-
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/lunarlander_reinforce.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/lunarlander_dqn.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 9</b> | Runs on the LunarLander-v2 environment using <b>REINFORCE</b> (left) and <b>myDQN</b> (right) algorithms</i></p>
 
 #### CartPole-v1
 
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/cartpole_reinforce.png" width="49%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/cartpole_dqn.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 10</b> | Runs on the CartPole-v1 environment using <b>REINFORCE</b> (left) and <b>myDQN</b> (right) algorithms</i></p>
 
-**REINFORCE on Lander**
-
-And finally, the Deep Q-Learning technique.
-
-**DQN on Lander**
-
-To complete the experience, let's try to solve also the CartPole environment.
-
-**REINFORCE and DQN on CartPole**
+Surprisingly, here **myREINFORCE** algorithm solved the CartPole-v1 environment faster than **myDQN**.
 
 ---
 ### Exercise 3.3: Advanced techniques 
 
-The `REINFORCE` and Q-Learning approaches, though venerable, are not even close to the state-of-the-art. Nowadays, one of the most powerful approaches for solving DRL environments is [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347).
+While REINFORCE and Deep Q-Learning are foundational approaches in Deep Reinforcement Learning (DRL), they are no longer considered state-of-the-art. Currently, one of the most powerful methods for solving DRL environments is [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347).
 
-Curious about its implementation, I decided to use [this off-the-shelf implementation of PPO]() to solve the Lunar Lander environment and compare my results with those of Q-Learning and REINFORCE.
+Intrigued by its potential, I decided to implement PPO to enhance our comparative analysis. My implementation, which I've named **myPPO**, takes inspiration from [this off-the-shelf implementation of PPO](https://github.com/bentrevett/pytorch-rl/blob/master/5a%20-%20Proximal%20Policy%20Optimization%20(PPO)%20%5BLunarLander%5D.ipynb). The goal is to solve the *LunarLander-v2* environment and compare its performance with the previously implemented Deep Q-Learning and REINFORCE algorithms. **myPPO** implementation can be found in the `main_myppo1.py` script.
 
-PPO uses the Actor-Critic approach for the agent. This means that it uses two models, one called the Actor and the other called Critic. The Actor model performs the task of learning what action to take under a particular observed state of the environment. In the LunarLander case, it takes eight values list of the game as input which represents the current state of our rocket and gives a particular action what engine to fire as output.
+*Proximal Policy Optimization* employs an Actor-Critic approach. This methodology uses two distinct models, one called *Actor* and the other called *Critic*.
++ The *Actor* model earns the optimal action to take in a given observed state of the environment. In the *LunarLander-v2* case, it takes in input a list of eight values that represent the current state of the rocket (position, velocity, orientation), and outputs the specific action indicating which engine to fire.
++ The *Critic* model evaluates the value of being in a particular state.
+
+This dual-model structure allows PPO to simultaneously learn both the policy (via the *Actor*) and the value function (via the *Critic*), leading to more stable and efficient learning.
+
+#### LunarLander-v2
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/lunarlander_confronto.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 11</b> | Comparison between runs on the LunarLander-v2 environment using <b>REINFORCE</b>, <b>myDQN</b> and <b>myPPO</b> algorithms</i></p>
+
+#### CartPole-v1
+
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/cartpole_confronto.png" width="49%">
+</p>
+<p align="center"><i><b>Figure 12</b> | Comparison between runs on the CartPole-v1 environment using <b>REINFORCE</b>, <b>myDQN</b> and <b>myPPO</b> algorithms</i></p>
