@@ -1,32 +1,29 @@
 # Deep Learning Applications: Laboratory #3 - DRL
 
-In this Laboratory I will explore the land of Deep Reinforcement Learning and its application to Navigation problems and simulations. Some of the most important theoretical concepts about this Lab were learned from [this excellent Andrej Karpathy blog post](http://karpathy.github.io/2016/05/31/rl/).
+In this Laboratory I will explore the realm of Deep Reinforcement Learning and its applications to navigation problems and simulations. Many of the key theoretical concepts about this Lab were taken from [this excellent blog post by Andrej Karpathy](http://karpathy.github.io/2016/05/31/rl/).
 
-For this Lab, I will create a new *conda* environment named **DRL**, in order to work with the great number of libraries that are specifically dedicated to DRL tasks.
+For this Lab, I will create a new *conda* environment named **DRL**, which will allow me to work with the numerous libraries specifically dedicated to Deep Reinforcement Learning tasks.
 
 ## Exercise 1: Testing the Environment
-Part of the experience will include "hacking" a provided implementation (provided by Francesco Fantechi, from Ingegneria Informatica) of a navigation environment. The setup is fairly simple:
 
-+ A simple 2D environment with a (limited) number of *obstacles* (yellow squares) and a single *goal* (blue circle) is presented to the agent (green dot), which must learn how to navigate to the goal without hitting any obstacles.
-+ The agent *observes* the environment via a set of 16 rays cast uniformly which return the distance to the first obstacle encountered, as well as the distance and direction to the goal.
-+ The agent has three possible actions: `ROTATE LEFT`, `ROTATE RIGHT`, or `MOVE FORWARD`.
+Part of this experience will involve "hacking" an implementation of a navigation environment, provided by Francesco Fantechi from Ingegneria Informatica. The setup is relatively straightforward:
 
-For each step of an episode, the agent receives a reward of:
-+ -100 if hitting an obstacle (the episode ends).
-+ -100 if one hundred steps are reached without hitting the goal (time's up, the episode ends).
-+ +100 if hitting the goal (the episode ends)
++ The environment is a simple 2D space containing a limited number of *obstacles* (black squares) and a single *goal* (green circle). The agent (blue dot) must learn to navigate to the goal while avoiding obstacles.
++ The agent *observes* the environment through 16 uniformly cast rays, which return the distance to the first obstacle encountered, as well as the distance and direction to the goal.
++ The agent can perform three possible actions: `ROTATE LEFT`, `ROTATE RIGHT`, or `MOVE FORWARD`.
+
+For each step of an episode, the agent receives a reward based on the following criteria:
++ -100 if it hits an obstacle (ending the episode).
++ -100 if it reaches one hundred steps without finding the goal (time's up, ending the episode).
++ +100 if it reaches the goal (ending the episode).
 + A small *positive* reward if the distance to the goal is *reduced*.
 + A small *negative* reward if the distance to the goal is *increased*.
 
-The **Deep Q-Learning** implementation for solving this exercise can be found in the `main.py` script.
+The default **Deep Q-Learning** implementation and training code for solving this exercise are available in the `main_basedqn.py` script. My approach consists of two main steps:
+- Training Phase: I train the agent for 2000 episodes and save the trained model.
+- Testing Phase: I run `main_basedqn.py` again, this time with `TRAIN = False`, and load the last saved checkpoint to evaluate the agent's performance.
 
-Running the script will start running episodes using a pre-trained agent. Fantechi's clever implementation allows me to change mode from Training to Testing only by modifying the `TRAIN` flag at the top.
-
-Firstly, I train and save the trained agent using DQL setting `TRAIN = True`. I initially decide to train the agent for 2000 episodes, but soon I discover that the training is very slow, so I reduced them to 1000.
-
-Then, I run `main.py` again with `TRAIN = False` and the last saved checkpoint loaded to see how the agent performs.
-
-**RUNS**
+**RUNS GYM NAV + SCREEN DI COM'E' GYMNAV**
 
 Qualitatively, it's possible to see that the agents looks like it has not learned so well to find the goal. Many times, the agent hits the walls or obstables without even trying to change direction, even just after the spawn. Some other times, the agent finds its way to the goal, until it stops right in front of it and changes direction.
 
