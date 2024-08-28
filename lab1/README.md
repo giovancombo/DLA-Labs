@@ -19,7 +19,7 @@ Since this Lab requires me to compare multiple training runs, I took this as a g
 
 I will now implement a *simple* Multilayer Perceptron to classify the 10 digits of MNIST, and (hopefully) train it to convergence, monitoring Training and Validation Losses and Accuracies using *Weights & Biases*.
 
-A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, each with different hyperparameter configurations, and train them on different datasets. So, it could be a good idea to generalize the instantiation of every object in the training workflow as much as possible. That's why I decided to create a `config.yaml` file, where I put every hyperparameter I need to set for architectures, datasets and training details. I just found it easier for me.
+A fundamental skill in programming is being able to think in an *abstract* way: I'll have to instantiate multiple models, each with different hyperparameter configurations, and train them on different datasets. So, it could be a good idea to generalize the instantiation of every object in the training workflow as much as possible. That's why I decided to create a `params.yaml` file, where I put every hyperparameter I need to set for architectures, datasets and training details. I found it easier for me to be able to just have the `main1.py` script doing all the work based on what I tweaked in the `.yaml` configuration file.
 
 To facilitate the future reuse of code for different architectures, I implemented the `trainer.py` script, which defines a **Trainer** object that contains `train` and `evaluate` functions for running the training loop.
 
@@ -161,7 +161,7 @@ In this section, I will turn one of the ConvNets I trained into a **detector** o
 
 The main focus here is to see how one of the previously trained CNNs *attends* to specific image features to recognize *specific* classes.
 
-Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923).
+Class Activation Maps were here implemented taking inspiration from [this tutorial](https://medium.com/intelligentmachines/implementation-of-class-activation-map-cam-with-pytorch-c32f7e414923). Code can be found in the `main23.py` script.
 
 For this task, I trained a 50-layer ResidualCNN for 50 epochs, in order to reach convergence to a higher Validation Accuracy than all models that were trained in Exercise 1 (*Figure 9*).
 
