@@ -107,15 +107,16 @@ The hyperparameter tuning for REINFORCE focused on `LEARNING_RATE` and `GAMMA`. 
 ---
 ### Exercise 3.2: Solving another environment
 
-After working in a custom environment, I really wanted to try some of the environments available in the [Gymnasium](https://gymnasium.farama.org/) framework, which provides a consistent interface to a broad range of Reinforcement Learning environments. I thought this could be a good time to compare some DRL architectures on different environments.
+After working with the custom *gymnav* environment, it is now time to explore some of the environments available in the [Gymnasium](https://gymnasium.farama.org/) framework, which offers a consistent interface to a broad range of Reinforcement Learning environments, making it an ideal platform for comparative studies.
 
-So, in this section, I will compare the performances of REINFORCE and Deep Q-Learning algorithms in solving two of the most common OpenAI Gymnasium environments: [CartPole](https://gymnasium.farama.org/environments/classic_control/cart_pole/), and [Lunar Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/).
+In this section, I will perform a comparative analysis of the REINFORCE and Deep Q-Learning algorithms' performances in solving two of the most popular OpenAI Gymnasium environments: [Lunar Lander-v2](https://gymnasium.farama.org/environments/box2d/lunar_lander/) and [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/).
 
-To set things up, I firstly implement a lander that takes totally random actions at each time tick. Obviously, the total reward will be very bad.
+#### LunarLander-v2
 
-**random run on Lander**
 
-Now I will try to use the REINFORCE algorithm: running the two versions of it made me find out that the episode-wise REINFORCE is the only one that "works" in this task, as opposite to the CartPole environment, which showed better results with the interaction-wise REINFORCE.
+
+#### CartPole-v1
+
 
 **REINFORCE on Lander**
 
