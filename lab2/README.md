@@ -150,7 +150,7 @@ On the *ag_news* dataset:
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/confusion_matrix_mlp.png" width="40%">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/ag-news/confusion_matrix_logreg.png" width="40%">
 </p>
-<p align="center"><i><b>Figure 4</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> on the <b>ag_news</b> dataset</i></p><br>
+<p align="center"><i><b>Figure 4</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> (right) on the <b>ag_news</b> dataset</i></p><br>
 
 On the *dair-ai/emotion* dataset:
 
@@ -165,7 +165,8 @@ On the *dair-ai/emotion* dataset:
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/confusion_matrix_mlp_10.png" width="40%">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab2/images/3_textclassification/dair-ai/confusion_matrix_logreg_10.png" width="40%">
 </p>
-<p align="center"><i><b>Figure 5</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> on the <b>dair-ai/emotion</b> dataset</i></p>
+<p align="center"><i><b>Figure 5</b> | Confusion Matrices for classifications using an <b>MLP</b> trained for 10 epochs (left) and a <b>Logistic Regression</b> (right) on the <b>dair-ai/emotion</b> dataset</i></p>
+
 ---
 
 ### Exercise 3.2: Training a Question Answering Model (WORK IN PROGRESS)
