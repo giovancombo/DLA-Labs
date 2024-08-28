@@ -34,7 +34,7 @@ The default **Deep Q-Learning** implementation and training code for solving thi
 
 ## Exercise 2: Stabilizing Q-Learning
 
-The **Deep Q-Network** provided in the `main_basedqn.py` script required some hyperparameter tuning to stabilize the training process and achieve performance capable of solving the *gymnav* environment.  In my optimization efforts, I focused on evaluating the effects of three key parameters:
+The *Deep Q-Network* **baseDQN** provided in the `main_basedqn.py` script required some hyperparameter tuning to stabilize the training process and achieve performance capable of solving the *gymnav* environment.  In my optimization efforts, I focused on evaluating the effects of three key parameters:
 - `EPS_DECAY`: The decay rate of the exploration probability.
 - `LEARNING_RATE`: The step size at each iteration while moving toward a minimum of the loss function.
 - `GAMMA`: The discount factor for future rewards.
@@ -42,28 +42,28 @@ The **Deep Q-Network** provided in the `main_basedqn.py` script required some hy
 <p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_basedqn_eps.png" width="60%">
 </p>
-<p align="center"><i><b>Figure 2</b> | Comparison between runs on the gymnav environment using <b>Deep Q-Learning</b> with different <b>EPS_DECAY</b></i></p>
+<p align="center"><i><b>Figure 2</b> | Comparison between runs on the gymnav environment using <b>baseDQN</b> with different <b>EPS_DECAY</b></i></p>
 
 It appears that the smaller the `EPS_DECAY` value, the better the performance. However, I found it's crucial to be cautious when lowering this hyperparameter too much, because excessively small values can lead to performances that overly favor *exploitation* over *exploration*, potentially causing the agent to become stuck in a particular behavior too soon in the training.
 
 <br><p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_basedqn_lr.png" width="60%">
 </p>
-<p align="center"><i><b>Figure 3</b> | Comparison between runs on the gymnav environment using <b>Deep Q-Learning</b> with different <b>LEARNING_RATE</b></i></p>
+<p align="center"><i><b>Figure 3</b> | Comparison between runs on the gymnav environment using <b>baseDQN</b> with different <b>LEARNING_RATE</b></i></p>
 
-We observe optimal performance in the range of 0.01 to 0.001, where the model effectively balances learning speed and stability. Learning Rates below 0.0001 lead to training failure, as the weight updates become too small for effective learning.
+We observe optimal performance for `LEARNING_RATE` in the range of 0.01 to 0.001, where the model effectively balances learning speed and stability. Learning Rates below 0.0001 lead to training failure, as the weight updates become too small for effective learning.
 
 <br><p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_basedqn_gamma.png" width="60%">
 </p>
-<p align="center"><i><b>Figure 4</b> | Comparison between runs on the gymnav environment using <b>Deep Q-Learning</b> with different <b>GAMMA</b></i></p>
+<p align="center"><i><b>Figure 4</b> | Comparison between runs on the gymnav environment using <b>baseDQN</b> with different <b>GAMMA</b></i></p>
 
-There is consistent performance across a wide range of gamma values, from 0.9 to 0.9999. This stability suggests that both short-term and long-term strategies are equally effective in achieving the navigation goal.
+There is consistent performance across a wide range of `GAMMA` values, from 0.9 to 0.9999. This stability suggests that both short-term and long-term strategies are equally effective in achieving the navigation goal.
 
 <br><p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_basedqn.png" width="60%">
 </p>
-<p align="center"><i><b>Figure 5</b> | Best runs on the gymnav environment using <b>Deep Q-Learning</b></i></p>
+<p align="center"><i><b>Figure 5</b> | Best runs on the gymnav environment using <b>baseDQN</b></i></p>
 
 Setting `render = 'human'` enables a qualitative evaluation of the agent's navigation improvement. Over multiple runs, I observed the following patterns:
 - During the initial phase of training (the first 300-400 episodes), the agent often wanders randomly in the environment.
@@ -77,18 +77,30 @@ Setting `render = 'human'` enables a qualitative evaluation of the agent's navig
 
 ### Exercise 3.1: Solving the environment with REINFORCE
 
-REINFORCE is one of the first Policy Gradient DRL algorithms for training an agent. Since it is also one of the most simple ones, I decided not only to use professor Bagdanov's implementation of REINFORCE, but to implement my own version following a tutorial.
+**REINFORCE** is one of the pioneering Policy Gradient algorithms in DRL. Given its simplicity, I decided to utilize not only professor Bagdanov's implementation, available in the `baseREINFORCE.py` script, but also to develop my own version, inspired by a tutorial, which I've implemented in the `myREINFORCE.py` script. To facilitate experimentation, I created a `main_reinforce.py` script that allows for launching runs using either implementation.
 
-**Note**: There is a *design flaw* in the environment implementation that will lead to strange (by explainable) behavior in agents trained with `REINFORCE`. See if you can figure it out and fix it.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_reinforce.png" width="60%">
+</p>
+<p align="center"><i><b>Figure 6</b> | Best runs on the gymnav environment using <b>baseREINFORCE</b></i></p>
 
-After multiple runs using REINFORCE in the Navigation environment, I could see a strange behavior in agents. After some first tries in which agents struggled to reach the goal, but at least maintained a logic in their movements across the map, agents just started to employ a new particular strategy that involved moving in circle in order to balance their total episode reward with no more losses: moving in circle, in fact, allowed agents to get slightly negative rewards while moving away from the goal, compensated by slightly positive rewards for moving towards the goal. This kind of strategy is sub-optimal for the agent, but it's actually a mode collapse that leads to no improvement in learning the correct policy for succeeding every episode.
+<p float="center" align="center">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_confronto.png" width="60%">
+</p>
+<p align="center"><i><b>Figure 7</b> | Comparison between runs on the gymnav environment using <b>baseREINFORCE</b> and <b>baseDQN</b></i></p>
 
-Un altro comportamento notato è quello che l'esito dell'episodio dipende fortemente da come viene inizializzata la policy: sono rari i casi in cui l'agente cambia radicalmente la propria direzione per andare attivamente verso il goal.
+*Figure 7* demonstrates how Deep Q-Learning achieves better performances than REINFORCE.
+
+After conducting multiple runs using REINFORCE in the Navigation environment, I observed an unexpected behavior pattern in the agents. After some first episodes in which agents struggled to reach the goal, but their movements across the map maintained at least a logical pattern, agents adopted a peculiar strategy involving circular movements. This behavior allowed them to balance their total episode reward without incurring significant losses: by moving in circles, agents alternated between slightly negative rewards when moving away from the goal, and slightly positive rewards when moving towards the goal. This kind of strategy is sub-optimal for the agent, but it represents a form of *mode collapse*, where the agent becomes trapped in a local minimum of the reward function. This behavior prevents the agent from learning the correct policy for consistently succeeding in each episode.
+
+Another notable behavior is the strong dependence of episode outcomes on the initial policy initialization. Cases where the agent radically changes its direction to actively go towards the goal are rare. To address this, I experimented with several modifications on the environment reward system, as a hint in the exercise suggested that the *gymnav* environment suffered from a design flaw, which was causing issues when using REINFORCE.
+
+
 
 Provo a fare qualche modifica:
-- modificare FORWARD_REWARD tra 2 e -1
-- modificare BACKWARD_REWARD tra -1 e -2.5
-- modificare il comportamento delle azioni di rotazione, eliminando la piccola componente di linear shift
+- Modifying `FORWARD_REWARD` from 2 to -0.1 (from slightly positive to slightly negative)
+- Modifying `BACKWARD_REWARD` from -1 to -2.5
+- Removing the *linear shift* from the rotation actions, as every slight rotation would result in a very little positive reward
 
 La configurazione fw = -1 e bw = -2.5 con rotazioni inalterate sembra funzionare abbastanza bene, tuttavia molto spesso si nota il comportamento dell'agente che punta diretto verso il goal per poi sterzare a evitarlo a pochissimi passi da esso.
 
