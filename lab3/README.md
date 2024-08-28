@@ -4,6 +4,8 @@ In this Laboratory I will explore the realm of Deep Reinforcement Learning and i
 
 For this Lab, I will create a new *conda* environment named **DRL**, which will allow me to work with the numerous libraries specifically dedicated to Deep Reinforcement Learning tasks.
 
+I will log and track every run using *Weights & Biases*.
+
 ## Exercise 1: Testing the Environment
 
 Part of this experience will involve "hacking" an implementation of a navigation environment, provided by Francesco Fantechi from Ingegneria Informatica. The setup is relatively straightforward:
