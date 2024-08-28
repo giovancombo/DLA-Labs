@@ -26,7 +26,7 @@ The default **Deep Q-Learning** implementation and training code for solving thi
 - Testing Phase: I run `main_basedqn.py` again, this time with `TRAIN = False`, and load the last saved checkpoint to evaluate the agent's performance.
 
 <p float="center" align="center">
-  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav.png" width="25%">
+  <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav.png" width="15%">
 </p>
 <p align="center"><i><b>Figure 1</b> | Interface of the <b>gymnav</b> environment</i></p><br>
 
@@ -84,47 +84,25 @@ Setting `render = 'human'` enables a qualitative evaluation of the agent's navig
 </p>
 <p align="center"><i><b>Figure 6</b> | Best runs on the gymnav environment using <b>baseREINFORCE</b></i></p>
 
+After conducting multiple runs using REINFORCE in the Navigation environment, I observed an unexpected behavior pattern in the agents. After some first episodes in which agents struggled to reach the goal, but their movements across the map maintained at least a logical pattern, agents adopted a peculiar strategy involving circular movements. This behavior allowed them to balance their total episode reward without incurring significant losses: by moving in circles, agents alternated between slightly negative rewards when moving away from the goal, and slightly positive rewards when moving towards the goal. This kind of strategy is sub-optimal for the agent, but it represents a form of *mode collapse*, where the agent becomes trapped in a local minimum of the reward function. This behavior prevents the agent from learning the correct policy for consistently succeeding in each episode.
+
+Another notable behavior is the strong dependence of episode outcomes on the initial policy initialization. Cases where the agent radically changes its direction to actively go towards the goal are rare. To address this, I experimented with several modifications on the environment reward system, as a hint in the exercise suggested that the *gymnav* environment suffered from a design flaw, which was causing issues when using REINFORCE:
+- In the `gym_navigation/envs/navigation_track.py` script, modifying `FORWARD_REWARD` from 2 to -0.1 (from slightly positive to slightly negative).
+- In the `gym_navigation/envs/navigation_goal.py` script, modifying `BACKWARD_REWARD` from -1 to -2.5.
+- In the `gym_navigation/enums/action.py` script, removing the *linear shift* from the rotation actions, as every slight rotation would result in a very little positive reward.
+
+However, removing the *linear shift* from the rotation actions resulted in an agent that moved through the environment in a jerky manner, without any improvement in performance. This modification, while altering the agent's movement pattern, failed to address the underlying issues or enhance the navigation capabilities.
+
+Modifying the reward system for getting closer to or further from the goal only slightly improved performance. The agent remained inconsistent, often alternating between successfully reaching the goal and demonstrating inability to maintain a clear policy.
+
+The hyperparameter tuning for REINFORCE focused on `LEARNING_RATE` and `GAMMA`. I could observed that optimal values of `GAMMA` range between 0.8 and 0.99 (*Figure 6*), however an important trend emerged with lower gamma values: the agent achieved positive scores but rarely reached the goal. Instead, it developed a strategy of rotating in circles, allowing the episode to time out. This behavior maximized short-term rewards without achieving the actual objective.
+
 <p float="center" align="center">
   <img src="https://github.com/giovancombo/DeepLearningApps/blob/main/lab3/images/gymnav_confronto.png" width="60%">
 </p>
 <p align="center"><i><b>Figure 7</b> | Comparison between runs on the gymnav environment using <b>baseREINFORCE</b> and <b>baseDQN</b></i></p>
 
-*Figure 7* demonstrates how Deep Q-Learning achieves better performances than REINFORCE.
-
-After conducting multiple runs using REINFORCE in the Navigation environment, I observed an unexpected behavior pattern in the agents. After some first episodes in which agents struggled to reach the goal, but their movements across the map maintained at least a logical pattern, agents adopted a peculiar strategy involving circular movements. This behavior allowed them to balance their total episode reward without incurring significant losses: by moving in circles, agents alternated between slightly negative rewards when moving away from the goal, and slightly positive rewards when moving towards the goal. This kind of strategy is sub-optimal for the agent, but it represents a form of *mode collapse*, where the agent becomes trapped in a local minimum of the reward function. This behavior prevents the agent from learning the correct policy for consistently succeeding in each episode.
-
-Another notable behavior is the strong dependence of episode outcomes on the initial policy initialization. Cases where the agent radically changes its direction to actively go towards the goal are rare. To address this, I experimented with several modifications on the environment reward system, as a hint in the exercise suggested that the *gymnav* environment suffered from a design flaw, which was causing issues when using REINFORCE.
-
-
-
-Provo a fare qualche modifica:
-- Modifying `FORWARD_REWARD` from 2 to -0.1 (from slightly positive to slightly negative)
-- Modifying `BACKWARD_REWARD` from -1 to -2.5
-- Removing the *linear shift* from the rotation actions, as every slight rotation would result in a very little positive reward
-
-La configurazione fw = -1 e bw = -2.5 con rotazioni inalterate sembra funzionare abbastanza bene, tuttavia molto spesso si nota il comportamento dell'agente che punta diretto verso il goal per poi sterzare a evitarlo a pochissimi passi da esso.
-
-**Il potenziale design flaw potrebbe essere nel sistema di ricompense, in particolare:**
-
-Ricompensa sparsa: La ricompensa principale (+100) viene data solo quando si raggiunge l'obiettivo. Questo può rendere difficile per l'agente imparare, specialmente all'inizio dell'addestramento quando raggiungere l'obiettivo è raro.
-Penalità per passi eccessivi: La penalità di -100 dopo 100 passi potrebbe incoraggiare l'agente a terminare rapidamente l'episodio, anche se ciò significa collidere.
-Ricompense intermedie basate su distanza e angolo: Queste ricompense potrebbero non essere sufficientemente informative o potrebbero essere troppo complesse per essere apprese efficacemente.
-
-Il comportamento strano potrebbe manifestarsi come:
-
-L'agente che gira in cerchio o si muove casualmente, evitando di esplorare efficacemente l'ambiente.
-L'agente che preferisce collidere rapidamente piuttosto che rischiare la penalità per passi eccessivi.
-**L'agente che non riesce a imparare una politica coerente per raggiungere l'obiettivo.**
-
-After checking Fantechi's code, I found that a possible explanation for this weird behavior lies in the fact that forward reward and backward rewards are too different. Another thing is that rotations are associated with small forward linear shift --> rewards! That brings the agent sometimes at moving in circle.
-
-There are many other things that can be improved in this example:
-
-1. **Replay**. In the current implementation we execute an episode, and then immediately run an optimization step on all of the steps of the episode. Not only are we using *correlated* samples from a single episode, we are decidedly *not* taking advantage of parallelism via batch gradient descent. Note that `REINFORCE` does **not** require entire trajectories, all we need are the discounted rewards and log probabilities for *individual transitions*.
-
-2. **Exploration**. The model is probably overfitting (or perhaps remaining too *plastic*, which can explain the unstable convergence). Our policy is *always* stochastic in that we sample from the output distribution. It would be interesting to add a temperature parameter to the policy so that we can control this behavior, or even implement a deterministic policy sampler that always selects the action with max probability to evaluate the quality of the learned policy network.
-
-3. **Discount Factor**: The discount factor (default $\gamma = 0.99$) is an important hyperparameter that has an effect on the stability of training. Try different values for $\gamma$ and see how it affects training. Can you think of other ways to stabilize training?
+*Figure 7* demonstrates how Deep Q-Learning achieves better performances than REINFORCE in the *gymnav* task. This superiority can be attributed to DQL's ability to learn from past experiences, leading to faster and more stable learning. The *epsilon-greedy* strategy and directly learning an *action-value function* are features that provide a more long-term stable learning compared to REINFORCE's policy gradient approach.
 
 ---
 ### Exercise 3.2: Solving another environment
