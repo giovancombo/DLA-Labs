@@ -6,9 +6,9 @@ Substantial part of this Lab relies on the notorious paper [Attention is All you
 In order to be able to understand more deeply the logic behind Language Modeling and language models, I coded along with [this video](https://www.youtube.com/watch?v=kCc8FmEb1nY) made by Andrej Karpathy, a tutorial for building an autoregressive GPT language model from scratch. The code I produced will be very useful for the entire Lab.
 
 ## Exercise 1: Warming Up
-In this first exercise, I will train a *small* autoregressive GPT model for character generation, identical to the one in Karpathy's video, to generate text in a particular style.
+In this first exercise, I will train a *small* autoregressive GPT model for character generation, identical to the one in Karpathy's video, to generate text in a particular style. Its implementation can be found in the `transformer.py` script.
 
-Initially, I was tasked with generating text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt) (located at `data/divina_commedia.txt`), which contains the complete text of Dante's Divine Comedy. After removing some introductory text from the top of the file and problematic characters, I was able to begin training. Here are the training settings I used:
+Initially, I was tasked with generating text in the style of Dante Alighieri using [this file](https://archive.org/stream/ladivinacommedia00997gut/1ddcd09.txt) (located at `data/divina_commedia.txt`), which contains the complete text of Dante's Divine Comedy. After removing some introductory text from the top of the file and problematic characters, I was able to begin training, launching the `main1.py` script. Here are the training settings I used:
 
 + **5000** steps of training
 + Batch size: **32** and **256**
@@ -16,6 +16,8 @@ Initially, I was tasked with generating text in the style of Dante Alighieri usi
 + Learning rate: **5e-4**
 + Dropout rate: **0.2**
 + Token Embedding dimension: comparison between **32**, **128** and **256**
+
+To facilitate my workflow, I decided to put all settings and hyperparameters into a `params.yaml` file.
 
 Each model I trained is saved in the `1_models` folder, accompanied with a `generation_training.txt` file.  This file contains samples of text generated every 100 steps by that model, allowing me to observe how text generation progressively improves throughout the training process.
 
@@ -52,7 +54,10 @@ It's worth noting that the models generated text of surprisingly good quality, c
 
 ## Exercise 2: Working with Real LLMs
 As previously seen, my toy GPT can only take me this far. Language Modeling is a field in which models need a real *ton* of text data of any kind and topic in order to generate meaningful text. So, small companies and researchers or students must start using **pre-trained** Language Models.
+
 Luckily, the [HuggingFace](https://huggingface.co/) ecosystem allows to access a *huge* variety of pre-trained Transformer models and datasets for any kind of application. In this exercise, I will learn to use stuff from HuggingFace for my future Language Modeling projects.
+
+Code for this exercise can be found in the `main2.py` script.
 
 ### Exercise 2.1: Installation and text tokenization
 First things first, I need to install the [HuggingFace Transformer library](https://huggingface.co/docs/transformers/index) on my `conda` environment.
@@ -113,6 +118,8 @@ In each of the following exercises, I'm tasked with adapting a pre-trained Large
 I've chosen to use `DistilBERT` to gain a better understanding of how **BERT** models function.
 
 **BERT** models (including DistilBERT) have a special [CLS] token prepended to each latent representation output from a self-attention block. I will use this token directly as a representation for addressing my subsequent tasks.
+
+Code for this exercise can be found in the `main31.py` script.
 
 ### Exercise 3.1: Training a Text Classifier
 An important decision in this process is the selection of an appropriate dataset for the task. After looking at the [text classification datasets on HuggingFace](https://huggingface.co/datasets?task_categories=task_categories:text-classification&sort=downloads), one standout option is [*ag_news*](https://huggingface.co/datasets/fancyzhx/ag_news). This dataset is of moderate size and features multi-class classification of global news, with 4 perfectly balanced categories: *[World, Sports, Business, Sci/Tech]*.
